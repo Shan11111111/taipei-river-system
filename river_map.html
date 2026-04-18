@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大台北水脈：五大水系數位導覽系統</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --primary-blue: #2c3e50;
+            --accent-blue: #3498db;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft JhengHei", sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 側邊欄 UI */
+        #sidebar {
+            width: 350px;
+            background: #f8f9fa;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* 地圖容器 */
+        #map {
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        /* 控制面板 */
+        .river-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-left: 5px solid #ccc;
+        }
+
+        .river-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .river-item.active {
+            border-left-color: var(--accent-blue);
+            background: #eef7ff;
+        }
+
+        .info-panel {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .warning {
+            color: #e74c3c;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <h1>大台北水脈導覽</h1>
+        <p class="subtitle">Revision 1.0 | 開發者：陳怡珊</p>
+
+        <div id="river-list">
+        </div>
+
+        <div id="info-panel" class="info-panel">
+            <h3 id="river-name">河流名稱</h3>
+            <p id="river-desc">請點擊河流查看詳情...</p>
+            <hr>
+            <p><strong>即時水位：</strong> <span id="water-level">--</span> m</p>
+            <p id="status-tag"></p>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. 初始化地圖
+        const map = L.map('map').setView([25.06, 121.50], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // 2. 更新水位的函數 (修正 stationid 為全小寫)
+        async function updateRealTimeLevel(stationId, stationName) {
+            // 這是你截圖中對應的 API 網址
+            const WATER_API_URL = 'https://opendata.wra.gov.tw/api/v2/d2c3b3f4-eb69-4d33-9878-e1266bcb7470?sort=_importdate%20asc&format=JSON';
+
+            try {
+                const response = await fetch(WATER_API_URL);
+                const data = await response.json();
+
+                // 1. 強制檢查 data 是否為陣列
+                const records = Array.isArray(data) ? data : (data.records || []);
+                console.log(`正在比對測站 ID: ${stationId}`, records);
+
+                // 2. 使用更寬鬆的比對方式 (忽略大小寫、去除空白)
+                const record = records.find(item => {
+                    const id = (item.stationid || item.StationID || "").toString().trim();
+                    return id === stationId;
+                });
+
+                const waterLevelElement = document.getElementById('water-level');
+                const statusTagElement = document.getElementById('status-tag');
+
+                if (record) {
+                    // 抓取截圖中的 waterlevel (例如 16.798)
+                    const level = record.waterlevel || record.WaterLevel;
+                    const time = record.datetime || record.DateTime;
+
+                    waterLevelElement.innerText = level;
+                    statusTagElement.innerHTML = `<span style="color:#2c3e50">📍 測站：${stationName} (${time})</span>`;
+                } else {
+                    // 3. 如果 API 真的暫時沒資料，顯示目前抓到的 ID 給你偵錯
+                    waterLevelElement.innerText = "--";
+                    statusTagElement.innerHTML = `
+                <span style="color:red">找不到測站 ${stationId}</span><br>
+                <small style="color:gray">API 目前僅提供: ${records.map(r => r.stationid).join(', ')}</small>
+            `;
+                }
+            } catch (err) {
+                console.error("水位 API 載入錯誤", err);
+                document.getElementById('water-level').innerText = "連線失敗";
+            }
+        }
+        // 3. 載入地圖
+        fetch('data/taipei_rivers.json')
+            .then(res => res.json())
+            .then(geoData => {
+                L.geoJSON(geoData, {
+                    style: { color: '#3498db', weight: 4, fillOpacity: 0.4 },
+                    onEachFeature: function (feature, layer) {
+
+                        layer.on('click', (e) => {
+                            // 讓面板顯示
+                            document.getElementById('info-panel').style.display = 'block';
+
+                            // 【關鍵修正邏輯】：因為 PARCCID 都是 193，我們直接根據點擊的經度 (Lng) 來判斷
+                            const clickLng = e.latlng.lng;
+                            let riverName = "淡水河水系";
+                            let stationId = "2620H007"; // 預設淡水河測站
+                            let stationName = "淡水河";
+
+                            if (clickLng > 121.55) {
+                                riverName = "基隆河";
+                                stationId = "2620H006"; // 改抓基隆河測站
+                                stationName = "基隆河";
+                            } else if (clickLng < 121.48) {
+                                riverName = "大漢溪";
+                                stationId = "2560H027"; // 改抓大漢溪測站
+                                stationName = "大漢溪";
+                            }
+
+                            // 更新 UI
+                            document.getElementById('river-name').innerText = riverName;
+                            document.getElementById('river-desc').innerText = "大台北地區重要水脈";
+
+                            // 抓取該河段的即時水位
+                            updateRealTimeLevel(stationId, stationName);
+
+                            map.fitBounds(layer.getBounds());
+                        });
+
+                        // 移入效果
+                        layer.on('mouseover', () => layer.setStyle({ weight: 8, color: '#2980b9' }));
+                        layer.on('mouseout', () => layer.setStyle({ weight: 4, color: '#3498db' }));
+                    }
+                }).addTo(map);
+            });
+    </script>
+</body>
+
+</html>

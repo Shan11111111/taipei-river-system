@@ -1,0 +1,21 @@
+
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "淡水河"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [121.4, 25.1],
+          [121.5, 25.05]
+        ]
+      }
+    }
+  ]
+}
+

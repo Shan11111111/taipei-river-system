@@ -1,0 +1,3359 @@
+[
+    {
+        "stationid": "2620H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2620H007_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "16.798"
+    },
+    {
+        "stationid": "2620H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2620H006_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.398"
+    },
+    {
+        "stationid": "2560H027",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H027_NB",
+        "volt": "15.6",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "4.55"
+    },
+    {
+        "stationid": "2560H026",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H026_NB",
+        "volt": "15.9",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "365.77"
+    },
+    {
+        "stationid": "2560H025",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H025_4G",
+        "volt": "12.73747",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "3.31702"
+    },
+    {
+        "stationid": "2560H024",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H024_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "199.53"
+    },
+    {
+        "stationid": "2560H023",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H023_NB",
+        "volt": "7.21",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "12.966"
+    },
+    {
+        "stationid": "2560H022",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H022_NB",
+        "volt": "16.1",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "194.17"
+    },
+    {
+        "stationid": "2560H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H020_4G",
+        "volt": "12.8",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.3450003"
+    },
+    {
+        "stationid": "2560H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H019_4G",
+        "volt": "12.6073",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "4.63721"
+    },
+    {
+        "stationid": "2560H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H017_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "366.495"
+    },
+    {
+        "stationid": "2560H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2560H006_4G",
+        "volt": "12.74",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "3.531"
+    },
+    {
+        "stationid": "2500H003",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2500H003_NB",
+        "volt": "7.19",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "27.667"
+    },
+    {
+        "stationid": "2420H36C",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H036_NB2",
+        "volt": "7.31",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "164.661"
+    },
+    {
+        "stationid": "2420H36B",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H36B_NB",
+        "volt": "7.32",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "167.021"
+    },
+    {
+        "stationid": "2420H046",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H046_NB",
+        "volt": "7.22",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "37.401"
+    },
+    {
+        "stationid": "2420H043",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H043_4G",
+        "volt": "12.8351",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "80.15636"
+    },
+    {
+        "stationid": "2420H037",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H037_4G",
+        "volt": "12.94086",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "133.73764"
+    },
+    {
+        "stationid": "2420H036",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H036_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "167.642"
+    },
+    {
+        "stationid": "2420H024",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H024_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "5.009"
+    },
+    {
+        "stationid": "2420H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H019_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "112.44"
+    },
+    {
+        "stationid": "2420H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2420H018_4G",
+        "volt": "12.68052",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "155.12013"
+    },
+    {
+        "stationid": "2370H028",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H028_4G",
+        "volt": "13.03035",
+        "datetime": "2026-01-03T08:00:00",
+        "waterlevel": "210.12481"
+    },
+    {
+        "stationid": "2370H025",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H025_4G",
+        "volt": "13.6812",
+        "datetime": "2025-12-14T11:50:00",
+        "waterlevel": "261.86582"
+    },
+    {
+        "stationid": "2370H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H019_4G",
+        "volt": "12.80255",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "154.91436"
+    },
+    {
+        "stationid": "2370H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H018_NB",
+        "volt": "7.33",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "125.59"
+    },
+    {
+        "stationid": "2370H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H017_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "58.888"
+    },
+    {
+        "stationid": "2370H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2370H016_4G",
+        "volt": "12.18425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "168.6155"
+    },
+    {
+        "stationid": "2200H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H029_4G",
+        "volt": "12.90832",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "145.26873"
+    },
+    {
+        "stationid": "2200H028",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H028_4G",
+        "volt": "13.33",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "279.094"
+    },
+    {
+        "stationid": "2200H026",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H026_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "107.837"
+    },
+    {
+        "stationid": "2200H025",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H025_4G",
+        "volt": "12.8595",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "208.93792"
+    },
+    {
+        "stationid": "2200H022",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H022_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "161.537"
+    },
+    {
+        "stationid": "2200H021",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H021_NB",
+        "volt": "7.22",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "368.504"
+    },
+    {
+        "stationid": "2200H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H020_4G",
+        "volt": "12.9734",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "317.70462"
+    },
+    {
+        "stationid": "2200H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H011_4G",
+        "volt": "13.61",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "24.973"
+    },
+    {
+        "stationid": "2200H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "2200H007_4G",
+        "volt": "12.82696",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "154.43761"
+    },
+    {
+        "stationid": "1850H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1850H006_NB",
+        "volt": "7.23",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "68.254"
+    },
+    {
+        "stationid": "1850H005",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1850H005_4G",
+        "volt": "12.9734",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "21.93459"
+    },
+    {
+        "stationid": "1850H004",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1850H004_4G",
+        "volt": "12.84323",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "72.05666"
+    },
+    {
+        "stationid": "1740H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H011_4G",
+        "volt": "12.90832",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "6.66822"
+    },
+    {
+        "stationid": "1740H010",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H010_NB",
+        "volt": "7.23",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "45.115"
+    },
+    {
+        "stationid": "1740H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H009_4G",
+        "volt": "12.86764",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "32.21505"
+    },
+    {
+        "stationid": "1740H008",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H008_4G",
+        "volt": "12.80255",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.82528"
+    },
+    {
+        "stationid": "1740H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H007_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.955"
+    },
+    {
+        "stationid": "1740H002",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1740H002_4G",
+        "volt": "12.79442",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "4.2626"
+    },
+    {
+        "stationid": "1730H081",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H081_4G",
+        "volt": "12.76187",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "349.01553"
+    },
+    {
+        "stationid": "1730H079",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H079_4G",
+        "volt": "13.23374",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "550.56522"
+    },
+    {
+        "stationid": "1730H077",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H077_NB",
+        "volt": "7.21",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "741.028"
+    },
+    {
+        "stationid": "1730H076",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H076_4G",
+        "volt": "13.33137",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "57.8888"
+    },
+    {
+        "stationid": "1730H075",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H075_4G",
+        "volt": "12.78628",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "95.17394"
+    },
+    {
+        "stationid": "1730H074",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H074_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "244.721"
+    },
+    {
+        "stationid": "1730H072",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H072_4G",
+        "volt": "12.65611",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "250.583"
+    },
+    {
+        "stationid": "1730H071",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H071_4G",
+        "volt": "12.99781",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "35.73244"
+    },
+    {
+        "stationid": "1730H070",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H070_4G",
+        "volt": "12.77815",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "226.24693"
+    },
+    {
+        "stationid": "1730H069",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H069_4G",
+        "volt": "12.4934",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "142.66188"
+    },
+    {
+        "stationid": "1730H068",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H068_4G",
+        "volt": "12.51781",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "8.65512"
+    },
+    {
+        "stationid": "1730H067",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H067_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "401.226"
+    },
+    {
+        "stationid": "1730H066",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H066_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "141.538"
+    },
+    {
+        "stationid": "1730H065",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H065_4G",
+        "volt": "12.7456",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "90.43447"
+    },
+    {
+        "stationid": "1730H062",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H062_NB",
+        "volt": "7.26",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "41.7"
+    },
+    {
+        "stationid": "1730H061",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H061_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "266.655"
+    },
+    {
+        "stationid": "1730H058",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H058_4G",
+        "volt": "12.73747",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "113.15557"
+    },
+    {
+        "stationid": "1730H057",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H057_4G",
+        "volt": "13.2256",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "42.96731"
+    },
+    {
+        "stationid": "1730H045",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H045_NB",
+        "volt": "6.8",
+        "datetime": "2026-04-04T21:10:00",
+        "waterlevel": "3.911"
+    },
+    {
+        "stationid": "1730H043",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H043_4G",
+        "volt": "12.71306",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "21.65601"
+    },
+    {
+        "stationid": "1730H036",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1730H036_4G",
+        "volt": "12.38764",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "105.80474"
+    },
+    {
+        "stationid": "1680H005",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1680H005_NB",
+        "volt": "7.26",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.352"
+    },
+    {
+        "stationid": "1680H004",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1680H004_4G",
+        "volt": "12.62357",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.64398"
+    },
+    {
+        "stationid": "1670H004",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1670H004_4G",
+        "volt": "12.77815",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.72562"
+    },
+    {
+        "stationid": "1670H003",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1670H003_4G",
+        "volt": "12.70493",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.80868"
+    },
+    {
+        "stationid": "1660H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1660H013_4G",
+        "volt": "12.63984",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.56887"
+    },
+    {
+        "stationid": "1660H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1660H012_4G",
+        "volt": "12.81069",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.63957"
+    },
+    {
+        "stationid": "1660H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1660H011_4G",
+        "volt": "12.65611",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.86355"
+    },
+    {
+        "stationid": "1660H010",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1660H010_4G",
+        "volt": "12.70493",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "8.81953"
+    },
+    {
+        "stationid": "1660H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1660H009_4G",
+        "volt": "12.81069",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "5.73675"
+    },
+    {
+        "stationid": "1650H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H019_4G",
+        "volt": "13.26628",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "4.34496"
+    },
+    {
+        "stationid": "1650H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H018_4G",
+        "volt": "12.66425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.63437"
+    },
+    {
+        "stationid": "1650H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H017_4G",
+        "volt": "12.65611",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.64051"
+    },
+    {
+        "stationid": "1650H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H016_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T17:10:00",
+        "waterlevel": "25.199"
+    },
+    {
+        "stationid": "1650H015",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H015_4G",
+        "volt": "12.61543",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.51315"
+    },
+    {
+        "stationid": "1650H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H011_NB",
+        "volt": "7.23",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.666"
+    },
+    {
+        "stationid": "1650H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H009_4G",
+        "volt": "12.55848",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.60204"
+    },
+    {
+        "stationid": "1650H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1650H006_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.456"
+    },
+    {
+        "stationid": "1630H040",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H040_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.506"
+    },
+    {
+        "stationid": "1630H037",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H037_NB",
+        "volt": "7.19",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "9.459"
+    },
+    {
+        "stationid": "1630H036",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H036_NB",
+        "volt": "7.32",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "65.167"
+    },
+    {
+        "stationid": "1630H035",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H035_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:10:00",
+        "waterlevel": "401.74"
+    },
+    {
+        "stationid": "1630H034",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H034_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:10:00",
+        "waterlevel": "277.35"
+    },
+    {
+        "stationid": "1630H033",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H033_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "0.11"
+    },
+    {
+        "stationid": "1630H032",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H032_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "0.44"
+    },
+    {
+        "stationid": "1630H031",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H031_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "0.53"
+    },
+    {
+        "stationid": "1630H030",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H030_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "2.48"
+    },
+    {
+        "stationid": "1630H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H029_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "3.19"
+    },
+    {
+        "stationid": "1630H028",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H028_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "9.79"
+    },
+    {
+        "stationid": "1630H027",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H027_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "26.31"
+    },
+    {
+        "stationid": "1630H026",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H026_API",
+        "volt": "",
+        "datetime": "2026-04-04T22:50:00",
+        "waterlevel": "45.62"
+    },
+    {
+        "stationid": "1630H025",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H025_4G",
+        "volt": "12.66425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.40613"
+    },
+    {
+        "stationid": "1630H024",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H024_4G",
+        "volt": "12.58289",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "68.66084"
+    },
+    {
+        "stationid": "1630H023",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H023_4G",
+        "volt": "12.66425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.52985"
+    },
+    {
+        "stationid": "1630H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H020_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "35.508"
+    },
+    {
+        "stationid": "1630H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H018_4G",
+        "volt": "13.25001",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "9.48523"
+    },
+    {
+        "stationid": "1630H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H013_NB",
+        "volt": "7.26",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "15.81"
+    },
+    {
+        "stationid": "1630H005",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1630H005_4G",
+        "volt": "12.95713",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "39.78433"
+    },
+    {
+        "stationid": "1590H021",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H021_4G",
+        "volt": "13.16052",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.60845"
+    },
+    {
+        "stationid": "1590H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H020_NB2",
+        "volt": "7.17",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "11.517"
+    },
+    {
+        "stationid": "1590H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H019_4G",
+        "volt": "12.94899",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "15.27254"
+    },
+    {
+        "stationid": "1590H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H018_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.253"
+    },
+    {
+        "stationid": "1590H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H016_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "11.009"
+    },
+    {
+        "stationid": "1590H015",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H015_4G",
+        "volt": "13.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "9.768"
+    },
+    {
+        "stationid": "1590H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H013_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "22.046"
+    },
+    {
+        "stationid": "1590H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1590H012_4G",
+        "volt": "12.77001",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "3.29303"
+    },
+    {
+        "stationid": "1580H023",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H023_NB",
+        "volt": "7.33",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "15.203"
+    },
+    {
+        "stationid": "1580H022",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H022_4G",
+        "volt": "12.67238",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.12085"
+    },
+    {
+        "stationid": "1580H021",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H021_4G",
+        "volt": "13.28255",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.94311"
+    },
+    {
+        "stationid": "1580H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H020_4G",
+        "volt": "12.79442",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "35.86462"
+    },
+    {
+        "stationid": "1580H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H018_4G",
+        "volt": "12.53408",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "21.33363"
+    },
+    {
+        "stationid": "1580H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H017_4G",
+        "volt": "12.63984",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "25.75018"
+    },
+    {
+        "stationid": "1580H015",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H015_4G",
+        "volt": "13.2256",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "22.69887"
+    },
+    {
+        "stationid": "1580H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H013_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "11.278"
+    },
+    {
+        "stationid": "1580H008",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H008_4G",
+        "volt": "13.27442",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "19.31074"
+    },
+    {
+        "stationid": "1580H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H007_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "23.994"
+    },
+    {
+        "stationid": "1580H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1580H001_4G",
+        "volt": "12.86764",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "223.74587"
+    },
+    {
+        "stationid": "1550H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H018_4G",
+        "volt": "12.93272",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "0.62912"
+    },
+    {
+        "stationid": "1550H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H017_4G",
+        "volt": "12.78628",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "15.92789"
+    },
+    {
+        "stationid": "1550H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H016_4G",
+        "volt": "12.94899",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.08417"
+    },
+    {
+        "stationid": "1550H014",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H014_4G",
+        "volt": "12.64798",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "26.7497"
+    },
+    {
+        "stationid": "1550H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H012_4G",
+        "volt": "12.51781",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.88801"
+    },
+    {
+        "stationid": "1550H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1550H011_4G",
+        "volt": "12.70493",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.65713"
+    },
+    {
+        "stationid": "1540H039",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H039_4G",
+        "volt": "12.92459",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "39.18799"
+    },
+    {
+        "stationid": "1540H038",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H038_4G",
+        "volt": "12.7212",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "53.94133"
+    },
+    {
+        "stationid": "1540H036",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H036_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.157"
+    },
+    {
+        "stationid": "1540H035",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H035_4G",
+        "volt": "12.75374",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "87.15865"
+    },
+    {
+        "stationid": "1540H033",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H033_4G",
+        "volt": "12.90018",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "24.03696"
+    },
+    {
+        "stationid": "1540H032",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H032_4G",
+        "volt": "12.62357",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "20.19726"
+    },
+    {
+        "stationid": "1540H031",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H031_4G",
+        "volt": "12.7212",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "10.54344"
+    },
+    {
+        "stationid": "1540H030",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H030_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "26.627"
+    },
+    {
+        "stationid": "1540H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H029_NB",
+        "volt": "7.32",
+        "datetime": "2026-04-04T22:10:00",
+        "waterlevel": "13.951"
+    },
+    {
+        "stationid": "1540H014",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H014_4G",
+        "volt": "12.94899",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "10.10179"
+    },
+    {
+        "stationid": "1540H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1540H009_4G",
+        "volt": "12.77815",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.2326"
+    },
+    {
+        "stationid": "1520H008",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1520H008_4G",
+        "volt": "12.84323",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "78.39481"
+    },
+    {
+        "stationid": "1510H091",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H091_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "827.482"
+    },
+    {
+        "stationid": "1510H090",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H090_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1030.827"
+    },
+    {
+        "stationid": "1510H089",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H089_NB",
+        "volt": "7.23",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "859.553"
+    },
+    {
+        "stationid": "1510H088",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H088_4G",
+        "volt": "12.98154",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "140.43597"
+    },
+    {
+        "stationid": "1510H087",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H087_4G",
+        "volt": "12.72933",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "426.94297"
+    },
+    {
+        "stationid": "1510H086",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H086_4G",
+        "volt": "12.94086",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "317.64796"
+    },
+    {
+        "stationid": "1510H085",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H085_NB",
+        "volt": "7.31",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "280.097"
+    },
+    {
+        "stationid": "1510H084",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H084_4G",
+        "volt": "12.81069",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "143.16919"
+    },
+    {
+        "stationid": "1510H083",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H083_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "115.61"
+    },
+    {
+        "stationid": "1510H082",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H082_4G",
+        "volt": "12.81069",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "753.11724"
+    },
+    {
+        "stationid": "1510H081",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H081_4G",
+        "volt": "12.76187",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "229.15939"
+    },
+    {
+        "stationid": "1510H079",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H079_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:40:00",
+        "waterlevel": "186.5"
+    },
+    {
+        "stationid": "1510H076",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H076_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:50:00",
+        "waterlevel": "5.55"
+    },
+    {
+        "stationid": "1510H075",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H075_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:50:00",
+        "waterlevel": "346.19"
+    },
+    {
+        "stationid": "1510H071",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H071_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:40:00",
+        "waterlevel": "20.86"
+    },
+    {
+        "stationid": "1510H064",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H064_API",
+        "volt": "",
+        "datetime": "2026-03-09T03:50:00",
+        "waterlevel": "263.73"
+    },
+    {
+        "stationid": "1510H063",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H063_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:40:00",
+        "waterlevel": "262.77"
+    },
+    {
+        "stationid": "1510H058",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H058_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:50:00",
+        "waterlevel": "12.45"
+    },
+    {
+        "stationid": "1510H057",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H057_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:50:00",
+        "waterlevel": "88.08"
+    },
+    {
+        "stationid": "1510H050",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H050_API",
+        "volt": "",
+        "datetime": "2026-03-08T23:40:00",
+        "waterlevel": "154.35"
+    },
+    {
+        "stationid": "1510H049",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1510H049_API",
+        "volt": "",
+        "datetime": "2026-03-09T04:50:00",
+        "waterlevel": "472.28"
+    },
+    {
+        "stationid": "1430H088",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H088_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "155.828"
+    },
+    {
+        "stationid": "1430H087",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H087_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "112.647"
+    },
+    {
+        "stationid": "1430H086",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H086_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "234.808"
+    },
+    {
+        "stationid": "1430H085",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H085_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "35.996"
+    },
+    {
+        "stationid": "1430H084",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H084_NB",
+        "volt": "7.34",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "51.124"
+    },
+    {
+        "stationid": "1430H083",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H083_NB",
+        "volt": "7.31",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "134.481"
+    },
+    {
+        "stationid": "1430H082",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H082_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "285.395"
+    },
+    {
+        "stationid": "1430H081",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H081_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "415.99"
+    },
+    {
+        "stationid": "1430H080",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H080_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "256.581"
+    },
+    {
+        "stationid": "1430H079",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H079_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "584.287"
+    },
+    {
+        "stationid": "1430H078",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H078_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "451.269"
+    },
+    {
+        "stationid": "1430H077",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H077_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "154.57"
+    },
+    {
+        "stationid": "1430H076",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H076_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "110.958"
+    },
+    {
+        "stationid": "1430H075",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H075_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "236.055"
+    },
+    {
+        "stationid": "1430H074",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H074_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "187.329"
+    },
+    {
+        "stationid": "1430H073",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H073_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "87.766"
+    },
+    {
+        "stationid": "1430H072",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H072_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "79.765"
+    },
+    {
+        "stationid": "1430H071",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H071_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "72.896"
+    },
+    {
+        "stationid": "1430H070",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H070_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "36.295"
+    },
+    {
+        "stationid": "1430H069",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H069_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "78.377"
+    },
+    {
+        "stationid": "1430H068",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H068_NB",
+        "volt": "15.23",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "93.264"
+    },
+    {
+        "stationid": "1430H067",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H067_NB",
+        "volt": "14.31",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "148.977"
+    },
+    {
+        "stationid": "1430H066",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H066_NB",
+        "volt": "14.05",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "411.641"
+    },
+    {
+        "stationid": "1430H061",
+        "checkresult": "1",
+        "checkdesc": "異常轉正",
+        "observatoryidentifier": "1430H061_4G",
+        "volt": "12.99",
+        "datetime": "2026-02-24T02:20:00",
+        "waterlevel": "24.817"
+    },
+    {
+        "stationid": "1430H060",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H060_4G",
+        "volt": "12.72933",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "20.22103"
+    },
+    {
+        "stationid": "1430H058",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H058_4G",
+        "volt": "10.41069",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "70.94545"
+    },
+    {
+        "stationid": "1430H057",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H057_4G",
+        "volt": "12.56662",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "31.58244"
+    },
+    {
+        "stationid": "1430H056",
+        "checkresult": "1",
+        "checkdesc": "近期水位變化合理",
+        "observatoryidentifier": "1430H056_4G",
+        "volt": "13.28",
+        "datetime": "2026-04-04T22:20:00",
+        "waterlevel": "78.679"
+    },
+    {
+        "stationid": "1430H055",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H055_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "77.935"
+    },
+    {
+        "stationid": "1430H054",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H054_4G",
+        "volt": "12.55848",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "48.79356"
+    },
+    {
+        "stationid": "1430H053",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H053_NB",
+        "volt": "7.08",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "39.004"
+    },
+    {
+        "stationid": "1430H052",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H052_4G",
+        "volt": "10.2073",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "172.51854"
+    },
+    {
+        "stationid": "1430H051",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H051_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "95.229"
+    },
+    {
+        "stationid": "1430H048",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H048_4G",
+        "volt": "12.45272",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "166.99392"
+    },
+    {
+        "stationid": "1430H047",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H047_4G",
+        "volt": "12.58289",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "73.39844"
+    },
+    {
+        "stationid": "1430H046",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H046_4G",
+        "volt": "12.77815",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "111.16997"
+    },
+    {
+        "stationid": "1430H045",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H045_4G",
+        "volt": "12.64798",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "92.2125"
+    },
+    {
+        "stationid": "1430H044",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H044_4G",
+        "volt": "12.51781",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "139.02729"
+    },
+    {
+        "stationid": "1430H040",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H040_4G",
+        "volt": "12.58289",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "19.57916"
+    },
+    {
+        "stationid": "1430H038",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H038_4G",
+        "volt": "12.7456",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "75.90443"
+    },
+    {
+        "stationid": "1430H037",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H037_NB",
+        "volt": "11.83",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "380.738"
+    },
+    {
+        "stationid": "1430H032",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H032_4G",
+        "volt": "12.68052",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "337.12026"
+    },
+    {
+        "stationid": "1430H030",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H030_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "86.78"
+    },
+    {
+        "stationid": "1430H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H029_4G",
+        "volt": "12.51781",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "51.40971"
+    },
+    {
+        "stationid": "1430H028",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1430H028_4G",
+        "volt": "11.22425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "23.9464"
+    },
+    {
+        "stationid": "1430H025",
+        "checkresult": "",
+        "checkdesc": "近期水位變化超過 3.5 m",
+        "observatoryidentifier": "1430H025_4G",
+        "volt": "12.68052",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "14.32413"
+    },
+    {
+        "stationid": "1420H058",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H058_NB",
+        "volt": "7.21",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "439.679"
+    },
+    {
+        "stationid": "1420H057",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H057_4G",
+        "volt": "12.72933",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "638.54607"
+    },
+    {
+        "stationid": "1420H056",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H056_4G",
+        "volt": "12.71306",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "197.08133"
+    },
+    {
+        "stationid": "1420H055",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H055_4G",
+        "volt": "13.15",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "317.956"
+    },
+    {
+        "stationid": "1420H054",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H054_4G",
+        "volt": "12.54221",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "703.99055"
+    },
+    {
+        "stationid": "1420H053",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H053_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "472.82"
+    },
+    {
+        "stationid": "1420H052",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H052_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "429.56"
+    },
+    {
+        "stationid": "1420H049",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1420H049_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "54.772"
+    },
+    {
+        "stationid": "1400H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H020_4G",
+        "volt": "12.66425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "320.61677"
+    },
+    {
+        "stationid": "1400H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H019_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "310.8"
+    },
+    {
+        "stationid": "1400H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H018_4G",
+        "volt": "12.76187",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "55.47272"
+    },
+    {
+        "stationid": "1400H015",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H015_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "623.766"
+    },
+    {
+        "stationid": "1400H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H012_NB",
+        "volt": "7.26",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "599.061"
+    },
+    {
+        "stationid": "1400H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H009_NB",
+        "volt": "7.31",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "190.694"
+    },
+    {
+        "stationid": "1400H008",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1400H008_NB",
+        "volt": "7.27",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "479.345"
+    },
+    {
+        "stationid": "1350H031",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H031_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.42"
+    },
+    {
+        "stationid": "1350H030",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H030_4G",
+        "volt": "12.68052",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "59.89197"
+    },
+    {
+        "stationid": "1350H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H029_4G",
+        "volt": "12.40391",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "176.65572"
+    },
+    {
+        "stationid": "1350H028",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H028_4G",
+        "volt": "12.92459",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "233.34139"
+    },
+    {
+        "stationid": "1350H027",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H027_4G",
+        "volt": "12.77001",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "147.17614"
+    },
+    {
+        "stationid": "1350H026",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H026_4G",
+        "volt": "10.67916",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "33.03381"
+    },
+    {
+        "stationid": "1350H025",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H025_4G",
+        "volt": "12.90832",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.12049"
+    },
+    {
+        "stationid": "1350H024",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H024_4G",
+        "volt": "12.68866",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "260.44509"
+    },
+    {
+        "stationid": "1350H023",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H023_4G",
+        "volt": "12.80255",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "256.97384"
+    },
+    {
+        "stationid": "1350H022",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H022_4G",
+        "volt": "12.69679",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "254.88571"
+    },
+    {
+        "stationid": "1350H021",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H021_NB",
+        "volt": "7.19",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "320.626"
+    },
+    {
+        "stationid": "1350H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H020_4G",
+        "volt": "12.77815",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "216.9857"
+    },
+    {
+        "stationid": "1350H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H019_4G",
+        "volt": "12.79442",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "35.62889"
+    },
+    {
+        "stationid": "1350H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H018_4G",
+        "volt": "12.8595",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "283.13039"
+    },
+    {
+        "stationid": "1350H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H017_4G",
+        "volt": "12.15984",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "245.0704"
+    },
+    {
+        "stationid": "1350H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H016_NB",
+        "volt": "7.28",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "97.982"
+    },
+    {
+        "stationid": "1350H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H012_4G",
+        "volt": "12.88391",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.98964"
+    },
+    {
+        "stationid": "1350H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1350H001_4G",
+        "volt": "13.32323",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "170.95219"
+    },
+    {
+        "stationid": "1340H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H016_4G",
+        "volt": "12.72933",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.08795"
+    },
+    {
+        "stationid": "1340H015",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H015_4G",
+        "volt": "12.35509",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "51.72615"
+    },
+    {
+        "stationid": "1340H014",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H014_4G",
+        "volt": "12.81882",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.15916"
+    },
+    {
+        "stationid": "1340H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H013_4G",
+        "volt": "12.77001",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "247.83316"
+    },
+    {
+        "stationid": "1340H012",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H012_4G",
+        "volt": "12.39577",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "248.25546"
+    },
+    {
+        "stationid": "1340H011",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H011_4G",
+        "volt": "12.57476",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "9.68628"
+    },
+    {
+        "stationid": "1340H010",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H010_NB",
+        "volt": "7.19",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.969"
+    },
+    {
+        "stationid": "1340H009",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H009_NB",
+        "volt": "7.29",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "176.072"
+    },
+    {
+        "stationid": "1340H008",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1340H008_4G",
+        "volt": "12.72933",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "39.27225"
+    },
+    {
+        "stationid": "1320H002",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1320H002_4G",
+        "volt": "13.10357",
+        "datetime": "2026-01-02T09:20:00",
+        "waterlevel": "17.73205"
+    },
+    {
+        "stationid": "1320H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1320H001_4G",
+        "volt": "12.90018",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "3.34382"
+    },
+    {
+        "stationid": "1310H002",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1310H002_4G",
+        "volt": "12.64798",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "1.97156"
+    },
+    {
+        "stationid": "1310H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1310H001_4G",
+        "volt": "12.81882",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.12302"
+    },
+    {
+        "stationid": "1300H024",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H024_4G",
+        "volt": "12.87577",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "29.06895"
+    },
+    {
+        "stationid": "1300H023",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H023_4G",
+        "volt": "12.59916",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "54.31306"
+    },
+    {
+        "stationid": "1300H022",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H022_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.437"
+    },
+    {
+        "stationid": "1300H021",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H021_4G",
+        "volt": "12.6073",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.00247"
+    },
+    {
+        "stationid": "1300H020",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H020_4G",
+        "volt": "12.78628",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "252.97099"
+    },
+    {
+        "stationid": "1300H019",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H019_4G",
+        "volt": "12.85137",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "86.32991"
+    },
+    {
+        "stationid": "1300H018",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H018_NB",
+        "volt": "7.22",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "98.281"
+    },
+    {
+        "stationid": "1300H017",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H017_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "28.087"
+    },
+    {
+        "stationid": "1300H016",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H016_4G",
+        "volt": "12.29001",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "100.54237"
+    },
+    {
+        "stationid": "1300H014",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H014_4G",
+        "volt": "12.68866",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "209.60882"
+    },
+    {
+        "stationid": "1300H013",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1300H013_NB",
+        "volt": "7.25",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "248.037"
+    },
+    {
+        "stationid": "1290H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1290H007_4G",
+        "volt": "12.7212",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.92278"
+    },
+    {
+        "stationid": "1290H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1290H006_4G",
+        "volt": "12.73747",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "68.20972"
+    },
+    {
+        "stationid": "1290H004",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1290H004_4G",
+        "volt": "12.6073",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "115.36573"
+    },
+    {
+        "stationid": "1290H002",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1290H002_4G",
+        "volt": "12.68866",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "41.99765"
+    },
+    {
+        "stationid": "1280H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1280H001_4G",
+        "volt": "12.8595",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "72.04315"
+    },
+    {
+        "stationid": "1270H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1270H001_4G",
+        "volt": "12.95713",
+        "datetime": "2026-04-04T23:40:00",
+        "waterlevel": "22.94475"
+    },
+    {
+        "stationid": "1140H181",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H181_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "5.25"
+    },
+    {
+        "stationid": "1140H180",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H180_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "12.49"
+    },
+    {
+        "stationid": "1140H179",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H179_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.72"
+    },
+    {
+        "stationid": "1140H178",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H178_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "5.4"
+    },
+    {
+        "stationid": "1140H177",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H177_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "16.9"
+    },
+    {
+        "stationid": "1140H176",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H176_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "27.08"
+    },
+    {
+        "stationid": "1140H175",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H175_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "6.52"
+    },
+    {
+        "stationid": "1140H174",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H174_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:10:00",
+        "waterlevel": "1.14"
+    },
+    {
+        "stationid": "1140H173",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H173_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "0.92"
+    },
+    {
+        "stationid": "1140H172",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H172_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "60.19"
+    },
+    {
+        "stationid": "1140H171",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H171_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "60.19"
+    },
+    {
+        "stationid": "1140H170",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H170_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "60.19"
+    },
+    {
+        "stationid": "1140H168",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H168_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "23.427"
+    },
+    {
+        "stationid": "1140H167",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H167_API",
+        "volt": "",
+        "datetime": "2026-04-01T11:00:00",
+        "waterlevel": "31.118"
+    },
+    {
+        "stationid": "1140H166",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H166_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "41.97"
+    },
+    {
+        "stationid": "1140H165",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H165_API",
+        "volt": "",
+        "datetime": "2026-04-03T02:50:00",
+        "waterlevel": "3.73"
+    },
+    {
+        "stationid": "1140H164",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H164_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "4.88"
+    },
+    {
+        "stationid": "1140H163",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H163_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.09"
+    },
+    {
+        "stationid": "1140H162",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H162_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "46.05"
+    },
+    {
+        "stationid": "1140H161",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H161_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "108.83"
+    },
+    {
+        "stationid": "1140H160",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H160_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "66.63"
+    },
+    {
+        "stationid": "1140H159",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H159_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "42.07"
+    },
+    {
+        "stationid": "1140H158",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H158_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "75.51"
+    },
+    {
+        "stationid": "1140H157",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H157_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "32.82"
+    },
+    {
+        "stationid": "1140H156",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H156_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.99"
+    },
+    {
+        "stationid": "1140H155",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H155_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "12.9"
+    },
+    {
+        "stationid": "1140H154",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H154_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "51.78"
+    },
+    {
+        "stationid": "1140H153",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H153_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "43.21"
+    },
+    {
+        "stationid": "1140H152",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H152_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "5.347"
+    },
+    {
+        "stationid": "1140H151",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H151_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.752"
+    },
+    {
+        "stationid": "1140H150",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H150_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.137"
+    },
+    {
+        "stationid": "1140H149",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H149_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "40.606"
+    },
+    {
+        "stationid": "1140H148",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H148_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "6.585"
+    },
+    {
+        "stationid": "1140H146",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H146_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.809"
+    },
+    {
+        "stationid": "1140H145",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H145_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "102.232"
+    },
+    {
+        "stationid": "1140H144",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H144_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "9.825"
+    },
+    {
+        "stationid": "1140H143",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H143_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.441"
+    },
+    {
+        "stationid": "1140H142",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H142_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.097"
+    },
+    {
+        "stationid": "1140H141",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H141_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "60.11"
+    },
+    {
+        "stationid": "1140H140",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H140_API",
+        "volt": "",
+        "datetime": "2025-12-29T16:30:00",
+        "waterlevel": "39.122"
+    },
+    {
+        "stationid": "1140H139",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H139_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "6.304"
+    },
+    {
+        "stationid": "1140H138",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H138_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "18.582"
+    },
+    {
+        "stationid": "1140H137",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H137_API",
+        "volt": "",
+        "datetime": "2026-04-01T11:00:00",
+        "waterlevel": "14.817"
+    },
+    {
+        "stationid": "1140H136",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H136_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "108.831"
+    },
+    {
+        "stationid": "1140H134",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H134_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "20.37"
+    },
+    {
+        "stationid": "1140H133",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H133_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "16.13"
+    },
+    {
+        "stationid": "1140H132",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H132_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "9.39"
+    },
+    {
+        "stationid": "1140H131",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H131_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "345.884"
+    },
+    {
+        "stationid": "1140H130",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H130_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "6.76"
+    },
+    {
+        "stationid": "1140H127",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H127_4G",
+        "volt": "12.8595",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "32.17244"
+    },
+    {
+        "stationid": "1140H126",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H126_4G",
+        "volt": "12.66425",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "81.41099"
+    },
+    {
+        "stationid": "1140H125",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H125_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "43.83"
+    },
+    {
+        "stationid": "1140H124",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H124_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "78.24"
+    },
+    {
+        "stationid": "1140H123",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H123_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "61.58"
+    },
+    {
+        "stationid": "1140H120",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H120_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.57"
+    },
+    {
+        "stationid": "1140H119",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H119_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "20.73"
+    },
+    {
+        "stationid": "1140H118",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H118_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "12.83"
+    },
+    {
+        "stationid": "1140H117",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H117_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.19"
+    },
+    {
+        "stationid": "1140H116",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H116_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.92"
+    },
+    {
+        "stationid": "1140H115",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H115_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.83"
+    },
+    {
+        "stationid": "1140H113",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H113_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.64"
+    },
+    {
+        "stationid": "1140H112",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H112_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "12.64"
+    },
+    {
+        "stationid": "1140H111",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H111_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.05"
+    },
+    {
+        "stationid": "1140H110",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H110_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "42.68"
+    },
+    {
+        "stationid": "1140H109",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H109_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "49.064"
+    },
+    {
+        "stationid": "1140H108",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H108_4G",
+        "volt": "12.7456",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "13.55118"
+    },
+    {
+        "stationid": "1140H107",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H107_NB",
+        "volt": "7.3",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "3.209"
+    },
+    {
+        "stationid": "1140H106",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H106_NB",
+        "volt": "7.24",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "49.304"
+    },
+    {
+        "stationid": "1140H105",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H105_4G",
+        "volt": "12.63171",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.10435"
+    },
+    {
+        "stationid": "1140H102",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H102_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "209.41"
+    },
+    {
+        "stationid": "1140H101",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H101_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "182.302"
+    },
+    {
+        "stationid": "1140H099",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H099_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "263.899"
+    },
+    {
+        "stationid": "1140H098",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H098_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "175.175"
+    },
+    {
+        "stationid": "1140H097",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H097_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "172.519"
+    },
+    {
+        "stationid": "1140H096",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H096_API",
+        "volt": "",
+        "datetime": "2026-04-03T14:40:00",
+        "waterlevel": "170.609"
+    },
+    {
+        "stationid": "1140H095",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H095_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "109.83"
+    },
+    {
+        "stationid": "1140H089",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H089_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "56.68"
+    },
+    {
+        "stationid": "1140H087",
+        "checkresult": "1",
+        "checkdesc": "近期水位變化合理",
+        "observatoryidentifier": "1140H087_API",
+        "volt": "",
+        "datetime": "2026-04-04T20:20:00",
+        "waterlevel": "-0.61"
+    },
+    {
+        "stationid": "1140H084",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H084_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.41"
+    },
+    {
+        "stationid": "1140H083",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H083_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.986"
+    },
+    {
+        "stationid": "1140H082",
+        "checkresult": "1",
+        "checkdesc": "近期水位變化合理",
+        "observatoryidentifier": "1140H082_API",
+        "volt": "",
+        "datetime": "2026-04-04T20:10:00",
+        "waterlevel": "7.28"
+    },
+    {
+        "stationid": "1140H077",
+        "checkresult": "1",
+        "checkdesc": "近期水位變化合理",
+        "observatoryidentifier": "1140H077_API",
+        "volt": "",
+        "datetime": "2026-04-04T20:20:00",
+        "waterlevel": "-0.9"
+    },
+    {
+        "stationid": "1140H076",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H076_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "134.8"
+    },
+    {
+        "stationid": "1140H068",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H068_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "49.05"
+    },
+    {
+        "stationid": "1140H067",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H067_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "31.38"
+    },
+    {
+        "stationid": "1140H066",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H066_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "2.62"
+    },
+    {
+        "stationid": "1140H059",
+        "checkresult": "1",
+        "checkdesc": "近期水位變化合理",
+        "observatoryidentifier": "1140H059_API",
+        "volt": "",
+        "datetime": "2026-04-04T20:20:00",
+        "waterlevel": "-0.57"
+    },
+    {
+        "stationid": "1140H058",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H058_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "5.3"
+    },
+    {
+        "stationid": "1140H054",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H054_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "247.53"
+    },
+    {
+        "stationid": "1140H053",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H053_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:20:00",
+        "waterlevel": "1.43"
+    },
+    {
+        "stationid": "1140H052",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H052_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.43"
+    },
+    {
+        "stationid": "1140H049",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H049_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "18.93"
+    },
+    {
+        "stationid": "1140H048",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H048_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "28.91"
+    },
+    {
+        "stationid": "1140H043",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H043_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "440.57"
+    },
+    {
+        "stationid": "1140H041",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H041_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "831.97"
+    },
+    {
+        "stationid": "1140H039",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H039_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.53"
+    },
+    {
+        "stationid": "1140H036",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H036_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.12"
+    },
+    {
+        "stationid": "1140H029",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H029_API",
+        "volt": "",
+        "datetime": "2025-12-27T16:40:00",
+        "waterlevel": "1.2"
+    },
+    {
+        "stationid": "1140H002",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H002_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "530.91"
+    },
+    {
+        "stationid": "1140H001",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1140H001_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "685"
+    },
+    {
+        "stationid": "1010H007",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1010H007_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "0.66"
+    },
+    {
+        "stationid": "1010H006",
+        "checkresult": "1",
+        "checkdesc": "",
+        "observatoryidentifier": "1010H006_API",
+        "volt": "",
+        "datetime": "2026-04-04T23:30:00",
+        "waterlevel": "1.85"
+    }
+]
