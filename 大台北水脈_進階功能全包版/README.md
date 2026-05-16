@@ -79,3 +79,16 @@
 - 同一條河附近景點列表
 
 注意：Google Street View 需要網路；若某座標沒有街景，Google 可能顯示附近街景或地圖畫面。
+
+
+## 測站匹配修正
+
+若畫面出現「API 有回應，但五大水系沒有匹配到測站」，代表 API 成功取得資料，但河名或測站名稱沒有直接對上。
+
+本修正版已加入 `RIVER_MATCH_RULES`，用以下方式匹配：
+
+- 河流名稱 alias
+- 代表測站關鍵字
+- API row 全欄位文字搜尋
+
+若仍未匹配，可開啟瀏覽器 DevTools → Console，查看 `[WRA] stationRows` 與 `console.table`，再把實際測站名稱補進 `RIVER_MATCH_RULES`。
