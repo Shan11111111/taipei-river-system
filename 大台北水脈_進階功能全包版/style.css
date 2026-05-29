@@ -1,4 +1,1067 @@
-*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;background:#07111f;color:#f8fafc}.hidden{display:none!important}.screen{width:100vw;height:100vh}.eyebrow{color:#67e8f9;letter-spacing:3px;text-transform:uppercase;font-size:12px;font-weight:900}.hint,.mini{color:#94a3b8;font-size:13px;line-height:1.55}.primary-btn,.secondary-btn,.ghost-btn,.small-btn{border:0;cursor:pointer;border-radius:999px;font-weight:900}.primary-btn{padding:14px 28px;color:#fff;background:linear-gradient(135deg,#06b6d4,#2563eb);box-shadow:0 12px 30px rgba(37,99,235,.35)}.secondary-btn{padding:9px 13px;color:#fff;background:rgba(37,99,235,.78)}.ghost-btn{padding:10px 18px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}.small-btn{padding:8px 13px;color:#fff;background:rgba(15,23,42,.88);border:1px solid rgba(255,255,255,.18)}.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.cover-screen{position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(34,211,238,.28),transparent 34%),radial-gradient(circle at 78% 76%,rgba(34,197,94,.18),transparent 30%),linear-gradient(135deg,#020617,#0f172a 60%,#111827)}.cover-bg{position:absolute;inset:0}.cover-title-mark{position:absolute;left:7vw;top:12vh;font-size:clamp(46px,9vw,124px);font-weight:1000;line-height:.88;letter-spacing:-5px;color:rgba(255,255,255,.055)}.cover-line{position:absolute;height:10px;border-radius:999px;background:linear-gradient(90deg,transparent,#7dd3fc,#22c55e,transparent);filter:drop-shadow(0 0 20px rgba(125,211,252,.6));animation:flow 2.5s linear infinite}.l1{width:52vw;left:4vw;top:34vh;transform:rotate(12deg)}.l2{width:44vw;left:14vw;top:44vh;transform:rotate(-10deg);animation-delay:.3s}.l3{width:48vw;left:8vw;top:55vh;transform:rotate(20deg);animation-delay:.6s}.l4{width:38vw;left:22vw;top:65vh;transform:rotate(-22deg);animation-delay:.9s}.l5{width:42vw;left:10vw;top:25vh;transform:rotate(4deg);animation-delay:1.2s}@keyframes flow{from{background-position:-500px 0;opacity:.45}50%{opacity:1}to{background-position:500px 0;opacity:.45}}.cover-panel{position:relative;width:min(690px,90vw);margin-left:min(28vw,340px);padding:46px;border:1px solid rgba(148,163,184,.28);border-radius:32px;background:rgba(15,23,42,.76);backdrop-filter:blur(16px);box-shadow:0 34px 120px rgba(0,0,0,.45)}.cover-panel h1{font-size:clamp(46px,8vw,88px);margin:8px 0}.subtitle{color:#cbd5e1;font-size:18px;line-height:1.8}.cover-actions{display:flex;gap:12px;flex-wrap:wrap}.intro-screen{display:grid;place-items:center;background:#020617}.intro-card{width:min(1120px,92vw);height:min(640px,80vh);display:grid;grid-template-columns:1.15fr .85fr;overflow:hidden;border-radius:34px;border:1px solid rgba(125,211,252,.24);background:#0f172a;box-shadow:0 40px 120px rgba(0,0,0,.55)}.intro-video{position:relative;overflow:hidden;background:linear-gradient(to top,rgba(2,6,23,.92),rgba(2,6,23,.18)),radial-gradient(circle at 25% 30%,rgba(56,189,248,.35),transparent 30%),radial-gradient(circle at 70% 65%,rgba(34,197,94,.25),transparent 26%),linear-gradient(135deg,#082f49,#064e3b,#1e1b4b)}.video-river{position:absolute;left:-20%;top:45%;width:140%;height:90px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(125,211,252,.9),transparent);transform:rotate(-8deg);animation:flow 2s linear infinite}.video-caption{position:absolute;left:36px;right:36px;bottom:36px;font-size:24px;font-weight:900;line-height:1.5}.intro-content{padding:46px;display:flex;flex-direction:column;justify-content:center}.intro-content h2{font-size:clamp(30px,4vw,52px);margin:10px 0}.intro-content p{color:#cbd5e1;font-size:18px;line-height:1.8}.progress-wrap{margin:28px 0 18px;height:10px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#22d3ee,#22c55e,#facc15)}.intro-actions{display:flex;gap:10px;flex-wrap:wrap}.app{display:flex;height:100vh}.sidebar{width:370px;background:#0f172a;border-right:1px solid rgba(148,163,184,.22);padding:22px;overflow-y:auto}.brand h2{margin:0}.brand p{color:#94a3b8;line-height:1.6}.card{margin-top:16px;padding:16px;background:rgba(255,255,255,.06);border:1px solid rgba(148,163,184,.18);border-radius:20px}.river-list{display:grid;gap:10px}.river-btn{width:100%;padding:12px;text-align:left;cursor:pointer;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(148,163,184,.22);border-radius:14px}.river-btn:hover,.river-btn.active{background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.5)}.water-row,.mission-row{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid rgba(148,163,184,.14);padding:9px 0;font-size:14px}.badge-board,.profile-badge-board{display:flex;flex-wrap:wrap;gap:10px}.badge{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;font-size:22px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35),0 8px 24px rgba(0,0,0,.25)}.empty-badge{color:#94a3b8;font-size:14px}.map-area{position:relative;flex:1}#map{height:100vh;width:100%;background:#0b1120}.map-topbar{position:absolute;z-index:500;top:16px;left:16px;right:16px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}.map-topbar span,.top-actions{pointer-events:auto}.map-topbar span{padding:10px 16px;color:#fff;background:rgba(15,23,42,.86);border:1px solid rgba(255,255,255,.16);border-radius:999px}.top-actions{display:flex;gap:8px}.floating-panel{position:absolute;z-index:650;right:18px;top:64px;width:220px;padding:16px;border-radius:18px;background:rgba(15,23,42,.9);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px)}.floating-panel label{display:block;margin:10px 0;color:#cbd5e1}.walk-panel{position:absolute;z-index:500;left:24px;bottom:24px;width:min(460px,calc(100% - 48px));padding:18px;border-radius:22px;background:rgba(15,23,42,.88);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px)}.walk-panel h3{margin:0 0 8px}.walk-panel p{margin:0;color:#cbd5e1;line-height:1.6}.walk-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.street-panel{position:absolute;z-index:700;right:24px;bottom:24px;width:min(430px,calc(100% - 48px));overflow:hidden;border-radius:24px;background:#0f172a;border:1px solid rgba(255,255,255,.18);box-shadow:0 20px 80px rgba(0,0,0,.4)}.close-mini{position:absolute;z-index:2;right:10px;top:8px;border:0;background:rgba(0,0,0,.45);color:#fff;border-radius:50%;width:30px;height:30px;cursor:pointer}.street-scene{position:relative;height:250px;overflow:hidden;background:linear-gradient(#7dd3fc,#bae6fd 45%,#164e63 46%,#083344)}.street-sky{position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.8),transparent 9%)}.street-river{position:absolute;left:-10%;right:-10%;bottom:40px;height:80px;background:linear-gradient(90deg,#0e7490,#67e8f9,#0e7490);transform:skewY(-5deg);animation:waterMove 1.3s linear infinite}.street-path{position:absolute;left:0;right:0;bottom:0;height:65px;background:linear-gradient(90deg,#57534e,#a8a29e,#57534e)}.street-buildings{position:absolute;right:20px;bottom:105px;width:150px;height:95px;background:repeating-linear-gradient(90deg,#334155 0 28px,#475569 28px 56px)}@keyframes waterMove{to{background-position:240px}}#streetCaption{padding:0 16px 16px;color:#cbd5e1}.river-flow{stroke-dasharray:12 18;animation:dashFlow 1s linear infinite}@keyframes dashFlow{to{stroke-dashoffset:-30}}.user-dot{width:22px;height:22px;border-radius:50%;background:#0ea5e9;border:4px solid #fff;box-shadow:0 0 0 0 rgba(14,165,233,.7);animation:pulseUser 1.2s infinite}@keyframes pulseUser{70%{box-shadow:0 0 0 22px rgba(14,165,233,0)}100%{box-shadow:0 0 0 0 rgba(14,165,233,0)}}.walk-marker{width:28px;height:28px;border-radius:50%;background:#38bdf8;border:4px solid #fff;box-shadow:0 0 20px rgba(56,189,248,.8)}.poi-marker{width:24px;height:24px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 0 rgba(250,204,21,.8)}.poi-marker.nearby{animation:poiShake .7s ease-in-out infinite,poiPulse .9s infinite}@keyframes poiShake{0%,100%{transform:translateX(0) scale(1)}25%{transform:translateX(-3px) scale(1.1)}50%{transform:translateX(3px) scale(1.1)}75%{transform:translateX(-2px) scale(1.1)}}@keyframes poiPulse{70%{box-shadow:0 0 0 18px rgba(250,204,21,0)}100%{box-shadow:0 0 0 0 rgba(250,204,21,0)}}.modal,.danger-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px;background:rgba(2,6,23,.72);backdrop-filter:blur(8px)}.modal-card,.danger-card{width:min(640px,92vw);max-height:86vh;overflow-y:auto;padding:28px;color:#fff;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:26px;box-shadow:0 30px 90px rgba(0,0,0,.45)}.modal-card.wide{width:min(900px,94vw)}.close-btn{float:right;border:none;background:transparent;color:#fff;font-size:32px;cursor:pointer}.safety-box,.info-box,.badge-result,.quiz-box{padding:14px;margin:16px 0;border-radius:16px;line-height:1.7;background:rgba(255,255,255,.07)}.safety-safe{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35)}.safety-danger{background:rgba(239,68,68,.16);border:1px solid rgba(239,68,68,.45)}.danger-card{background:linear-gradient(135deg,#450a0a,#0f172a);border-color:rgba(239,68,68,.55)}.danger-btn{background:linear-gradient(135deg,#ef4444,#f97316)}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.quiz-option{display:block;width:100%;padding:10px;margin:8px 0;border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;background:rgba(255,255,255,.08);cursor:pointer;text-align:left}.quiz-option:hover{background:rgba(56,189,248,.16)}@media(max-width:880px){.cover-panel{margin-left:0}.intro-card{grid-template-columns:1fr;height:88vh}.intro-video{min-height:230px}.app{flex-direction:column}.sidebar{width:100%;height:44vh}#map{height:56vh}.profile-grid{grid-template-columns:1fr}.street-panel{left:16px;right:16px;width:auto}}
+* {
+  box-sizing: border-box
+}
+
+:root {
+  --bg-main: #0f1724;
+  --bg-soft: #162234;
+  --panel: rgba(19, 30, 47, .88);
+  --panel-light: rgba(28, 43, 65, .9);
+
+  --line: rgba(125, 211, 252, .16);
+
+  --text-main: #eaf6ff;
+  --text-soft: #93a9c3;
+
+  --water-main: #5cc8ff;
+  --water-glow: #7ddfff;
+
+  --river-1: #5cc8ff;
+  --river-2: #ff6fae;
+  --river-3: #9b8cff;
+  --river-4: #64dfdf;
+  --river-5: #ffb86b;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(92, 200, 255, .12), transparent 32%),
+    linear-gradient(135deg, #0b1220, #111b2b 55%, #17263a);
+  color: var(--text-main);
+}
+
+.hidden {
+  display: none !important
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh
+}
+
+.eyebrow {
+  color: #67e8f9;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 900
+}
+
+.hint,
+.mini {
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.55
+}
+
+.primary-btn,
+.secondary-btn,
+.ghost-btn,
+.small-btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 900
+}
+
+.primary-btn {
+
+  background:
+    linear-gradient(135deg,
+      #6aaed6 0%,
+      #4d7398 100%);
+
+}
+
+.secondary-btn {
+  padding: 9px 13px;
+  color: #fff;
+  background: linear-gradient(135deg, #3ba7ff, #5cc8ff);
+  box-shadow: 0 0 18px rgba(92, 200, 255, .26);
+}
+
+.ghost-btn {
+  padding: 10px 18px;
+  color: #17324d;
+  background: #ffffff;
+  border: 1px solid #dbe8f3;
+  box-shadow: 0 8px 20px rgba(16, 42, 67, .10)
+}
+
+.small-btn {
+  padding: 8px 15px;
+  color: #17324d;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid #dbe8f3;
+  box-shadow: 0 8px 20px rgba(16, 42, 67, .12)
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px
+}
+
+.cover-screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, .28), transparent 34%), radial-gradient(circle at 78% 76%, rgba(34, 197, 94, .18), transparent 30%), linear-gradient(135deg, #020617, #0f172a 60%, #111827)
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0
+}
+
+.cover-title-mark {
+  position: absolute;
+  left: 7vw;
+  top: 12vh;
+  font-size: clamp(46px, 9vw, 124px);
+  font-weight: 1000;
+  line-height: .88;
+  letter-spacing: -5px;
+  color: rgba(255, 255, 255, .055)
+}
+
+.cover-line {
+  position: absolute;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #7dd3fc, #22c55e, transparent);
+  filter: drop-shadow(0 0 20px rgba(125, 211, 252, .6));
+  animation: flow 2.5s linear infinite
+}
+
+.l1 {
+  width: 52vw;
+  left: 4vw;
+  top: 34vh;
+  transform: rotate(12deg)
+}
+
+.l2 {
+  width: 44vw;
+  left: 14vw;
+  top: 44vh;
+  transform: rotate(-10deg);
+  animation-delay: .3s
+}
+
+.l3 {
+  width: 48vw;
+  left: 8vw;
+  top: 55vh;
+  transform: rotate(20deg);
+  animation-delay: .6s
+}
+
+.l4 {
+  width: 38vw;
+  left: 22vw;
+  top: 65vh;
+  transform: rotate(-22deg);
+  animation-delay: .9s
+}
+
+.l5 {
+  width: 42vw;
+  left: 10vw;
+  top: 25vh;
+  transform: rotate(4deg);
+  animation-delay: 1.2s
+}
+
+@keyframes flow {
+  from {
+    background-position: -500px 0;
+    opacity: .45
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  to {
+    background-position: 500px 0;
+    opacity: .45
+  }
+}
+
+.cover-panel {
+  position: relative;
+  width: min(690px, 90vw);
+  margin-left: min(28vw, 340px);
+  padding: 46px;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 32px;
+  background: rgba(15, 23, 42, .76);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 34px 120px rgba(0, 0, 0, .45)
+}
+
+.cover-panel h1 {
+  font-size: clamp(46px, 8vw, 88px);
+  margin: 8px 0
+}
+
+.subtitle {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.8
+}
+
+.cover-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap
+}
+
+.intro-screen {
+  display: grid;
+  place-items: center;
+  background: #020617
+}
+
+.intro-card {
+  width: min(1120px, 92vw);
+  height: min(640px, 80vh);
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  overflow: hidden;
+  border-radius: 34px;
+  border: 1px solid rgba(125, 211, 252, .24);
+  background: #0f172a;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, .55)
+}
+
+.intro-video {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to top, rgba(2, 6, 23, .92), rgba(2, 6, 23, .18)), radial-gradient(circle at 25% 30%, rgba(56, 189, 248, .35), transparent 30%), radial-gradient(circle at 70% 65%, rgba(34, 197, 94, .25), transparent 26%), linear-gradient(135deg, #082f49, #064e3b, #1e1b4b)
+}
+
+.video-river {
+  position: absolute;
+  left: -20%;
+  top: 45%;
+  width: 140%;
+  height: 90px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(125, 211, 252, .9), transparent);
+  transform: rotate(-8deg);
+  animation: flow 2s linear infinite
+}
+
+.video-caption {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  bottom: 36px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.5
+}
+
+.intro-content {
+  padding: 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.intro-content h2 {
+  font-size: clamp(30px, 4vw, 52px);
+  margin: 10px 0
+}
+
+.intro-content p {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.8
+}
+
+.progress-wrap {
+  margin: 28px 0 18px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  overflow: hidden
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22d3ee, #22c55e, #facc15)
+}
+
+.intro-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap
+}
+
+.app {
+  display: flex;
+  height: 100vh
+}
+
+
+
+/* sidebar 收合：保留小側欄版 */
+
+.sidebar {
+  width: 390px;
+  flex: 0 0 390px;
+  background:
+    linear-gradient(
+      180deg,
+      #10233a 0%,
+      #132b46 45%,
+      #183552 100%
+    );
+
+  border-right: 1px solid rgba(255,255,255,.08);
+  padding: 22px;
+  overflow-y: auto;
+  color: var(--text-main);
+  box-shadow: 10px 0 42px rgba(0, 0, 0, .34);
+  backdrop-filter: blur(18px);
+  transition: width .22s ease, flex-basis .22s ease, padding .22s ease;
+}
+
+.brand h2,
+.card h3,
+.water-name {
+  color: var(--text-main);
+}
+
+.brand p,
+.river-btn small,
+.water-meta,
+.water-time,
+.water-alert {
+  color: var(--text-soft);
+}
+
+.card {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid rgba(125, 211, 252, .14);
+  border-radius: 22px;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, .28);
+  color: var(--text-main);
+  backdrop-filter: blur(14px);
+}
+
+.river-btn {
+  width: 100%;
+  padding: 13px 14px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-main);
+  background: rgba(28, 43, 65, .72);
+  border: 1px solid rgba(125, 211, 252, .12);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+  transition: .2s ease;
+}
+
+.river-btn:hover,
+.river-btn.active {
+  background: rgba(36, 58, 86, .92);
+  border-color: rgba(92, 200, 255, .58);
+  box-shadow: 0 0 22px rgba(92, 200, 255, .16);
+  transform: translateY(-2px);
+}
+
+.brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.sidebar-toggle {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #dbe8f3;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #526174;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(16, 42, 67, .12);
+}
+
+/* 收起後留下小側欄 */
+.sidebar.collapsed {
+  width: 76px;
+  flex-basis: 76px;
+  padding: 22px 14px;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .brand>div,
+.sidebar.collapsed .card {
+  display: none;
+}
+
+.sidebar.collapsed .brand {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+  font-size: 0;
+}
+
+.sidebar.collapsed .sidebar-toggle::before {
+  content: "❯";
+  font-size: 22px;
+}
+
+.brand h2 {
+  margin: 0;
+  color: #102a43;
+  font-size: 30px;
+  font-weight: 950;
+  letter-spacing: -.5px
+}
+
+.brand p {
+  color: #5d7186;
+  line-height: 1.6
+}
+
+.card {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(18, 30, 48, .86);
+  border: 1px solid rgba(125, 211, 252, .18);
+  border-radius: 22px;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .32);
+  color: #eaf6ff;
+  backdrop-filter: blur(14px);
+}
+.brand h2,
+.card h3,
+.water-name {
+  color: #eaf6ff;
+}
+
+.brand p,
+.river-btn small,
+.water-meta,
+.water-time,
+.water-alert {
+  color: #9fb3c8;
+}
+.card h3 {
+  color: #102a43;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 14px
+}
+
+.river-list {
+  display: grid;
+  gap: 10px
+}
+
+.river-btn {
+  width: 100%;
+  padding: 13px 14px;
+  text-align: left;
+  cursor: pointer;
+  color: #eaf6ff;
+  background: rgba(26, 42, 64, .82);
+  border: 1px solid rgba(125, 211, 252, .14);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .24);
+  transition: .2s ease;
+}
+
+.river-btn:hover,
+.river-btn.active {
+  background: rgba(36, 58, 86, .96);
+  border-color: rgba(92, 200, 255, .55);
+  box-shadow: 0 0 22px rgba(92, 200, 255, .16);
+  transform: translateY(-2px);
+}
+
+.river-btn small {
+  color: #5d7186;
+}
+
+
+
+.water-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.water-item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 86px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e6eef5;
+  background: transparent;
+}
+
+.water-item:last-child {
+  border-bottom: none;
+}
+
+.water-left {
+  display: contents;
+}
+
+.water-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.water-item.safe .water-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.water-item.warning .water-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.water-name {
+  font-size: 17px;
+  font-weight: 900;
+  color: #102a43;
+  margin-bottom: 2px;
+}
+
+.water-meta {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.water-time {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.water-right {
+  text-align: right;
+}
+
+.water-level {
+  font-size: 21px;
+  font-weight: 900;
+  color: #17324d;
+  line-height: 1;
+}
+
+.water-alert {
+  margin-top: 3px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.badge-board,
+.profile-badge-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.badge {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .35), 0 8px 24px rgba(0, 0, 0, .25)
+}
+
+.empty-badge {
+  color: #94a3b8;
+  font-size: 14px
+}
+
+.map-area {
+  position: relative;
+  flex: 1
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+  background: #0b1120
+}
+
+.map-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+.map-topbar {
+  position: absolute;
+  z-index: 500;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none
+}
+
+.map-topbar span,
+.top-actions {
+  pointer-events: auto
+}
+
+.map-topbar span {
+  padding: 10px 16px;
+  color: #17324d;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid #dbe8f3;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(16, 42, 67, .12)
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px
+}
+
+.floating-panel {
+  position: absolute;
+  z-index: 650;
+  right: 18px;
+  top: 64px;
+  width: 220px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .95);
+  border: 1px solid #dbe8f3;
+  box-shadow: 0 14px 34px rgba(16, 42, 67, .14);
+  backdrop-filter: blur(12px);
+  color: #17324d
+}
+
+.floating-panel label {
+  display: block;
+  margin: 10px 0;
+  color: #3d5368;
+  font-weight: 700
+}
+
+.floating-panel h3 {
+  color: #102a43;
+  margin-top: 0
+}
+
+.walk-panel {
+  position: absolute;
+  z-index: 500;
+  left: 24px;
+  bottom: 24px;
+  width: min(460px, calc(100% - 48px));
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(15, 23, 42, .88);
+  border: 1px solid rgba(255, 255, 255, .16);
+  backdrop-filter: blur(12px)
+}
+
+.walk-panel h3 {
+  margin: 0 0 8px
+}
+
+.walk-panel p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.6
+}
+
+.walk-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px
+}
+
+.street-panel {
+  position: absolute;
+  z-index: 700;
+  right: 24px;
+  bottom: 24px;
+  width: min(430px, calc(100% - 48px));
+  overflow: hidden;
+  border-radius: 24px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, .18);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, .4)
+}
+
+.close-mini {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 8px;
+  border: 0;
+  background: rgba(0, 0, 0, .45);
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer
+}
+
+.street-scene {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(#7dd3fc, #bae6fd 45%, #164e63 46%, #083344)
+}
+
+.street-sky {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .8), transparent 9%)
+}
+
+.street-river {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 40px;
+  height: 80px;
+  background: linear-gradient(90deg, #0e7490, #67e8f9, #0e7490);
+  transform: skewY(-5deg);
+  animation: waterMove 1.3s linear infinite
+}
+
+.street-path {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 65px;
+  background: linear-gradient(90deg, #57534e, #a8a29e, #57534e)
+}
+
+.street-buildings {
+  position: absolute;
+  right: 20px;
+  bottom: 105px;
+  width: 150px;
+  height: 95px;
+  background: repeating-linear-gradient(90deg, #334155 0 28px, #475569 28px 56px)
+}
+
+.leaflet-top.leaflet-left {
+  top: auto !important;
+  left: auto !important;
+
+  right: 24px !important;
+  bottom: 34px !important;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .18);
+}
+
+.leaflet-control-zoom a {
+  width: 46px !important;
+  height: 46px !important;
+  line-height: 46px !important;
+  font-size: 22px !important;
+
+  color: #17324d !important;
+  background: rgba(255, 255, 255, .96) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #eff6ff !important;
+}
+
+@keyframes waterMove {
+  to {
+    background-position: 240px
+  }
+}
+
+#streetCaption {
+  padding: 0 16px 16px;
+  color: #cbd5e1
+}
+
+.river-flow {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: riverMove 5s linear infinite;
+  filter:
+    drop-shadow(0 0 4px rgba(92, 200, 255, .85))
+    drop-shadow(0 0 12px rgba(92, 200, 255, .45))
+    drop-shadow(0 0 22px rgba(92, 200, 255, .2));
+}
+
+@keyframes riverMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+
+
+
+.user-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 0 rgba(14, 165, 233, .7);
+  animation: pulseUser 1.2s infinite
+}
+
+@keyframes pulseUser {
+  70% {
+    box-shadow: 0 0 0 22px rgba(14, 165, 233, 0)
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0)
+  }
+}
+
+.walk-marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 4px solid #fff;
+  box-shadow: 0 0 20px rgba(56, 189, 248, .8)
+}
+
+.poi-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 0 rgba(250, 204, 21, .8)
+}
+
+.poi-marker.nearby {
+  animation: poiShake .7s ease-in-out infinite, poiPulse .9s infinite
+}
+
+@keyframes poiShake {
+
+  0%,
+  100% {
+    transform: translateX(0) scale(1)
+  }
+
+  25% {
+    transform: translateX(-3px) scale(1.1)
+  }
+
+  50% {
+    transform: translateX(3px) scale(1.1)
+  }
+
+  75% {
+    transform: translateX(-2px) scale(1.1)
+  }
+}
+
+@keyframes poiPulse {
+  70% {
+    box-shadow: 0 0 0 18px rgba(250, 204, 21, 0)
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(250, 204, 21, 0)
+  }
+}
+
+.modal,
+.danger-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, .72);
+  backdrop-filter: blur(8px)
+}
+
+.modal-card,
+.danger-card {
+  width: min(640px, 92vw);
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: 28px;
+  color: #17324d;
+  background: #ffffff;
+  border: 1px solid #dbe8f3;
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(16, 42, 67, .22)
+}
+
+.modal-card.wide {
+  width: min(900px, 94vw);
+  background: linear-gradient(180deg, #ffffff 0%, #f4fbff 100%);
+}
+
+.modal-card h2,
+.modal-card h3 {
+  color: #102a43;
+}
+
+#profileStats p {
+  color: #17324d;
+  font-weight: 700;
+}
+
+.close-btn {
+  float: right;
+  border: none;
+  background: transparent;
+  color: #17324d;
+  font-size: 32px;
+  cursor: pointer
+}
+
+.safety-box,
+.info-box,
+.badge-result,
+.quiz-box {
+  padding: 14px;
+  margin: 16px 0;
+  border-radius: 16px;
+  line-height: 1.7;
+  background: rgba(255, 255, 255, .07)
+}
+
+.safety-safe {
+  background: rgba(34, 197, 94, .14);
+  border: 1px solid rgba(34, 197, 94, .35)
+}
+
+.safety-danger {
+  background: rgba(239, 68, 68, .16);
+  border: 1px solid rgba(239, 68, 68, .45)
+}
+
+.danger-card {
+  background: linear-gradient(135deg, #450a0a, #0f172a);
+  border-color: rgba(239, 68, 68, .55)
+}
+
+.danger-btn {
+  background: linear-gradient(135deg, #ef4444, #f97316)
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+  cursor: pointer;
+  text-align: left
+}
+
+.quiz-option:hover {
+  background: rgba(56, 189, 248, .16)
+}
+
+@media(max-width:880px) {
+  .cover-panel {
+    margin-left: 0
+  }
+
+  .intro-card {
+    grid-template-columns: 1fr;
+    height: 88vh
+  }
+
+  .intro-video {
+    min-height: 230px
+  }
+
+  .app {
+    flex-direction: column
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 44vh
+  }
+
+  #map {
+    height: 56vh
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr
+  }
+
+  .street-panel {
+    left: 16px;
+    right: 16px;
+    width: auto
+  }
+}
 
 
 /* 修正版：河岸視角導覽卡，取代原本醜醜的假街景 */
@@ -12,7 +1075,7 @@
   border-radius: 26px;
   background: rgba(15, 23, 42, .94);
   border: 1px solid rgba(255, 255, 255, .18);
-  box-shadow: 0 28px 90px rgba(0,0,0,.42);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
   backdrop-filter: blur(14px);
 }
 
@@ -21,8 +1084,8 @@
   height: 190px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 24% 24%, rgba(255,255,255,.75), transparent 8%),
-    linear-gradient(160deg, rgba(14,165,233,.95), rgba(34,197,94,.55) 45%, rgba(15,23,42,.95));
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, .75), transparent 8%),
+    linear-gradient(160deg, rgba(14, 165, 233, .95), rgba(34, 197, 94, .55) 45%, rgba(15, 23, 42, .95));
 }
 
 .river-view-hero::before {
@@ -33,7 +1096,7 @@
   bottom: 38px;
   height: 76px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(186,230,253,.95), rgba(14,165,233,.95), transparent);
+  background: linear-gradient(90deg, transparent, rgba(186, 230, 253, .95), rgba(14, 165, 233, .95), transparent);
   transform: rotate(-7deg);
   animation: riverCardFlow 2.2s linear infinite;
   opacity: .9;
@@ -51,14 +1114,19 @@
 }
 
 @keyframes riverCardFlow {
-  from { background-position: -420px 0; }
-  to { background-position: 420px 0; }
+  from {
+    background-position: -420px 0;
+  }
+
+  to {
+    background-position: 420px 0;
+  }
 }
 
 .river-view-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 28%, rgba(250,204,21,.24), transparent 24%);
+  background: radial-gradient(circle at 70% 28%, rgba(250, 204, 21, .24), transparent 24%);
 }
 
 .river-view-content {
@@ -67,7 +1135,7 @@
   left: 22px;
   right: 22px;
   bottom: 20px;
-  text-shadow: 0 4px 18px rgba(0,0,0,.45);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .45);
 }
 
 .river-view-label {
@@ -104,8 +1172,8 @@
 .river-view-tags span {
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(56,189,248,.13);
-  border: 1px solid rgba(56,189,248,.24);
+  background: rgba(56, 189, 248, .13);
+  border: 1px solid rgba(56, 189, 248, .24);
   color: #bae6fd;
   font-size: 12px;
   font-weight: 800;
@@ -115,7 +1183,7 @@
   margin-top: 12px;
   padding: 12px;
   border-radius: 16px;
-  background: rgba(255,255,255,.07);
+  background: rgba(255, 255, 255, .07);
   color: #cbd5e1;
   line-height: 1.65;
   font-size: 14px;
@@ -137,8 +1205,8 @@
   overflow: hidden;
   border-radius: 26px;
   background: rgba(15, 23, 42, .96);
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 28px 90px rgba(0,0,0,.46);
+  border: 1px solid rgba(255, 255, 255, .18);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .46);
   backdrop-filter: blur(14px);
 }
 
@@ -148,7 +1216,7 @@
   justify-content: space-between;
   gap: 12px;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
 .streetview-label {
@@ -187,14 +1255,14 @@
 .heritage-card {
   padding: 12px;
   border-radius: 16px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .1);
   cursor: pointer;
 }
 
 .heritage-card:hover {
-  background: rgba(56,189,248,.14);
-  border-color: rgba(56,189,248,.32);
+  background: rgba(56, 189, 248, .14);
+  border-color: rgba(56, 189, 248, .32);
 }
 
 .heritage-card strong {
@@ -220,7 +1288,625 @@
     width: auto;
     bottom: 16px;
   }
+
   .streetview-frame {
     height: 260px;
   }
+}
+
+.leaflet-tile {
+  filter:
+    saturate(.72)
+    brightness(.92)
+    contrast(.96)
+    hue-rotate(-8deg);
+}
+
+/* =========================
+   Step 1：深色夜航版 UI 統一修正
+   先貼在 CSS 最底部
+========================= */
+
+:root {
+  --bg-main: #0b1420;
+  --bg-deep: #101c2b;
+  --panel: rgba(17, 29, 46, .82);
+  --panel-hover: rgba(24, 40, 62, .92);
+
+  --line: rgba(120, 190, 255, .12);
+
+  --text-main: #edf6ff;
+  --text-soft: #9fb3c8;
+  --text-faint: #7890a7;
+
+  --glow: rgba(92, 200, 255, .18);
+}
+
+/* sidebar */
+.sidebar {
+  width: 390px;
+  flex: 0 0 390px;
+  padding: 22px;
+  overflow-y: auto;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0d1826 0%,
+      #122033 45%,
+      #17283d 100%
+    );
+
+  border-right: 1px solid rgba(255,255,255,.06);
+  color: var(--text-main);
+
+  box-shadow: 10px 0 42px rgba(0,0,0,.28);
+  backdrop-filter: blur(16px);
+
+  transition:
+    width .22s ease,
+    flex-basis .22s ease,
+    padding .22s ease;
+}
+
+/* sidebar title */
+.brand h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 950;
+  letter-spacing: -.5px;
+  color: #f4fbff;
+}
+
+.brand p {
+  margin-top: 12px;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* card */
+.card {
+  margin-top: 18px;
+  padding: 18px;
+
+  background: var(--panel);
+  border: 1px solid rgba(120,190,255,.10);
+  border-radius: 24px;
+
+  color: var(--text-main);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 12px 34px rgba(0,0,0,.22);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+
+  font-size: 20px;
+  font-weight: 900;
+
+  color: #f1f7ff;
+}
+
+/* river buttons */
+.river-list {
+  display: grid;
+  gap: 12px;
+}
+
+.river-btn {
+  width: 100%;
+  padding: 14px 15px;
+
+  text-align: left;
+  cursor: pointer;
+
+  border-radius: 18px;
+
+  color: var(--text-main);
+  background: rgba(23, 38, 58, .74);
+  border: 1px solid rgba(120,190,255,.08);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+
+  transition: .22s ease;
+}
+
+.river-btn:hover,
+.river-btn.active {
+  transform: translateY(-2px);
+
+  background: var(--panel-hover);
+  border-color: rgba(120,200,255,.26);
+
+  box-shadow: 0 0 18px rgba(92,200,255,.10);
+}
+
+.river-btn small {
+  color: #97abc0;
+  line-height: 1.6;
+}
+
+/* water info */
+.water-item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 86px;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 0;
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.water-item:last-child {
+  border-bottom: none;
+}
+
+.water-name {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.water-meta {
+  font-size: 12px;
+  color: #95a9be;
+  line-height: 1.5;
+}
+
+.water-time {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.water-level {
+  font-size: 22px;
+  font-weight: 900;
+  color: #f4fbff;
+}
+
+.water-alert {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #8ea4ba;
+}
+
+/* =========================
+   Step 2：地圖濾鏡與河流視覺
+========================= */
+
+.leaflet-tile {
+  filter:
+    grayscale(.42)
+    saturate(.62)
+    brightness(.88)
+    contrast(.94)
+    hue-rotate(-10deg);
+}
+
+.river-flow {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  animation: riverMove 6s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px rgba(120, 210, 255, .48))
+    drop-shadow(0 0 12px rgba(120, 210, 255, .18));
+}
+
+@keyframes riverMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+
+/* Step 3 退回乾淨版：灰白地圖＋清楚河流 */
+
+.leaflet-tile {
+  filter:
+    grayscale(.26)
+    saturate(.64)
+    brightness(.96)
+    contrast(.92)
+    hue-rotate(-8deg);
+}
+
+.river-flow {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: riverMove 6.5s linear infinite;
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.65))
+    drop-shadow(0 0 8px rgba(100,180,230,.16));
+}
+
+@keyframes riverMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+
+/* =========================
+   Final：乾淨地圖＋發光實線河流＋白色流動光點
+========================= */
+
+.leaflet-tile {
+  filter:
+    grayscale(.22)
+    saturate(.72)
+    brightness(.92)
+    contrast(.96)
+    hue-rotate(-6deg);
+}
+
+.river-base {
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.35))
+    drop-shadow(0 0 8px rgba(80,180,240,.18));
+}
+
+.river-flow {
+  pointer-events: none;
+  animation: riverLightFlow 5.8s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px rgba(255,255,255,.9))
+    drop-shadow(0 0 10px rgba(180,235,255,.36));
+}
+
+@keyframes riverLightFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -72;
+  }
+}
+
+/* =========================
+   Final：黑白地圖＋螢光河流＋白色流動光點
+========================= */
+
+.leaflet-tile {
+  filter:
+    grayscale(.68)
+    saturate(.28)
+    brightness(.58)
+    contrast(1.08)
+    hue-rotate(-10deg);
+}
+
+.leaflet-container {
+  background: #09111c;
+}
+
+/* 河流本體：只保留彩色螢光，不要白色外光 */
+.river-base {
+  filter:
+    drop-shadow(0 0 5px currentColor)
+    drop-shadow(0 0 12px currentColor);
+}
+
+/* 流動線：改成同色系亮線，不用白光 */
+.river-flow {
+  pointer-events: none;
+  animation: riverLightFlow 4.8s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px currentColor)
+    drop-shadow(0 0 9px currentColor);
+
+  opacity: .95;
+}
+
+@keyframes riverLightFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -76;
+  }
+}
+
+/* =========================
+   Final Fix：取消白色外光，只保留彩色河流與內部流動線
+========================= */
+
+.leaflet-tile {
+  filter:
+    grayscale(.68)
+    saturate(.28)
+    brightness(.58)
+    contrast(1.08)
+    hue-rotate(-10deg);
+}
+
+.leaflet-container {
+  background: #09111c;
+}
+
+/* 很重要：強制清掉之前所有 drop-shadow */
+.leaflet-overlay-pane svg path.river-base,
+.leaflet-overlay-pane svg path.river-halo,
+.leaflet-overlay-pane svg path.river-flow {
+  filter: none !important;
+}
+
+.river-halo {
+  pointer-events: none;
+}
+
+.river-base {
+  pointer-events: auto;
+}
+
+.river-flow {
+  pointer-events: none;
+  animation: riverLightFlow 4.8s linear infinite;
+}
+
+@keyframes riverLightFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -76;
+  }
+}
+
+.river-flow-reverse {
+  animation: riverLightFlowReverse 4.8s linear infinite;
+}
+
+@keyframes riverLightFlowReverse {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 76;
+  }
+}
+
+.search-card {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(17, 29, 46, .82);
+  border: 1px solid rgba(120, 190, 255, .14);
+}
+
+.poi-search-input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 190, 255, .22);
+  outline: none;
+  background: rgba(255, 255, 255, .92);
+  color: #102a43;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.poi-search-results {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.poi-search-item {
+  padding: 11px 12px;
+  border-radius: 15px;
+  background: rgba(24, 40, 62, .92);
+  border: 1px solid rgba(120, 190, 255, .12);
+  color: #edf6ff;
+  cursor: pointer;
+}
+
+.poi-search-item:hover {
+  background: rgba(33, 55, 82, .98);
+  border-color: rgba(92, 200, 255, .45);
+}
+
+.poi-search-item strong {
+  display: block;
+  font-size: 14px;
+}
+
+.poi-search-item small {
+  display: block;
+  margin-top: 4px;
+  color: #9fb3c8;
+}
+
+.tour-poi-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--poi-color);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--poi-color) 22%, transparent),
+    0 0 16px color-mix(in srgb, var(--poi-color) 55%, transparent);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+.tour-poi-marker.major {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  border-width: 4px;
+}
+
+/* 景點 Marker：Google Maps 類型圓形圖標 */
+.tour-poi-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f8fbff;
+  border: 3px solid var(--poi-color);
+  color: #102033;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 14px;
+  line-height: 1;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.28),
+    0 0 0 4px color-mix(in srgb, var(--poi-color) 22%, transparent),
+    0 0 18px color-mix(in srgb, var(--poi-color) 45%, transparent);
+}
+
+.tour-poi-marker.major {
+  width: 38px;
+  height: 38px;
+  font-size: 17px;
+  border-width: 4px;
+}
+
+/* 搜尋欄 */
+.search-card {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(17, 29, 46, .82);
+  border: 1px solid rgba(120, 190, 255, .14);
+}
+
+/* sidebar 收合時隱藏搜尋欄，避免變成白色橢圓 */
+.sidebar.collapsed .search-card {
+  display: none !important;
+}
+
+/* ===== Google Map 感：乾淨高級景點分類 Icon ===== */
+
+.tour-poi-marker {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 35% 28%,
+      rgba(255,255,255,.95) 0%,
+      rgba(235,245,255,.9) 38%,
+      color-mix(in srgb, var(--poi-color) 72%, #ffffff 18%) 100%
+    );
+
+  border: 3px solid rgba(255,255,255,.92);
+
+  box-shadow:
+    0 3px 9px rgba(0,0,0,.34),
+    0 0 0 3px color-mix(in srgb, var(--poi-color) 24%, transparent),
+    0 0 12px color-mix(in srgb, var(--poi-color) 46%, transparent);
+
+  color: #102033;
+  font-size: 15px;
+  font-weight: 900;
+
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.tour-poi-marker.major {
+  width: 38px;
+  height: 38px;
+  font-size: 17px;
+}
+
+.tour-poi-marker:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 5px 14px rgba(0,0,0,.42),
+    0 0 0 4px color-mix(in srgb, var(--poi-color) 32%, transparent),
+    0 0 18px color-mix(in srgb, var(--poi-color) 62%, transparent);
+}
+
+/* 不要水滴尾巴 */
+.tour-poi-marker::after {
+  display: none !important;
+}
+
+/* icon 用簡單文字符號，先不要自畫醜圖形 */
+.poi-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  line-height: 1;
+}
+
+.poi-icon::before {
+  font-size: inherit;
+}
+
+/* 分類 icon */
+.poi-icon-pin::before {
+  content: "●";
+}
+
+.poi-icon-landmark::before {
+  content: "🏛";
+}
+
+.poi-icon-water::before {
+  content: "≈";
+  font-size: 20px;
+}
+
+.poi-icon-anchor::before {
+  content: "⚓";
+}
+
+.poi-icon-shop::before {
+  content: "◆";
+}
+
+.poi-icon-food::before {
+  content: "🍜";
+  font-size: 14px;
+}
+
+.poi-icon-bike::before {
+  content: "🚲";
+  font-size: 14px;
+}
+
+.poi-icon-home::before {
+  content: "⌂";
+  font-size: 19px;
+}
+
+.poi-icon-moon::before {
+  content: "☾";
+  font-size: 20px;
+}
+
+.poi-icon-bridge::before {
+  content: "⌒";
+  font-size: 22px;
 }

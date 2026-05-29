@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>大台北水脈｜進階功能全包版</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0f172a">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <section id="coverPage" class="screen cover-screen">
     <div class="cover-bg">
-      <div class="cover-title-mark">RIVER<br/>CITY<br/>TAIPEI</div>
-      <div class="cover-line l1"></div><div class="cover-line l2"></div><div class="cover-line l3"></div><div class="cover-line l4"></div><div class="cover-line l5"></div>
+      <div class="cover-title-mark">RIVER<br />CITY<br />TAIPEI</div>
+      <div class="cover-line l1"></div>
+      <div class="cover-line l2"></div>
+      <div class="cover-line l3"></div>
+      <div class="cover-line l4"></div>
+      <div class="cover-line l5"></div>
     </div>
     <div class="cover-panel">
       <p class="eyebrow">Web GIS · LBS · Cultural Tourism · Flood Warning</p>
@@ -37,7 +43,9 @@
         <p class="eyebrow">30 秒導覽影片模擬</p>
         <h2 id="introTitle"></h2>
         <p id="introText"></p>
-        <div class="progress-wrap"><div id="introProgress" class="progress-bar"></div></div>
+        <div class="progress-wrap">
+          <div id="introProgress" class="progress-bar"></div>
+        </div>
         <div class="intro-actions">
           <button id="skipIntroBtn" class="ghost-btn">略過導覽</button>
           <button id="voiceIntroBtn" class="ghost-btn">播放語音導覽</button>
@@ -47,30 +55,39 @@
   </section>
 
   <main id="appPage" class="app hidden">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <section class="brand">
-        <h2>大台北水脈</h2>
-        <p>流域視角的城市探索系統</p>
+        <div>
+          <h2>大台北水脈</h2>
+          <p>流域視角的城市探索系統</p>
+        </div>
+
+        <button class="sidebar-toggle" id="sidebarToggle">
+          ❮
+        </button>
       </section>
+      <div class="search-card">
+        <input id="poiSearchInput" class="poi-search-input" type="text" placeholder="搜尋景點、河流、碼頭、古蹟..." />
+        <div id="poiSearchResults" class="poi-search-results hidden"></div>
+      </div>
 
       <section class="card">
-        <h3>📍 當下位置</h3>
+        <h3>當下位置</h3>
         <p id="locationText">尚未定位。可使用 GPS 或示範位置。</p>
         <div class="btn-row">
           <button id="gpsBtn" class="secondary-btn">GPS 定位</button>
           <button id="demoLocationBtn" class="secondary-btn">示範位置</button>
         </div>
-        <p class="mini">GPS 需要 HTTPS 或 localhost。展示時建議用 Live Server。</p>
       </section>
 
       <section class="card">
-        <h3>🌊 五大水系</h3>
+        <h3>五大水系</h3>
         <div id="riverList" class="river-list"></div>
       </section>
 
       <section class="card">
-        <h3>⚠️ 水位安全</h3>
-        <div id="waterStatusList"></div>
+        <h3>水位安全</h3>
+        <div id="waterStatusList" class="water-list"></div>
         <div class="btn-row">
           <button id="simulateDangerBtn" class="secondary-btn">模擬警戒</button>
           <button id="refreshWaterBtn" class="secondary-btn">刷新水位</button>
@@ -78,12 +95,12 @@
       </section>
 
       <section class="card">
-        <h3>🏅 我的徽章</h3>
+        <h3>我的徽章</h3>
         <div id="badgeBoard" class="badge-board"></div>
       </section>
 
       <section class="card">
-        <h3>🎯 任務進度</h3>
+        <h3>任務進度</h3>
         <div id="missionList"></div>
       </section>
     </aside>
@@ -127,13 +144,8 @@
           </div>
           <button id="openGoogleMapBtn" class="small-btn">開啟 Google Maps</button>
         </div>
-        <iframe
-          id="streetViewFrame"
-          class="streetview-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="about:blank">
+        <iframe id="streetViewFrame" class="streetview-frame" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade" src="about:blank">
         </iframe>
         <div class="streetview-body">
           <div class="river-view-tags">
@@ -206,4 +218,5 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>

@@ -1,6 +1,1146 @@
-let map, riversData, selectedRiver = null, watchId = null, walkTimer = null, dangerTimer = null; let riverLayers = {}, poiLayers = {}, riskLayers = [], oldRiverLayer = null, userMarker = null, walkMarker = null; let currentRoute = [], walkIndex = 0, isPaused = false; const INTRO_SECONDS = 30, THRESHOLD = 900; const introScenes = [["淡水河：城市入海口", "淡水河串起台北盆地與海洋，是貿易、移民與城市發展的重要通道。"], ["大漢溪：山城水源與聚落", "大漢溪見證灌溉、防洪與城市擴張，也串起山區與都會。"], ["新店溪：生活與休憩", "新店溪連結碧潭與台北南側生活圈，是重要親水觀光空間。"], ["景美溪：日常城市走廊", "景美溪穿越文教與住宅區，呈現河流與居民生活的關係。"], ["基隆河：防災與治理", "基隆河的整治歷程，呈現台北在防洪與都市發展之間的平衡。"]]; const state = { badges: JSON.parse(localStorage.getItem("riverBadges") || "{}"), stats: JSON.parse(localStorage.getItem("riverStats") || '{"visitedRivers":{},"quizScore":0,"warnings":0}'), water: {} }; document.addEventListener("DOMContentLoaded", () => { id("startBtn").onclick = startIntro; id("directMapBtn").onclick = enterApp; id("skipIntroBtn").onclick = enterApp; id("voiceIntroBtn").onclick = () => speak("五條河流從山到海，串起台北的歷史、生活、防災與觀光記憶。"); id("gpsBtn").onclick = enableGPS; id("demoLocationBtn").onclick = useDemoLocation; id("backToMapBtn").onclick = backToMainMap; id("profileBtn").onclick = openProfile; id("layerBtn").onclick = () => id("layerPanel").classList.toggle("hidden"); id("simulateDangerBtn").onclick = () => simulateDanger(true); id("refreshWaterBtn").onclick = refreshWater; id("pauseWalkBtn").onclick = () => isPaused = true; id("resumeWalkBtn").onclick = () => isPaused = false; id("streetModeBtn").onclick = () => openStreetHeritagePanel(); id("closeStreetBtn").onclick = () => id("streetViewPanel").classList.add("hidden"); id("exportBtn").onclick = exportRecord; id("clearBadgesBtn").onclick = clearRecord;["toggleRivers", "togglePoi", "toggleRisk", "toggleOldRiver"].forEach(x => { id(x).onchange = applyLayerToggles }); document.querySelectorAll("[data-close]").forEach(b => b.onclick = () => closeModal(b.dataset.close)); if ("serviceWorker" in navigator) { navigator.serviceWorker.register("sw.js").catch(() => { }) } }); function id(x) { return document.getElementById(x) } function startIntro() { id("coverPage").classList.add("hidden"); id("introPage").classList.remove("hidden"); let start = Date.now(), last = -1; const t = setInterval(() => { let p = Math.min((Date.now() - start) / 1000 / INTRO_SECONDS, 1); id("introProgress").style.width = `${p * 100}%`; let idx = Math.min(Math.floor(p * introScenes.length), introScenes.length - 1); if (idx !== last) { last = idx; id("introTitle").textContent = introScenes[idx][0]; id("introText").textContent = introScenes[idx][1] } if (p >= 1) { clearInterval(t); enterApp() } }, 200) } async function enterApp() { id("introPage").classList.add("hidden"); id("coverPage").classList.add("hidden"); id("appPage").classList.remove("hidden"); if (!map) await initMap() } async function initMap() { map = L.map("map").setView([25.055, 121.525], 11); L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "© OpenStreetMap" }).addTo(map); riversData = await fetch("data/rivers.geojson").then(r => r.json()); riversData.features.forEach(f => state.water[f.properties.name] = { current: f.properties.currentWaterLevel, warning: f.properties.warningWaterLevel, danger: f.properties.dangerWaterLevel }); renderAll(); drawRivers(); drawAllPois(); drawRiskLayers(); drawOldRiverLayer(); startMonitor() } function renderAll() { renderRiverButtons(); renderWater(); renderBadges(); renderMissions() } function renderRiverButtons(active = "") { id("riverList").innerHTML = ""; riversData.features.forEach(f => { let p = f.properties, b = document.createElement("button"); b.className = `river-btn ${active === p.name ? "active" : ""}`; b.innerHTML = `<strong style="color:${p.color}">●</strong> ${p.name}<br><small>${p.short}</small>`; b.onclick = () => openRiver(p.name); id("riverList").appendChild(b) }) } function renderWater() { id("waterStatusList").innerHTML = ""; Object.entries(state.water).forEach(([n, w]) => { let safe = w.current < w.warning, row = document.createElement("div"); row.className = "water-row"; row.innerHTML = `<span>${safe ? "✅" : "⚠️"} ${n}</span><span>${w.current.toFixed(1)}m / ${w.warning.toFixed(1)}m</span>`; id("waterStatusList").appendChild(row) }) } function renderBadges() { let arr = Object.values(state.badges), b = id("badgeBoard"); b.innerHTML = arr.length ? "" : `<span class="empty-badge">尚未取得徽章。</span>`; arr.forEach(x => { let d = document.createElement("div"); d.className = "badge"; d.style.background = x.color; d.title = x.name; d.textContent = "🏅"; b.appendChild(d) }) } function renderMissions() { let total = 0; riversData?.features.forEach(f => total += f.properties.pois.length); let got = Object.keys(state.badges).length; id("missionList").innerHTML = `<div class="mission-row"><span>收集景點徽章</span><span>${got}/${total}</span></div><div class="mission-row"><span>已探索河流</span><span>${Object.keys(state.stats.visitedRivers).length}/5</span></div><div class="mission-row"><span>文化問答分數</span><span>${state.stats.quizScore}</span></div>` } function drawRivers() { L.geoJSON(riversData, { style: f => ({ color: f.properties.color, weight: 6, opacity: .95, className: "river-flow" }), onEachFeature: (f, l) => { let n = f.properties.name; riverLayers[n] = l; l.on("mouseover", () => { l.setStyle({ weight: 10, opacity: 1 }); l.bindTooltip(`<b>${n}</b><br>${f.properties.short}`, { sticky: true }).openTooltip() }); l.on("mouseout", () => { if (selectedRiver !== n) l.setStyle({ weight: 6, opacity: .95 }); l.closeTooltip() }); l.on("click", () => openRiver(n)) } }).addTo(map) } function drawRiskLayers() { riskLayers.forEach(x => map.removeLayer(x)); riskLayers = []; riversData.features.forEach(f => { let w = state.water[f.properties.name], danger = w.current >= w.warning; let coords = f.geometry.coordinates.map(c => [c[1], c[0]]); let circle = L.circle(coords[Math.floor(coords.length / 2)], { radius: danger ? 900 : 420, color: danger ? "#ef4444" : "#22c55e", fillColor: danger ? "#ef4444" : "#22c55e", fillOpacity: danger ? .14 : .06, weight: 1 }).addTo(map); riskLayers.push(circle) }) } function drawOldRiverLayer() { let old = { type: "FeatureCollection", features: riversData.features.map(f => ({ type: "Feature", properties: { name: f.properties.name + "古河道示意" }, geometry: { type: "LineString", coordinates: f.geometry.coordinates.map(c => [c[0] + .008, c[1] + .006]) } })) }; oldRiverLayer = L.geoJSON(old, { style: { color: "#facc15", weight: 3, opacity: .0, dashArray: "6 10" } }).addTo(map) } function applyLayerToggles() { Object.values(riverLayers).forEach(l => id("toggleRivers").checked ? l.addTo(map) : map.removeLayer(l)); Object.values(poiLayers).forEach(l => id("togglePoi").checked ? l.addTo(map) : map.removeLayer(l)); riskLayers.forEach(l => id("toggleRisk").checked ? l.addTo(map) : map.removeLayer(l)); if (oldRiverLayer) { oldRiverLayer.setStyle({ opacity: id("toggleOldRiver").checked ? .65 : 0 }) } } function enableGPS() { if (!navigator.geolocation) { setLoc("瀏覽器不支援定位，請使用示範位置。"); return } setLoc("正在取得 GPS，請允許定位。"); if (watchId) navigator.geolocation.clearWatch(watchId); watchId = navigator.geolocation.watchPosition(p => updateUserLocation(p.coords.latitude, p.coords.longitude, "GPS"), e => setLoc("定位失敗，請使用示範位置。"), { enableHighAccuracy: true, timeout: 12000, maximumAge: 8000 }) } function useDemoLocation() { updateUserLocation(25.0569, 121.5082, "示範位置") } function updateUserLocation(lat, lng, src) { if (!userMarker) { userMarker = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<div class="user-dot"></div>`, iconSize: [28, 28], iconAnchor: [14, 14] }) }).addTo(map) } else userMarker.setLatLng([lat, lng]); let near = findNearestRiver(lat, lng); highlightRiver(near.riverName); setLoc(`${src}：目前接近「${near.riverName}」，距離約 ${Math.round(near.distance)} 公尺。`); map.setView([lat, lng], 14, { animate: true }); if (near.distance < THRESHOLD) checkPoiReal(lat, lng, near.riverName); checkLocationDanger(near.riverName) } function setLoc(t) { id("locationText").textContent = t } function findNearestRiver(lat, lng) { let best = { riverName: "", distance: Infinity }; riversData.features.forEach(f => { let cs = f.geometry.coordinates; for (let i = 0; i < cs.length - 1; i++) { let d = distancePointToSegmentMeters([lat, lng], [cs[i][1], cs[i][0]], [cs[i + 1][1], cs[i + 1][0]]); if (d < best.distance) best = { riverName: f.properties.name, distance: d } } }); return best } function highlightRiver(n) { selectedRiver = n; renderRiverButtons(n); Object.entries(riverLayers).forEach(([rn, l]) => { if (rn === n) { l.setStyle({ weight: 10, opacity: 1 }); l.bringToFront() } else l.setStyle({ weight: 4, opacity: .25 }) }); id("currentMode").textContent = `目前接近：${n}` } function openRiver(n) { selectedRiver = n; let f = riversData.features.find(x => x.properties.name === n), p = f.properties, w = state.water[n]; id("riverModalTitle").textContent = n; id("riverModalDesc").textContent = p.history; let box = id("riverSafetyBox"); if (w.current >= w.warning) { box.className = "safety-box safety-danger"; box.innerHTML = `⚠️ 目前水位 ${w.current.toFixed(1)}m，已達警戒水位 ${w.warning.toFixed(1)}m。請避免靠近河岸低窪區、親水步道與橋下空間。` } else { box.className = "safety-box safety-safe"; box.innerHTML = `✅ 目前水位 ${w.current.toFixed(1)}m，低於警戒水位 ${w.warning.toFixed(1)}m。祝你玩得愉快，也請留意現場告示。` } id("riverCultureBox").innerHTML = `<b>河流視角：</b>${p.culture}`; id("enterRiverBtn").onclick = () => { closeModal("riverModal"); enterWalk(n) }; id("speakRiverBtn").onclick = () => speak(`${n}。${p.history}`); openModal("riverModal") } function enterWalk(n) { selectedRiver = n; state.stats.visitedRivers[n] = Date.now(); saveStats(); renderMissions(); id("currentMode").textContent = `${n}｜河流視角導覽`; id("backToMapBtn").classList.remove("hidden"); id("walkPanel").classList.remove("hidden"); id("walkRiverName").textContent = `${n} 導覽中`; let f = riversData.features.find(x => x.properties.name === n), coords = f.geometry.coordinates.map(c => [c[1], c[0]]); currentRoute = interpolateRoute(coords, 160); walkIndex = 0; map.fitBounds(coords, { padding: [80, 80] }); Object.values(riverLayers).forEach(l => l.setStyle({ opacity: .18, weight: 4 })); riverLayers[n].setStyle({ opacity: 1, weight: 10 }); drawPoi(f.properties.pois); if (walkMarker) map.removeLayer(walkMarker); walkMarker = L.marker(currentRoute[0], { icon: L.divIcon({ className: "", html: `<div class="walk-marker"></div>`, iconSize: [28, 28], iconAnchor: [14, 14] }) }).addTo(map); isPaused = false; if (walkTimer) clearInterval(walkTimer); walkTimer = setInterval(() => { if (isPaused) return; walkIndex++; if (walkIndex >= currentRoute.length) { id("walkNarration").textContent = "本段河流導覽已完成。"; clearInterval(walkTimer); return } let pos = currentRoute[walkIndex]; walkMarker.setLatLng(pos); map.panTo(pos, { animate: true, duration: .7 }); id("walkNarration").textContent = `沿著 ${n} 前進中。靠近景點時會震動提醒並可取得徽章。`; checkPoiWalk(pos) }, 620) } function drawPoi(pois) { Object.values(poiLayers).forEach(l => map.removeLayer(l)); poiLayers = {}; pois.forEach(p => { let m = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: "", html: `<div id="poi-${p.id}" class="poi-marker" style="background:${p.badgeColor}"></div>`, iconSize: [30, 30], iconAnchor: [15, 15] }) }).addTo(map); m.on("click", () => openPoi(p)); m.bindTooltip(p.name); poiLayers[p.id] = m }); applyLayerToggles() } function checkPoiWalk(pos) { let f = riversData.features.find(x => x.properties.name === selectedRiver); if (!f) return; f.properties.pois.forEach(p => updatePoiState(p, distanceMeters(pos[0], pos[1], p.lat, p.lng))) } function checkPoiReal(lat, lng, river) { let f = riversData.features.find(x => x.properties.name === river); if (!f) return; drawPoi(f.properties.pois); f.properties.pois.forEach(p => updatePoiState(p, distanceMeters(lat, lng, p.lat, p.lng))) } function updatePoiState(p, d) { let el = id(`poi-${p.id}`); if (d <= p.radius) { if (el) el.classList.add("nearby"); if (navigator.vibrate) navigator.vibrate(120); let r = tryBadge(p); if (r.acquired) id("walkNarration").textContent = `抵達 ${p.name} 附近，取得景點徽章！` } else if (el) el.classList.remove("nearby") } function openPoi(p) { id("poiModalTitle").textContent = p.name; id("poiModalStory").textContent = p.riverStory; let r = tryBadge(p); id("poiBadgeResult").innerHTML = r.acquired ? `🎉 取得景點徽章：<b style="color:${p.badgeColor}">${p.name}</b>` : `🏅 此景點徽章已取得。規則：同一景點 24 小時內只能取得一次。`; renderQuiz(p); openModal("poiModal"); openStreetHeritagePanel(p) } function renderQuiz(p) { id("quizBox").innerHTML = `<b>文化小問答：</b><p>${p.quiz.q}</p>${p.quiz.options.map((o, i) => `<button class="quiz-option" onclick="answerQuiz(${i},${p.quiz.answer})">${o}</button>`).join("")}<div id="quizResult"></div>` } function answerQuiz(i, a) { if (i === a) { state.stats.quizScore += 10; id("quizResult").textContent = "答對了！+10 分"; saveStats(); renderMissions() } else id("quizResult").textContent = "答錯了，可以再看看景點故事。" } function tryBadge(p) { let now = Date.now(), old = state.badges[p.id]; if (old && now - old.acquiredAt < 86400000) return { acquired: false }; if (!old) { state.badges[p.id] = { id: p.id, name: p.name, color: p.badgeColor, acquiredAt: now }; localStorage.setItem("riverBadges", JSON.stringify(state.badges)); renderBadges(); renderMissions(); return { acquired: true } } return { acquired: false } } function checkLocationDanger(river) { let w = state.water[river]; if (w && w.current >= w.warning) showDanger(river, w) } function refreshWater() { Object.values(state.water).forEach(w => w.current = Math.max(.7, w.current + (Math.random() - .45) * .35)); renderWater(); drawRiskLayers() } function simulateDanger(force = false) { let names = Object.keys(state.water), n = names[Math.floor(Math.random() * names.length)], w = state.water[n]; if (force || Math.random() < .35) { w.current = w.warning + Math.random() * 1.2; renderWater(); drawRiskLayers(); showDanger(n, w) } else refreshWater() } function showDanger(n, w) { state.stats.warnings++; saveStats(); id("dangerText").textContent = `${n} 目前水位升高至 ${w.current.toFixed(1)}m，已超過警戒水位 ${w.warning.toFixed(1)}m。請避免靠近河岸、低窪步道與親水區域。`; openModal("dangerModal"); if (navigator.vibrate) navigator.vibrate([200, 100, 200]) } function startMonitor() { if (dangerTimer) clearInterval(dangerTimer); dangerTimer = setInterval(() => simulateDanger(false), 20000) } function backToMainMap() { id("currentMode").textContent = "主地圖模式"; id("backToMapBtn").classList.add("hidden"); id("walkPanel").classList.add("hidden"); id("streetViewPanel").classList.add("hidden"); if (walkTimer) clearInterval(walkTimer); if (walkMarker) { map.removeLayer(walkMarker); walkMarker = null } Object.values(poiLayers).forEach(l => map.removeLayer(l)); poiLayers = {}; Object.values(riverLayers).forEach(l => l.setStyle({ opacity: .95, weight: 6 })); selectedRiver = null; renderRiverButtons(); map.setView([25.055, 121.525], 11) } function openProfile() { let b = id("profileBadgeBoard"), arr = Object.values(state.badges); b.innerHTML = arr.length ? "" : `<span class="empty-badge">尚未取得徽章。</span>`; arr.forEach(x => { let d = document.createElement("div"); d.className = "badge"; d.style.background = x.color; d.title = x.name; d.textContent = "🏅"; b.appendChild(d) }); id("profileStats").innerHTML = `<p>已取得徽章：${arr.length}</p><p>已探索河流：${Object.keys(state.stats.visitedRivers).length}</p><p>文化問答分數：${state.stats.quizScore}</p><p>水位警示次數：${state.stats.warnings}</p>`; openModal("profileModal") } function exportRecord() { let data = { badges: state.badges, stats: state.stats, exportedAt: new Date().toISOString() }; let blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }), url = URL.createObjectURL(blob), a = id("downloadAnchor"); a.href = url; a.download = "taipei_river_journey_record.json"; a.click(); URL.revokeObjectURL(url) } function clearRecord() { state.badges = {}; state.stats = { visitedRivers: {}, quizScore: 0, warnings: 0 }; localStorage.removeItem("riverBadges"); saveStats(); renderAll(); openProfile() } function saveStats() { localStorage.setItem("riverStats", JSON.stringify(state.stats)) } function speak(t) { if (!("speechSynthesis" in window)) return; speechSynthesis.cancel(); let u = new SpeechSynthesisUtterance(t); u.lang = "zh-TW"; u.rate = 1; speechSynthesis.speak(u) } function interpolateRoute(points, steps) { let r = []; for (let i = 0; i < points.length - 1; i++) { let a = points[i], b = points[i + 1], c = Math.ceil(steps / (points.length - 1)); for (let s = 0; s < c; s++) { let t = s / c; r.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]) } } r.push(points[points.length - 1]); return r } function distanceMeters(lat1, lng1, lat2, lng2) { const R = 6371000, dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1), a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2; return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) } function distancePointToSegmentMeters(p, a, b) { let lat0 = p[0] * Math.PI / 180, x = lng => lng * Math.cos(lat0) * 111320, y = lat => lat * 110540, px = x(p[1]), py = y(p[0]), ax = x(a[1]), ay = y(a[0]), bx = x(b[1]), by = y(b[0]), dx = bx - ax, dy = by - ay; if (dx === 0 && dy === 0) return Math.hypot(px - ax, py - ay); let t = ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy); t = Math.max(0, Math.min(1, t)); return Math.hypot(px - (ax + t * dx), py - (ay + t * dy)) } function toRad(v) { return v * Math.PI / 180 } function openModal(x) { id(x).classList.remove("hidden") } function closeModal(x) { id(x).classList.add("hidden") }
+let map,
+  riversData,
+  selectedRiver = null,
+  watchId = null,
+  walkTimer = null,
+  dangerTimer = null;
 
+let riverLayers = {},
+  riverHaloLayers = {},
+  riverFlowLayers = {},
+  poiLayers = {},
+  riskLayers = [],
+  oldRiverLayer = null,
+  userMarker = null,
+  walkMarker = null;
 
+let currentRoute = [],
+  walkIndex = 0,
+  isPaused = false;
+
+const INTRO_SECONDS = 30;
+const THRESHOLD = 900;
+
+const introScenes = [
+  ["淡水河：城市入海口", "淡水河串起台北盆地與海洋，是貿易、移民與城市發展的重要通道。"],
+  ["大漢溪：山城水源與聚落", "大漢溪見證灌溉、防洪與城市擴張，也串起山區與都會。"],
+  ["新店溪：生活與休憩", "新店溪連結碧潭與台北南側生活圈，是重要親水觀光空間。"],
+  ["景美溪：日常城市走廊", "景美溪穿越文教與住宅區，呈現河流與居民生活的關係。"],
+  ["基隆河：防災與治理", "基隆河的整治歷程，呈現台北在防洪與都市發展之間的平衡。"]
+];
+
+const riverColors = {
+  "淡水河": "#00b8ff",
+  "基隆河": "#ff3f9b",
+  "新店溪": "#7b61ff",
+  "大漢溪": "#00e0d4",
+  "景美溪": "#ffb23f"
+};
+
+const poiCategoryStyle = {
+  "碼頭景點": { icon: "anchor", color: "#38bdf8" },
+  "文化景點": { icon: "landmark", color: "#f472b6" },
+  "親水景點": { icon: "water", color: "#22d3ee" },
+  "聚落文化": { icon: "home", color: "#a78bfa" },
+  "夜景景點": { icon: "moon", color: "#f59e0b" },
+  "橋梁景點": { icon: "bridge", color: "#fb923c" },
+  "河岸步道": { icon: "bike", color: "#2dd4bf" },
+  "古蹟": { icon: "landmark", color: "#ef4b7b" },
+  "美食": { icon: "food", color: "#ff8aa3" },
+  "市集": { icon: "shop", color: "#34d399" },
+  "河岸景點": { icon: "pin", color: "#60a5fa" }
+};
+
+function getPoiStyle(p) {
+  return poiCategoryStyle[p.type] || poiCategoryStyle["河岸景點"];
+}
+
+const state = {
+  badges: JSON.parse(localStorage.getItem("riverBadges") || "{}"),
+  stats: JSON.parse(
+    localStorage.getItem("riverStats") ||
+    '{"visitedRivers":{},"quizScore":0,"warnings":0}'
+  ),
+  water: {}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  id("startBtn").onclick = startIntro;
+  id("directMapBtn").onclick = enterApp;
+  id("skipIntroBtn").onclick = enterApp;
+
+  id("voiceIntroBtn").onclick = () =>
+    speak("五條河流從山到海，串起台北的歷史、生活、防災與觀光記憶。");
+
+  id("gpsBtn").onclick = enableGPS;
+  id("demoLocationBtn").onclick = useDemoLocation;
+  id("backToMapBtn").onclick = backToMainMap;
+  id("profileBtn").onclick = openProfile;
+  id("layerBtn").onclick = () => id("layerPanel").classList.toggle("hidden");
+  id("simulateDangerBtn").onclick = () => simulateDanger(true);
+  id("refreshWaterBtn").onclick = refreshWater;
+  id("pauseWalkBtn").onclick = () => (isPaused = true);
+  id("resumeWalkBtn").onclick = () => (isPaused = false);
+  id("streetModeBtn").onclick = () => openStreetHeritagePanel();
+  id("closeStreetBtn").onclick = () => id("streetViewPanel").classList.add("hidden");
+  id("exportBtn").onclick = exportRecord;
+  id("clearBadgesBtn").onclick = clearRecord;
+
+  ["toggleRivers", "togglePoi", "toggleRisk", "toggleOldRiver"].forEach((x) => {
+    id(x).onchange = applyLayerToggles;
+  });
+
+  document.querySelectorAll("[data-close]").forEach((b) => {
+    b.onclick = () => closeModal(b.dataset.close);
+  });
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => { });
+  }
+});
+
+function id(x) {
+  return document.getElementById(x);
+}
+
+function startIntro() {
+  id("coverPage").classList.add("hidden");
+  id("introPage").classList.remove("hidden");
+
+  let start = Date.now();
+  let last = -1;
+
+  const t = setInterval(() => {
+    let p = Math.min((Date.now() - start) / 1000 / INTRO_SECONDS, 1);
+    id("introProgress").style.width = `${p * 100}%`;
+
+    let idx = Math.min(Math.floor(p * introScenes.length), introScenes.length - 1);
+
+    if (idx !== last) {
+      last = idx;
+      id("introTitle").textContent = introScenes[idx][0];
+      id("introText").textContent = introScenes[idx][1];
+    }
+
+    if (p >= 1) {
+      clearInterval(t);
+      enterApp();
+    }
+  }, 200);
+}
+
+async function enterApp() {
+  id("introPage").classList.add("hidden");
+  id("coverPage").classList.add("hidden");
+  id("appPage").classList.remove("hidden");
+
+  if (!map) await initMap();
+}
+
+async function initMap() {
+  map = L.map("map").setView([25.055, 121.525], 11);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+
+  riversData = await fetch("data/rivers.geojson").then((r) => r.json());
+
+  riversData.features.forEach((f) => {
+    state.water[f.properties.name] = {
+      current: f.properties.currentWaterLevel,
+      warning: f.properties.warningWaterLevel,
+      danger: f.properties.dangerWaterLevel
+    };
+  });
+
+  renderAll();
+  drawRivers();
+  drawAllPois();
+  drawRiskLayers();
+  drawOldRiverLayer();
+  map.on("zoomend", drawAllPois);
+  setupPoiSearch();
+  startMonitor();
+}
+
+function renderAll() {
+  renderRiverButtons();
+  renderWater();
+  renderBadges();
+  renderMissions();
+}
+
+function renderRiverButtons(active = "") {
+  id("riverList").innerHTML = "";
+
+  riversData.features.forEach((f) => {
+    let p = f.properties;
+    let b = document.createElement("button");
+
+    b.className = `river-btn ${active === p.name ? "active" : ""}`;
+    b.innerHTML = `<strong style="color:${riverColors[p.name] || p.color}">●</strong> ${p.name}<br><small>${p.short}</small>`;
+    b.onclick = () => openRiver(p.name);
+
+    id("riverList").appendChild(b);
+  });
+}
+
+function renderWater() {
+  id("waterStatusList").innerHTML = "";
+
+  Object.entries(state.water).forEach(([n, w]) => {
+    let safe = w.current < w.warning;
+    let row = document.createElement("div");
+
+    row.className = "water-row";
+    row.innerHTML = `<span>${safe ? "✅" : "⚠️"} ${n}</span><span>${w.current.toFixed(1)}m / ${w.warning.toFixed(1)}m</span>`;
+
+    id("waterStatusList").appendChild(row);
+  });
+}
+
+function renderBadges() {
+  let arr = Object.values(state.badges);
+  let b = id("badgeBoard");
+
+  b.innerHTML = arr.length ? "" : `<span class="empty-badge">尚未取得徽章。</span>`;
+
+  arr.forEach((x) => {
+    let d = document.createElement("div");
+
+    d.className = "badge";
+    d.style.background = x.color;
+    d.title = x.name;
+    d.textContent = "🏅";
+
+    b.appendChild(d);
+  });
+}
+
+function renderMissions() {
+  let total = 0;
+
+  riversData?.features.forEach((f) => {
+    total += f.properties.pois.length;
+  });
+
+  let got = Object.keys(state.badges).length;
+
+  id("missionList").innerHTML = `
+    <div class="mission-row">
+      <span>收集景點徽章</span>
+      <span>${got}/${total}</span>
+    </div>
+    <div class="mission-row">
+      <span>已探索河流</span>
+      <span>${Object.keys(state.stats.visitedRivers).length}/5</span>
+    </div>
+    <div class="mission-row">
+      <span>文化問答分數</span>
+      <span>${state.stats.quizScore}</span>
+    </div>
+  `;
+}
+
+function drawRivers() {
+  Object.values(riverLayers).forEach(l => map.removeLayer(l));
+  Object.values(riverHaloLayers).forEach(l => map.removeLayer(l));
+  Object.values(riverFlowLayers).forEach(l => map.removeLayer(l));
+
+  riverLayers = {};
+  riverHaloLayers = {};
+  riverFlowLayers = {};
+
+  // 1. 彩色柔光底層，不用 filter，不會有白光
+  L.geoJSON(riversData, {
+    interactive: false,
+    style: (feature) => {
+      const riverName = feature.properties.name;
+      const c = riverColors[riverName] || feature.properties.color || "#00b8ff";
+
+      return {
+        color: c,
+        weight: 18,
+        opacity: 0.22,
+        className: "river-halo",
+        lineCap: "round",
+        lineJoin: "round"
+      };
+    },
+    onEachFeature: (feature, layer) => {
+      riverHaloLayers[feature.properties.name] = layer;
+    }
+  }).addTo(map);
+
+  // 2. 河流主線
+  L.geoJSON(riversData, {
+    style: (feature) => {
+      const riverName = feature.properties.name;
+      const c = riverColors[riverName] || feature.properties.color || "#00b8ff";
+
+      return {
+        color: c,
+        weight: 9,
+        opacity: 0.96,
+        className: "river-base",
+        lineCap: "round",
+        lineJoin: "round"
+      };
+    },
+    onEachFeature: (feature, layer) => {
+      const riverName = feature.properties.name;
+      riverLayers[riverName] = layer;
+
+      layer.on("mouseover", () => {
+        layer.setStyle({ weight: 10, opacity: 1 });
+        riverHaloLayers[riverName]?.setStyle({ weight: 22, opacity: 0.3 });
+        riverFlowLayers[riverName]?.setStyle({ opacity: 1 });
+
+        layer
+          .bindTooltip(`<b>${riverName}</b><br>${feature.properties.short}`, {
+            sticky: true
+          })
+          .openTooltip();
+      });
+
+      layer.on("mouseout", () => {
+        if (selectedRiver !== riverName) {
+          layer.setStyle({ weight: 9, opacity: 0.96 });
+          riverHaloLayers[riverName]?.setStyle({ weight: 18, opacity: 0.22 });
+          riverFlowLayers[riverName]?.setStyle({ opacity: 0.9 });
+        }
+
+        layer.closeTooltip();
+      });
+
+      layer.on("click", () => openRiver(riverName));
+    }
+  }).addTo(map);
+
+  // 3. 內部白色流動短線，沒有外光
+  L.geoJSON(riversData, {
+    interactive: false,
+    style: (feature) => {
+      const riverName = feature.properties.name;
+
+      return {
+        color: "#ffffff",
+        weight: 2,
+        opacity: 0.9,
+        className:
+          riverName === "淡水河"
+            ? "river-flow river-flow-reverse"
+            : "river-flow",
+        lineCap: "round",
+        lineJoin: "round",
+        dashArray: "2 18"
+      };
+    },
+    onEachFeature: (feature, layer) => {
+      riverFlowLayers[feature.properties.name] = layer;
+    }
+  }).addTo(map);
+
+  Object.values(riverHaloLayers).forEach(l => l.bringToBack());
+  Object.values(riverLayers).forEach(l => l.bringToFront());
+  Object.values(riverFlowLayers).forEach(l => l.bringToFront());
+}
+function drawRiskLayers() {
+  riskLayers.forEach((x) => map.removeLayer(x));
+  riskLayers = [];
+
+  riversData.features.forEach((f) => {
+    let w = state.water[f.properties.name];
+    let danger = w.current >= w.warning;
+    let coords = f.geometry.coordinates.map((c) => [c[1], c[0]]);
+
+    let circle = L.circle(coords[Math.floor(coords.length / 2)], {
+      radius: danger ? 900 : 420,
+      color: danger ? "#ef4444" : "#22c55e",
+      fillColor: danger ? "#ef4444" : "#22c55e",
+      fillOpacity: danger ? 0.14 : 0.06,
+      weight: 1
+    }).addTo(map);
+
+    riskLayers.push(circle);
+  });
+}
+
+function drawOldRiverLayer() {
+  let old = {
+    type: "FeatureCollection",
+    features: riversData.features.map((f) => ({
+      type: "Feature",
+      properties: {
+        name: f.properties.name + "古河道示意"
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: f.geometry.coordinates.map((c) => [
+          c[0] + 0.008,
+          c[1] + 0.006
+        ])
+      }
+    }))
+  };
+
+  oldRiverLayer = L.geoJSON(old, {
+    style: {
+      color: "#facc15",
+      weight: 3,
+      opacity: 0,
+      dashArray: "6 10"
+    }
+  }).addTo(map);
+}
+
+function applyLayerToggles() {
+  const showRiver = id("toggleRivers").checked;
+
+  Object.values(riverHaloLayers).forEach((l) =>
+    showRiver ? l.addTo(map) : map.removeLayer(l)
+  );
+
+  Object.values(riverLayers).forEach((l) =>
+    showRiver ? l.addTo(map) : map.removeLayer(l)
+  );
+
+  Object.values(riverFlowLayers).forEach((l) =>
+    showRiver ? l.addTo(map) : map.removeLayer(l)
+  );
+
+  Object.values(poiLayers).forEach((l) =>
+    id("togglePoi").checked ? l.addTo(map) : map.removeLayer(l)
+  );
+
+  riskLayers.forEach((l) =>
+    id("toggleRisk").checked ? l.addTo(map) : map.removeLayer(l)
+  );
+
+  if (oldRiverLayer) {
+    oldRiverLayer.setStyle({
+      opacity: id("toggleOldRiver").checked ? 0.65 : 0
+    });
+  }
+
+  Object.values(riverFlowLayers).forEach(l => l.bringToFront());
+}
+
+function enableGPS() {
+  if (!navigator.geolocation) {
+    setLoc("瀏覽器不支援定位，請使用示範位置。");
+    return;
+  }
+
+  setLoc("正在取得 GPS，請允許定位。");
+
+  if (watchId) navigator.geolocation.clearWatch(watchId);
+
+  watchId = navigator.geolocation.watchPosition(
+    (p) => updateUserLocation(p.coords.latitude, p.coords.longitude, "GPS"),
+    () => setLoc("定位失敗，請使用示範位置。"),
+    {
+      enableHighAccuracy: true,
+      timeout: 12000,
+      maximumAge: 8000
+    }
+  );
+}
+
+function useDemoLocation() {
+  updateUserLocation(25.0569, 121.5082, "示範位置");
+}
+
+function updateUserLocation(lat, lng, src) {
+  if (!userMarker) {
+    userMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        className: "",
+        html: `<div class="user-dot"></div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14]
+      })
+    }).addTo(map);
+  } else {
+    userMarker.setLatLng([lat, lng]);
+  }
+
+  let near = findNearestRiver(lat, lng);
+
+  highlightRiver(near.riverName);
+  setLoc(`${src}：目前接近「${near.riverName}」，距離約 ${Math.round(near.distance)} 公尺。`);
+
+  map.setView([lat, lng], 14, { animate: true });
+
+  if (near.distance < THRESHOLD) {
+    checkPoiReal(lat, lng, near.riverName);
+  }
+
+  checkLocationDanger(near.riverName);
+}
+
+function setLoc(t) {
+  id("locationText").textContent = t;
+}
+
+function findNearestRiver(lat, lng) {
+  let best = {
+    riverName: "",
+    distance: Infinity
+  };
+
+  riversData.features.forEach((f) => {
+    let cs = f.geometry.coordinates;
+
+    for (let i = 0; i < cs.length - 1; i++) {
+      let d = distancePointToSegmentMeters(
+        [lat, lng],
+        [cs[i][1], cs[i][0]],
+        [cs[i + 1][1], cs[i + 1][0]]
+      );
+
+      if (d < best.distance) {
+        best = {
+          riverName: f.properties.name,
+          distance: d
+        };
+      }
+    }
+  });
+
+  return best;
+}
+
+function highlightRiver(n) {
+  selectedRiver = n;
+  renderRiverButtons(n);
+
+  Object.entries(riverLayers).forEach(([rn, l]) => {
+    if (rn === n) {
+      l.setStyle({
+        weight: 10,
+        opacity: 1
+      });
+
+      l.bringToFront();
+    } else {
+      l.setStyle({
+        weight: 4,
+        opacity: 0.25
+      });
+    }
+  });
+
+  id("currentMode").textContent = `目前接近：${n}`;
+}
+
+function openRiver(n) {
+  selectedRiver = n;
+
+  let f = riversData.features.find((x) => x.properties.name === n);
+  let p = f.properties;
+  let w = state.water[n];
+
+  id("riverModalTitle").textContent = n;
+  id("riverModalDesc").textContent = p.history;
+
+  let box = id("riverSafetyBox");
+
+  if (w.current >= w.warning) {
+    box.className = "safety-box safety-danger";
+    box.innerHTML = `⚠️ 目前水位 ${w.current.toFixed(1)}m，已達警戒水位 ${w.warning.toFixed(1)}m。請避免靠近河岸低窪區、親水步道與橋下空間。`;
+  } else {
+    box.className = "safety-box safety-safe";
+    box.innerHTML = `✅ 目前水位 ${w.current.toFixed(1)}m，低於警戒水位 ${w.warning.toFixed(1)}m。祝你玩得愉快，也請留意現場告示。`;
+  }
+
+  id("riverCultureBox").innerHTML = `<b>河流視角：</b>${p.culture}`;
+
+  id("enterRiverBtn").onclick = () => {
+    closeModal("riverModal");
+    enterWalk(n);
+  };
+
+  id("speakRiverBtn").onclick = () => speak(`${n}。${p.history}`);
+
+  openModal("riverModal");
+}
+
+function enterWalk(n) {
+  selectedRiver = n;
+
+  state.stats.visitedRivers[n] = Date.now();
+  saveStats();
+  renderMissions();
+
+  id("currentMode").textContent = `${n}｜河流視角導覽`;
+  id("backToMapBtn").classList.remove("hidden");
+  id("walkPanel").classList.remove("hidden");
+  id("walkRiverName").textContent = `${n} 導覽中`;
+
+  let f = riversData.features.find((x) => x.properties.name === n);
+  let coords = f.geometry.coordinates.map((c) => [c[1], c[0]]);
+
+  currentRoute = interpolateRoute(coords, 160);
+  walkIndex = 0;
+
+  map.fitBounds(coords, {
+    padding: [80, 80]
+  });
+
+  Object.values(riverLayers).forEach((l) =>
+    l.setStyle({
+      opacity: 0.18,
+      weight: 4
+    })
+  );
+
+  riverLayers[n].setStyle({
+    opacity: 1,
+    weight: 10
+  });
+
+  drawPoi(f.properties.pois);
+
+  if (walkMarker) {
+    map.removeLayer(walkMarker);
+  }
+
+  walkMarker = L.marker(currentRoute[0], {
+    icon: L.divIcon({
+      className: "",
+      html: `<div class="walk-marker"></div>`,
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    })
+  }).addTo(map);
+
+  isPaused = false;
+
+  if (walkTimer) {
+    clearInterval(walkTimer);
+  }
+
+  walkTimer = setInterval(() => {
+    if (isPaused) return;
+
+    walkIndex++;
+
+    if (walkIndex >= currentRoute.length) {
+      id("walkNarration").textContent = "本段河流導覽已完成。";
+      clearInterval(walkTimer);
+      return;
+    }
+
+    let pos = currentRoute[walkIndex];
+
+    walkMarker.setLatLng(pos);
+    map.panTo(pos, {
+      animate: true,
+      duration: 0.7
+    });
+
+    id("walkNarration").textContent = `沿著 ${n} 前進中。靠近景點時會震動提醒並可取得徽章。`;
+
+    checkPoiWalk(pos);
+  }, 620);
+}
+
+function getAllTourPois() {
+  const all = [];
+
+  if (!riversData || !Array.isArray(riversData.features)) return all;
+
+  riversData.features.forEach((f) => {
+    const riverName = f.properties.name;
+    const riverColor = riverColors[riverName] || f.properties.color || "#38bdf8";
+
+    (f.properties.pois || []).forEach((p, index) => {
+      all.push({
+        ...p,
+        river: riverName,
+        type: p.type || "河岸景點",
+        icon: p.icon || "📍",
+        level: index === 0 ? "major" : "detail",
+        badgeColor: p.badgeColor || riverColor
+      });
+    });
+  });
+
+  return all;
+}
+
+function drawAllPois() {
+  Object.values(poiLayers).forEach((l) => {
+    try {
+      map.removeLayer(l);
+    } catch (e) { }
+  });
+
+  poiLayers = {};
+
+  const zoom = map.getZoom();
+  const allPois = getAllTourPois();
+
+  allPois.forEach((p) => {
+    const shouldShow = p.level === "major" || zoom >= 13;
+
+    if (!shouldShow) return;
+
+    const marker = L.marker([p.lat, p.lng], {
+      icon: L.divIcon({
+        className: "",
+        html: `
+  <div
+    id="poi-${p.id}"
+    class="tour-poi-marker ${p.level === "major" ? "major" : ""}"
+    style="--poi-color:${getPoiStyle(p).color};"
+  >
+    <span class="poi-icon poi-icon-${getPoiStyle(p).icon}"></span>
+  </div>
+`,
+        iconSize: p.level === "major" ? [36, 36] : [30, 30],
+        iconAnchor: p.level === "major" ? [18, 18] : [15, 15]
+      })
+    }).addTo(map);
+
+    marker.bindTooltip(
+      `<b>${p.name}</b><br>${p.river}｜${p.type}`,
+      { sticky: true }
+    );
+
+    marker.on("click", () => {
+      selectedRiver = p.river;
+      openPoi(p);
+    });
+
+    poiLayers[p.id] = marker;
+  });
+
+  applyLayerToggles();
+}
+
+function drawPoi(pois) {
+  drawAllPois();
+}
+
+function setupPoiSearch() {
+  const input = id("poiSearchInput");
+  const results = id("poiSearchResults");
+
+  if (!input || !results) return;
+
+  input.addEventListener("input", () => {
+    const keyword = input.value.trim().toLowerCase();
+
+    if (!keyword) {
+      results.classList.add("hidden");
+      results.innerHTML = "";
+      return;
+    }
+
+    const matched = getAllTourPois()
+      .filter((p) => {
+        return (
+          p.name?.toLowerCase().includes(keyword) ||
+          p.river?.toLowerCase().includes(keyword) ||
+          p.type?.toLowerCase().includes(keyword) ||
+          p.riverStory?.toLowerCase().includes(keyword) ||
+          p.heritageTitle?.toLowerCase().includes(keyword)
+        );
+      })
+      .slice(0, 10);
+
+    results.innerHTML = matched.length
+      ? matched.map((p) => `
+          <div class="poi-search-item" onclick="openPoiFromSearch('${p.id}')">
+            <strong>${p.icon || "📍"} ${p.name}</strong>
+            <small>${p.river}｜${p.heritageTitle || p.type}</small>
+          </div>
+        `).join("")
+      : `<div class="poi-search-item"><small>查無景點</small></div>`;
+
+    results.classList.remove("hidden");
+  });
+}
+
+function openPoiFromSearch(poiId) {
+  const p = getAllTourPois().find(x => x.id === poiId);
+
+  if (!p) return;
+
+  selectedRiver = p.river;
+
+  map.setView([p.lat, p.lng], 15, {
+    animate: true
+  });
+
+  drawAllPois();
+
+  setTimeout(() => {
+    poiLayers[p.id]?.openTooltip();
+    openPoi(p);
+  }, 350);
+
+  id("poiSearchResults")?.classList.add("hidden");
+}
+
+function checkPoiWalk(pos) {
+  let f = riversData.features.find((x) => x.properties.name === selectedRiver);
+
+  if (!f) return;
+
+  f.properties.pois.forEach((p) =>
+    updatePoiState(p, distanceMeters(pos[0], pos[1], p.lat, p.lng))
+  );
+}
+
+function checkPoiReal(lat, lng, river) {
+  let f = riversData.features.find((x) => x.properties.name === river);
+
+  if (!f) return;
+
+  drawPoi(f.properties.pois);
+
+  f.properties.pois.forEach((p) =>
+    updatePoiState(p, distanceMeters(lat, lng, p.lat, p.lng))
+  );
+}
+
+function updatePoiState(p, d) {
+  let el = id(`poi-${p.id}`);
+
+  if (d <= p.radius) {
+    if (el) el.classList.add("nearby");
+
+    if (navigator.vibrate) {
+      navigator.vibrate(120);
+    }
+
+    let r = tryBadge(p);
+
+    if (r.acquired) {
+      id("walkNarration").textContent = `抵達 ${p.name} 附近，取得景點徽章！`;
+    }
+  } else if (el) {
+    el.classList.remove("nearby");
+  }
+}
+
+function openPoi(p) {
+  id("poiModalTitle").textContent = p.name;
+  id("poiModalStory").textContent = p.riverStory;
+
+  let r = tryBadge(p);
+
+  id("poiBadgeResult").innerHTML = r.acquired
+    ? `🎉 取得景點徽章：<b style="color:${p.badgeColor}">${p.name}</b>`
+    : `🏅 此景點徽章已取得。規則：同一景點 24 小時內只能取得一次。`;
+
+  renderQuiz(p);
+  openModal("poiModal");
+  openStreetHeritagePanel(p);
+}
+
+function renderQuiz(p) {
+  id("quizBox").innerHTML = `
+    <b>文化小問答：</b>
+    <p>${p.quiz.q}</p>
+    ${p.quiz.options
+      .map(
+        (o, i) =>
+          `<button class="quiz-option" onclick="answerQuiz(${i},${p.quiz.answer})">${o}</button>`
+      )
+      .join("")}
+    <div id="quizResult"></div>
+  `;
+}
+
+function answerQuiz(i, a) {
+  if (i === a) {
+    state.stats.quizScore += 10;
+    id("quizResult").textContent = "答對了！+10 分";
+    saveStats();
+    renderMissions();
+  } else {
+    id("quizResult").textContent = "答錯了，可以再看看景點故事。";
+  }
+}
+
+function tryBadge(p) {
+  let now = Date.now();
+  let old = state.badges[p.id];
+
+  if (old && now - old.acquiredAt < 86400000) {
+    return {
+      acquired: false
+    };
+  }
+
+  if (!old) {
+    state.badges[p.id] = {
+      id: p.id,
+      name: p.name,
+      color: p.badgeColor,
+      acquiredAt: now
+    };
+
+    localStorage.setItem("riverBadges", JSON.stringify(state.badges));
+
+    renderBadges();
+    renderMissions();
+
+    return {
+      acquired: true
+    };
+  }
+
+  return {
+    acquired: false
+  };
+}
+
+function checkLocationDanger(river) {
+  let w = state.water[river];
+
+  if (w && w.current >= w.warning) {
+    showDanger(river, w);
+  }
+}
+
+function refreshWater() {
+  Object.values(state.water).forEach((w) => {
+    w.current = Math.max(0.7, w.current + (Math.random() - 0.45) * 0.35);
+  });
+
+  renderWater();
+  drawRiskLayers();
+}
+
+function simulateDanger(force = false) {
+  let names = Object.keys(state.water);
+  let n = names[Math.floor(Math.random() * names.length)];
+  let w = state.water[n];
+
+  if (force || Math.random() < 0.35) {
+    w.current = w.warning + Math.random() * 1.2;
+    renderWater();
+    drawRiskLayers();
+    showDanger(n, w);
+  } else {
+    refreshWater();
+  }
+}
+
+function showDanger(n, w) {
+  state.stats.warnings++;
+  saveStats();
+
+  id("dangerText").textContent = `${n} 目前水位升高至 ${w.current.toFixed(1)}m，已超過警戒水位 ${w.warning.toFixed(1)}m。請避免靠近河岸、低窪步道與親水區域。`;
+
+  openModal("dangerModal");
+
+  if (navigator.vibrate) {
+    navigator.vibrate([200, 100, 200]);
+  }
+}
+
+function startMonitor() {
+  if (dangerTimer) {
+    clearInterval(dangerTimer);
+  }
+
+  dangerTimer = setInterval(() => simulateDanger(false), 20000);
+}
+
+function backToMainMap() {
+  id("currentMode").textContent = "主地圖模式";
+  id("backToMapBtn").classList.add("hidden");
+  id("walkPanel").classList.add("hidden");
+  id("streetViewPanel").classList.add("hidden");
+
+  if (walkTimer) {
+    clearInterval(walkTimer);
+  }
+
+  if (walkMarker) {
+    map.removeLayer(walkMarker);
+    walkMarker = null;
+  }
+
+  Object.values(poiLayers).forEach((l) => map.removeLayer(l));
+
+  poiLayers = {};
+
+  Object.values(riverLayers).forEach((l) =>
+    l.setStyle({
+      opacity: 0.78,
+      weight: 7
+    })
+  );
+
+  selectedRiver = null;
+
+  renderRiverButtons();
+  map.setView([25.055, 121.525], 11);
+}
+
+function openProfile() {
+  let b = id("profileBadgeBoard");
+  let arr = Object.values(state.badges);
+
+  b.innerHTML = arr.length ? "" : `<span class="empty-badge">尚未取得徽章。</span>`;
+
+  arr.forEach((x) => {
+    let d = document.createElement("div");
+
+    d.className = "badge";
+    d.style.background = x.color;
+    d.title = x.name;
+    d.textContent = "🏅";
+
+    b.appendChild(d);
+  });
+
+  id("profileStats").innerHTML = `
+    <p>已取得徽章：${arr.length}</p>
+    <p>已探索河流：${Object.keys(state.stats.visitedRivers).length}</p>
+    <p>文化問答分數：${state.stats.quizScore}</p>
+    <p>水位警示次數：${state.stats.warnings}</p>
+  `;
+
+  openModal("profileModal");
+}
+
+function exportRecord() {
+  let data = {
+    badges: state.badges,
+    stats: state.stats,
+    exportedAt: new Date().toISOString()
+  };
+
+  let blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json"
+  });
+
+  let url = URL.createObjectURL(blob);
+  let a = id("downloadAnchor");
+
+  a.href = url;
+  a.download = "taipei_river_journey_record.json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+function clearRecord() {
+  state.badges = {};
+  state.stats = {
+    visitedRivers: {},
+    quizScore: 0,
+    warnings: 0
+  };
+
+  localStorage.removeItem("riverBadges");
+
+  saveStats();
+  renderAll();
+  openProfile();
+}
+
+function saveStats() {
+  localStorage.setItem("riverStats", JSON.stringify(state.stats));
+}
+
+function speak(t) {
+  if (!("speechSynthesis" in window)) return;
+
+  speechSynthesis.cancel();
+
+  let u = new SpeechSynthesisUtterance(t);
+
+  u.lang = "zh-TW";
+  u.rate = 1;
+
+  speechSynthesis.speak(u);
+}
+
+function interpolateRoute(points, steps) {
+  let r = [];
+
+  for (let i = 0; i < points.length - 1; i++) {
+    let a = points[i];
+    let b = points[i + 1];
+    let c = Math.ceil(steps / (points.length - 1));
+
+    for (let s = 0; s < c; s++) {
+      let t = s / c;
+
+      r.push([
+        a[0] + (b[0] - a[0]) * t,
+        a[1] + (b[1] - a[1]) * t
+      ]);
+    }
+  }
+
+  r.push(points[points.length - 1]);
+
+  return r;
+}
+
+function distanceMeters(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) *
+    Math.cos(toRad(lat2)) *
+    Math.sin(dLng / 2) ** 2;
+
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function distancePointToSegmentMeters(p, a, b) {
+  let lat0 = (p[0] * Math.PI) / 180;
+
+  let x = (lng) => lng * Math.cos(lat0) * 111320;
+  let y = (lat) => lat * 110540;
+
+  let px = x(p[1]);
+  let py = y(p[0]);
+  let ax = x(a[1]);
+  let ay = y(a[0]);
+  let bx = x(b[1]);
+  let by = y(b[0]);
+
+  let dx = bx - ax;
+  let dy = by - ay;
+
+  if (dx === 0 && dy === 0) {
+    return Math.hypot(px - ax, py - ay);
+  }
+
+  let t = ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy);
+
+  t = Math.max(0, Math.min(1, t));
+
+  return Math.hypot(px - (ax + t * dx), py - (ay + t * dy));
+}
+
+function toRad(v) {
+  return (v * Math.PI) / 180;
+}
+
+function openModal(x) {
+  id(x).classList.remove("hidden");
+}
+
+function closeModal(x) {
+  id(x).classList.add("hidden");
+}
 /* =========================
    真實水位 API 串接區
    資料來源：經濟部水利署 Open Data
@@ -156,15 +1296,56 @@ async function refreshWater() {
 function renderWater() {
   const box = id("waterStatusList");
   if (!box) return;
+
   box.innerHTML = "";
+
   Object.entries(state.water).forEach(([n, w]) => {
+
     const safe = Number(w.current) < Number(w.warning);
+
     const row = document.createElement("div");
-    row.className = "water-row";
+
+    row.className = `water-item ${safe ? "safe" : "warning"}`;
+
     const source = w.isReal ? "真實資料" : "展示資料";
-    const station = w.stationName ? `｜${w.stationName}` : "";
-    const time = w.datetime ? `<br><small>${source}${station}｜${w.datetime}</small>` : `<br><small>${source}</small>`;
-    row.innerHTML = `<span>${safe ? "✅" : "⚠️"} ${n}${time}</span><span>${Number(w.current).toFixed(2)}m / 警戒 ${Number(w.warning).toFixed(2)}m</span>`;
+    const station = w.stationName || `${n}代表測站`;
+
+    row.innerHTML = `
+      <div class="water-left">
+
+        <div class="water-icon">
+          ${safe ? "✓" : "!"}
+        </div>
+
+        <div>
+          <div class="water-name">
+            ${n}
+          </div>
+
+          <div class="water-meta">
+            ${station}
+          </div>
+
+          <div class="water-time">
+            ${w.datetime || ""}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="water-right">
+
+        <div class="water-level">
+          ${Number(w.current).toFixed(2)}m
+        </div>
+
+        <div class="water-alert">
+          警戒 ${Number(w.warning).toFixed(2)}m
+        </div>
+
+      </div>
+    `;
+
     box.appendChild(row);
   });
 }
@@ -1470,3 +2651,22 @@ async function refreshWater() {
     return 0;
   }
 }
+
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebarToggle");
+
+sidebarToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("collapsed");
+
+  // 收合動畫期間連續刷新 Leaflet 尺寸，避免黑色空白閃一下
+  let count = 0;
+  const resizeTimer = setInterval(() => {
+    if (map) map.invalidateSize(false);
+
+    count++;
+    if (count >= 12) {
+      clearInterval(resizeTimer);
+      if (map) map.invalidateSize(false);
+    }
+  }, 30);
+});
