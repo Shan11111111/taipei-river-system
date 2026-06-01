@@ -931,7 +931,7 @@ body {
   display: grid;
   place-items: center;
   padding: 20px;
-  background: rgba(2, 6, 23, .72);
+  background: rgb(2, 6, 23);
   backdrop-filter: blur(8px)
 }
 
@@ -941,8 +941,8 @@ body {
   max-height: 86vh;
   overflow-y: auto;
   padding: 28px;
-  color: #17324d;
-  background: #ffffff;
+  color: #ffffff;
+  background: #00071e;
   border: 1px solid #dbe8f3;
   border-radius: 28px;
   box-shadow: 0 30px 90px rgba(16, 42, 67, .22)
@@ -950,16 +950,16 @@ body {
 
 .modal-card.wide {
   width: min(900px, 94vw);
-  background: linear-gradient(180deg, #ffffff 0%, #f4fbff 100%);
+  background: linear-gradient(180deg, #00071e , #00071e );
 }
 
 .modal-card h2,
 .modal-card h3 {
-  color: #102a43;
+  color: #ffffff;
 }
 
 #profileStats p {
-  color: #17324d;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -967,7 +967,7 @@ body {
   float: right;
   border: none;
   background: transparent;
-  color: #17324d;
+  color: #ffffff;
   font-size: 32px;
   cursor: pointer
 }
@@ -980,7 +980,7 @@ body {
   margin: 16px 0;
   border-radius: 16px;
   line-height: 1.7;
-  background: rgba(255, 255, 255, .07)
+  background: #00071e
 }
 
 .safety-safe {
@@ -994,12 +994,37 @@ body {
 }
 
 .danger-card {
-  background: linear-gradient(135deg, #450a0a, #0f172a);
-  border-color: rgba(239, 68, 68, .55)
+  
+  background: linear-gradient(135deg, #5a0f13, #111827);
+  border: 1px solid rgba(239, 68, 68, .55);
+  border-radius: 34px;
+  width: 720px;
+  padding: 34px 42px 30px;
+  border-radius: 28px;
+}
+
+.danger-card h2 {
+  margin: 0 0 28px;
+  color: #fff5f5;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.danger-card p {
+  margin: 0 0 15px;
+  color: rgba(255, 238, 238, .9);
+  font-size: 22px;
+  line-height: 1.75;
 }
 
 .danger-btn {
-  background: linear-gradient(135deg, #ef4444, #f97316)
+  padding: 12px 22px;
+  font-size: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 8px 24px rgba(239,68,68,.28);
 }
 
 .profile-grid {
@@ -1013,10 +1038,10 @@ body {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
-  border: 1px solid rgba(255, 255, 255, .16);
+  border: 1px solid rgba(3, 64, 108, 0.521);
   border-radius: 12px;
-  color: #fff;
-  background: rgba(255, 255, 255, .08);
+  color: #fff7f7;
+  background: rgb(3, 3, 21);
   cursor: pointer;
   text-align: left
 }
@@ -1736,54 +1761,7 @@ body {
   color: #9fb3c8;
 }
 
-.tour-poi-marker {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3px solid var(--poi-color);
-  box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--poi-color) 22%, transparent),
-    0 0 16px color-mix(in srgb, var(--poi-color) 55%, transparent);
-  display: grid;
-  place-items: center;
-  font-size: 14px;
-}
 
-.tour-poi-marker.major {
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  border-width: 4px;
-}
-
-/* 景點 Marker：Google Maps 類型圓形圖標 */
-.tour-poi-marker {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #f8fbff;
-  border: 3px solid var(--poi-color);
-  color: #102033;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 14px;
-  line-height: 1;
-
-  box-shadow:
-    0 4px 12px rgba(0,0,0,.28),
-    0 0 0 4px color-mix(in srgb, var(--poi-color) 22%, transparent),
-    0 0 18px color-mix(in srgb, var(--poi-color) 45%, transparent);
-}
-
-.tour-poi-marker.major {
-  width: 38px;
-  height: 38px;
-  font-size: 17px;
-  border-width: 4px;
-}
 
 /* 搜尋欄 */
 .search-card {
@@ -1801,112 +1779,383 @@ body {
 
 /* ===== Google Map 感：乾淨高級景點分類 Icon ===== */
 
-.tour-poi-marker {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+/* ===== Google Map 標籤感：文字 + 右側圓形 icon ===== */
+
+.map-poi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 3px 4px 3px 10px;
+  border-radius: 999px;
+
+  color: color-mix(in srgb, var(--poi-color) 86%, white 14%);
+  background: rgba(10, 18, 28, .58);
+  border: 1px solid color-mix(in srgb, var(--poi-color) 42%, transparent);
+
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .3px;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 6px color-mix(in srgb, var(--poi-color) 70%, transparent),
+    0 2px 5px rgba(0,0,0,.75);
+
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--poi-color) 28%, transparent),
+    0 4px 12px rgba(0,0,0,.28);
+
+  backdrop-filter: blur(5px);
+}
+
+.map-poi-name {
+  line-height: 1;
+}
+
+
+
+/* icon 線條 */
+.poi-symbol {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  display: block;
+  color: white;
+}
+
+/* 水波 */
+.poi-symbol-wave::before,
+.poi-symbol-wave::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 13px;
+  height: 5px;
+  border-top: 2px solid currentColor;
+  border-radius: 999px;
+}
+
+.poi-symbol-wave::before { top: 2px; }
+.poi-symbol-wave::after { top: 7px; }
+
+/* 歷史文化 */
+.poi-symbol-landmark::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 4px;
+  width: 11px;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 6px 0 currentColor;
+}
+
+.poi-symbol-landmark::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 6px;
+  width: 2px;
+  height: 5px;
+  background: currentColor;
+  box-shadow: 4px 0 0 currentColor;
+}
+
+/* 橋 */
+.poi-symbol-bridge::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 13px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-radius: 999px 999px 0 0;
+}
+
+.poi-symbol-bridge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 13px;
+  height: 2px;
+  background: currentColor;
+}
+
+
+
+
+
+
+/* fallback */
+.poi-symbol-pin::before {
+  content: "";
+  position: absolute;
+  inset: 1px 3px 4px;
+  background: currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+
+
+/* ===== 小型 Google Map 標籤感：文字 + 分類小 icon ===== */
+
+.map-poi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 2px 3px 2px 8px;
+  border-radius: 999px;
+
+  color: var(--poi-color);
+  background: rgba(9, 17, 28, .48);
+  border: 1px solid color-mix(in srgb, var(--poi-color) 32%, transparent);
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  line-height: 1;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 5px color-mix(in srgb, var(--poi-color) 55%, transparent),
+    0 1px 4px rgba(0,0,0,.8);
+
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--poi-color) 20%, transparent),
+    0 3px 8px rgba(0,0,0,.28);
+
+  backdrop-filter: blur(4px);
+}
+
+.map-poi-name {
+  line-height: 1;
+}
+
+.map-poi-icon {
+
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   background:
-    radial-gradient(circle at 35% 28%,
-      rgba(255,255,255,.95) 0%,
-      rgba(235,245,255,.9) 38%,
-      color-mix(in srgb, var(--poi-color) 72%, #ffffff 18%) 100%
-    );
+    radial-gradient(circle at 30% 30%,
+      rgba(255,255,255,.45),
+      var(--poi-color));
 
-  border: 3px solid rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.85);
+
+  backdrop-filter: blur(8px);
 
   box-shadow:
-    0 3px 9px rgba(0,0,0,.34),
-    0 0 0 3px color-mix(in srgb, var(--poi-color) 24%, transparent),
-    0 0 12px color-mix(in srgb, var(--poi-color) 46%, transparent);
+    0 0 10px color-mix(in srgb, var(--poi-color) 55%, transparent),
+    0 0 22px color-mix(in srgb, var(--poi-color) 25%, transparent);
 
-  color: #102033;
-  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.map-poi-icon svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* icon 全部用白色簡潔符號，不用 emoji */
+.map-poi-icon::before {
+  color: #ffffff;
+  font-size: 11px;
   font-weight: 900;
-
-  transition: transform .16s ease, box-shadow .16s ease;
-}
-
-.tour-poi-marker.major {
-  width: 38px;
-  height: 38px;
-  font-size: 17px;
-}
-
-.tour-poi-marker:hover {
-  transform: scale(1.12);
-  box-shadow:
-    0 5px 14px rgba(0,0,0,.42),
-    0 0 0 4px color-mix(in srgb, var(--poi-color) 32%, transparent),
-    0 0 18px color-mix(in srgb, var(--poi-color) 62%, transparent);
-}
-
-/* 不要水滴尾巴 */
-.tour-poi-marker::after {
-  display: none !important;
-}
-
-/* icon 用簡單文字符號，先不要自畫醜圖形 */
-.poi-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
   line-height: 1;
 }
 
-.poi-icon::before {
-  font-size: inherit;
-}
-
-/* 分類 icon */
-.poi-icon-pin::before {
-  content: "●";
-}
-
-.poi-icon-landmark::before {
-  content: "🏛";
-}
-
-.poi-icon-water::before {
+/* 親水休憩 */
+.poi-water::before {
   content: "≈";
-  font-size: 20px;
-}
-
-.poi-icon-anchor::before {
-  content: "⚓";
-}
-
-.poi-icon-shop::before {
-  content: "◆";
-}
-
-.poi-icon-food::before {
-  content: "🍜";
   font-size: 14px;
 }
 
-.poi-icon-bike::before {
-  content: "🚲";
-  font-size: 14px;
+/* 歷史文化 */
+.poi-history::before {
+  content: "▥";
 }
 
-.poi-icon-home::before {
-  content: "⌂";
-  font-size: 19px;
-}
-
-.poi-icon-moon::before {
-  content: "☾";
-  font-size: 20px;
-}
-
-.poi-icon-bridge::before {
+/* 河岸景觀 */
+.poi-view::before {
   content: "⌒";
-  font-size: 22px;
+  font-size: 15px;
 }
+
+/* 生態自然 */
+.poi-leaf::before {
+  content: "◇";
+}
+
+/* 運動遊憩 */
+.poi-sport::before {
+  content: "↗";
+}
+
+/* 美食商圈 */
+.poi-food::before {
+  content: "■";
+  font-size: 9px;
+}
+
+/* 其他 */
+.poi-dot::before {
+  content: "•";
+  font-size: 16px;
+}
+
+/* 清掉舊 marker 樣式殘留 */
+.tour-poi-marker,
+.tour-poi-wrap,
+.tour-poi-label,
+.poi-symbol,
+.poi-icon {
+  all: unset;
+}
+
+/* ===== 景點標籤：Google / Apple Maps 感 ===== */
+
+.map-poi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 2px 3px 2px 8px;
+  border-radius: 999px;
+
+  color: #f8fbff;
+  background: rgba(10, 18, 28, .58);
+  border: 1px solid color-mix(in srgb, var(--poi-color) 34%, transparent);
+
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+
+  text-shadow:
+    0 1px 4px rgba(0,0,0,.85),
+    0 0 5px color-mix(in srgb, var(--poi-color) 45%, transparent);
+
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--poi-color) 24%, transparent),
+    0 3px 8px rgba(0,0,0,.32);
+
+  backdrop-filter: blur(6px);
+}
+
+.map-poi-name {
+  line-height: 1;
+}
+
+.map-poi-icon {
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--poi-color);
+
+  border: 1px solid rgba(255,255,255,.72);
+
+  box-shadow:
+    0 0 6px color-mix(in srgb, var(--poi-color) 55%, transparent),
+    0 0 12px color-mix(in srgb, var(--poi-color) 25%, transparent);
+
+  flex-shrink: 0;
+}
+
+.map-poi-icon img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+
+  filter:
+    brightness(0)
+    invert(1)
+    drop-shadow(0 0 3px rgba(255,255,255,.85));
+
+  opacity: .96;
+}
+
+/* 清掉舊 marker 殘留 */
+.tour-poi-marker,
+.tour-poi-wrap,
+.tour-poi-label,
+.poi-symbol,
+.poi-icon {
+  all: unset;
+}
+
+/* ===== 右上角 Apple Maps 控制按鈕 ===== */
+
+.top-actions {
+
+  position: absolute;
+
+  top: 0px;
+  right: 8px;
+
+  display: flex;
+  gap: 12px;
+
+  z-index: 1200;
+}
+.top-icon-btn {
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 14px;
+
+  background: rgba(15,23,42,.82);
+
+  border: 1px solid rgba(255,255,255,.06);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.28),
+    0 0 12px rgba(96,165,250,.08);
+
+  transition: .2s ease;
+}
+.top-icon-btn:hover {
+
+  transform: translateY(-1px);
+
+  background: rgba(30,41,59,.92);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.35),
+    0 0 18px rgba(96,165,250,.18);
+}
+
+.top-icon-btn img {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0)
+    invert(1);
+
+  opacity: .92;
+}
+
