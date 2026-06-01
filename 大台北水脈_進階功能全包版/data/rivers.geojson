@@ -16,6 +16,7 @@
           {
             "id": "tamsui-dadaocheng",
             "name": "大稻埕碼頭",
+            "type": "親水休憩",
             "lat": 25.0569,
             "lng": 121.5082,
             "radius": 420,
@@ -40,6 +41,7 @@
           {
             "id": "tamsui-guandu",
             "name": "關渡自然公園",
+            "type": "生態自然",
             "lat": 25.1194,
             "lng": 121.4693,
             "radius": 500,
@@ -64,6 +66,7 @@
           {
             "id": "tamsui-fort-san-domingo",
             "name": "紅毛城",
+            "type": "歷史文化",
             "lat": 25.1754,
             "lng": 121.4329,
             "radius": 450,
@@ -204,6 +207,7 @@
           {
             "id": "dahan-xinyue",
             "name": "新月橋",
+            "type": "河岸景觀",
             "lat": 25.0344,
             "lng": 121.4468,
             "radius": 420,
@@ -228,6 +232,7 @@
           {
             "id": "dahan-lin-family-mansion",
             "name": "林本源園邸",
+            "type": "歷史文化",
             "lat": 25.0108,
             "lng": 121.4552,
             "radius": 430,
@@ -252,6 +257,7 @@
           {
             "id": "dahan-sanxia-old-street",
             "name": "三峽老街",
+            "type": "歷史文化",
             "lat": 24.9345,
             "lng": 121.3696,
             "radius": 500,
@@ -548,6 +554,7 @@
           {
             "id": "xindian-bitan",
             "name": "碧潭",
+            "type": "親水休憩",
             "lat": 24.9576,
             "lng": 121.5375,
             "radius": 450,
@@ -572,6 +579,7 @@
           {
             "id": "xindian-treasure-hill",
             "name": "寶藏巖國際藝術村",
+            "type": "歷史文化",
             "lat": 25.0106,
             "lng": 121.5327,
             "radius": 420,
@@ -596,6 +604,7 @@
           {
             "id": "xindian-water-museum",
             "name": "自來水博物館",
+            "type": "歷史文化",
             "lat": 25.0132,
             "lng": 121.5302,
             "radius": 420,
@@ -1032,6 +1041,7 @@
           {
             "id": "jingmei-riverside",
             "name": "景美溪河濱步道",
+            "type": "運動遊憩",
             "lat": 24.9955,
             "lng": 121.5405,
             "radius": 420,
@@ -1056,6 +1066,7 @@
           {
             "id": "jingmei-zhinan-temple",
             "name": "指南宮",
+            "type": "歷史文化",
             "lat": 24.9793,
             "lng": 121.5865,
             "radius": 550,
@@ -1080,6 +1091,7 @@
           {
             "id": "jingmei-zoo",
             "name": "臺北市立動物園",
+            "type": "生態自然",
             "lat": 24.9988,
             "lng": 121.581,
             "radius": 500,
@@ -2028,6 +2040,7 @@
           {
             "id": "keelung-rainbow",
             "name": "彩虹橋",
+            "type": "河岸景觀",
             "lat": 25.0518,
             "lng": 121.5746,
             "radius": 430,
@@ -2052,6 +2065,7 @@
           {
             "id": "keelung-raohe",
             "name": "饒河街夜市與松山慈祐宮",
+            "type": "歷史文化",
             "lat": 25.0502,
             "lng": 121.5776,
             "radius": 450,
@@ -2076,6 +2090,7 @@
           {
             "id": "keelung-meiti",
             "name": "美堤河濱公園",
+            "type": "運動遊憩",
             "lat": 25.0742,
             "lng": 121.5556,
             "radius": 460,

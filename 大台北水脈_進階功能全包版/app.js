@@ -17,6 +17,7 @@ let riverLayers = {},
 let currentRoute = [],
   walkIndex = 0,
   isPaused = false;
+  
 
 const INTRO_SECONDS = 30;
 const THRESHOLD = 900;
@@ -38,21 +39,106 @@ const riverColors = {
 };
 
 const poiCategoryStyle = {
-  "碼頭景點": { icon: "anchor", color: "#38bdf8" },
-  "文化景點": { icon: "landmark", color: "#f472b6" },
-  "親水景點": { icon: "water", color: "#22d3ee" },
-  "聚落文化": { icon: "home", color: "#a78bfa" },
-  "夜景景點": { icon: "moon", color: "#f59e0b" },
-  "橋梁景點": { icon: "bridge", color: "#fb923c" },
-  "河岸步道": { icon: "bike", color: "#2dd4bf" },
-  "古蹟": { icon: "landmark", color: "#ef4b7b" },
-  "美食": { icon: "food", color: "#ff8aa3" },
-  "市集": { icon: "shop", color: "#34d399" },
-  "河岸景點": { icon: "pin", color: "#60a5fa" }
+  "親水休憩": {
+    icon: "icon/parasol.png",
+    color: "#38bdf8"
+  },
+  "歷史文化": {
+    icon: "icon/temple.png",
+    color: "#a78bfa"
+  },
+  "河岸景觀": {
+    icon: "icon/camera.png",
+    color: "#60a5fa"
+  },
+  "生態自然": {
+    icon: "icon/tree.png",
+    color: "#4ade80"
+  },
+  "運動遊憩": {
+    icon: "icon/running.png",
+    color: "#22d3ee"
+  },
+  "美食商圈": {
+    icon: "icon/cutlery.png",
+    color: "#fb923c"
+  },
+  "其他景點": {
+    icon: "icon/camera.png",
+    color: "#cbd5e1"
+  }
 };
 
 function getPoiStyle(p) {
-  return poiCategoryStyle[p.type] || poiCategoryStyle["河岸景點"];
+  return poiCategoryStyle[p.type] || poiCategoryStyle["其他景點"];
+}
+
+function getPoiSvg(type) {
+
+  const icons = {
+
+    water: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 14C6 12 8 12 10 14C12 16 14 16 16 14C18 12 20 12 22 14"
+          stroke="white" stroke-width="2.2"
+          stroke-linecap="round"/>
+      </svg>
+    `,
+
+    history: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 20H20M6 20V10M10 20V10M14 20V10M18 20V10M4 10L12 4L20 10"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+    `,
+
+    view: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M2 12C4 7 8 5 12 5C16 5 20 7 22 12C20 17 16 19 12 19C8 19 4 17 2 12Z"
+          stroke="white"
+          stroke-width="2"/>
+        <circle cx="12" cy="12" r="2.5" fill="white"/>
+      </svg>
+    `,
+
+    leaf: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M19 5C10 5 5 10 5 19C14 19 19 14 19 5Z"
+          stroke="white"
+          stroke-width="2"/>
+      </svg>
+    `,
+
+    sport: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/>
+        <circle cx="18" cy="18" r="3" stroke="white" stroke-width="2"/>
+        <path d="M6 18L10 10H15L18 18M10 10L8 6"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+    `,
+
+    food: `
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M7 4V11M10 4V11M7 8H10M16 4V20"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+    `,
+
+    dot: `
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" fill="white"/>
+      </svg>
+    `
+  };
+
+  return icons[type] || icons.dot;
 }
 
 const state = {
@@ -675,7 +761,7 @@ function drawAllPois() {
   Object.values(poiLayers).forEach((l) => {
     try {
       map.removeLayer(l);
-    } catch (e) { }
+    } catch (e) {}
   });
 
   poiLayers = {};
@@ -688,20 +774,25 @@ function drawAllPois() {
 
     if (!shouldShow) return;
 
+    const style = getPoiStyle(p);
+
     const marker = L.marker([p.lat, p.lng], {
       icon: L.divIcon({
         className: "",
         html: `
-  <div
-    id="poi-${p.id}"
-    class="tour-poi-marker ${p.level === "major" ? "major" : ""}"
-    style="--poi-color:${getPoiStyle(p).color};"
-  >
-    <span class="poi-icon poi-icon-${getPoiStyle(p).icon}"></span>
-  </div>
-`,
-        iconSize: p.level === "major" ? [36, 36] : [30, 30],
-        iconAnchor: p.level === "major" ? [18, 18] : [15, 15]
+          <div
+            class="map-poi-label"
+            style="--poi-color:${style.color};"
+          >
+            <span class="map-poi-name">${p.name}</span>
+
+            <span class="map-poi-icon">
+              <img src="${style.icon}" alt="${p.type || "景點"}">
+            </span>
+          </div>
+        `,
+        iconSize: [130, 24],
+        iconAnchor: [65, 12]
       })
     }).addTo(map);
 
@@ -719,6 +810,10 @@ function drawAllPois() {
   });
 
   applyLayerToggles();
+}
+
+function drawPoi(pois) {
+  drawAllPois();
 }
 
 function drawPoi(pois) {
