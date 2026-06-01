@@ -1352,7 +1352,7 @@ function renderWater() {
 
 async function startRealWaterAutoUpdate() {
   await refreshWater();
-  setInterval(refreshWater, 10 * 60 * 1000);
+  setInterval(refreshWater, 1 * 60 * 1000);
 }
 
 setTimeout(() => {
@@ -1846,7 +1846,7 @@ async function startRealWaterAutoUpdate() {
   }
 
   await refreshWater();
-  setInterval(refreshWater, 10 * 60 * 1000);
+  setInterval(refreshWater, 1 * 60 * 1000);
 }
 
 function startRealWaterAutoUpdateWhenReady(retry = 0) {
@@ -2669,4 +2669,84 @@ sidebarToggle.addEventListener("click", () => {
       if (map) map.invalidateSize(false);
     }
   }, 30);
+});
+
+
+
+/* ===== 修正：過濾不合理水位，避免 684m / 831m 這種錯誤值 ===== */
+
+function isReasonableWaterLevel(v) {
+  const n = Number(v);
+  return Number.isFinite(n) && n > -5 && n < 20;
+}
+
+async function fetchRealWraWaterLevels() {
+  const realtimeRaw = await fetch(WRA_REALTIME_WATER_URL, {
+    cache: "no-store"
+  }).then(r => {
+    if (!r.ok) throw new Error("即時水位 API 回應失敗：" + r.status);
+    return r.json();
+  });
+
+  const realtimeRows = normalizeWraRows(realtimeRaw);
+
+  const result = {};
+  const matchedDebug = [];
+
+  for (const riverName of Object.keys(state.water)) {
+    const stationIds = RIVER_STATION_ID_MAP[riverName] || [];
+
+    const candidates = realtimeRows
+      .map(row => {
+        const stationId = pickStationId(row);
+        const waterlevel = pickWaterLevel(row);
+        const datetime = pickDateTime(row);
+
+        return { row, stationId, waterlevel, datetime };
+      })
+      .filter(x =>
+        stationIds.includes(x.stationId) &&
+        isReasonableWaterLevel(x.waterlevel)
+      );
+
+    candidates.sort((a, b) =>
+      String(b.datetime || "").localeCompare(String(a.datetime || ""))
+    );
+
+    const hit = candidates[0];
+    if (!hit) continue;
+
+    const oldWarning = state.water[riverName]?.warning ?? 3;
+
+    result[riverName] = {
+      riverName,
+      stationName: `${riverName}代表測站`,
+      stationId: hit.stationId,
+      waterlevel: Number(hit.waterlevel),
+      datetime: hit.datetime,
+      warning: oldWarning,
+      danger: oldWarning + 0.8
+    };
+
+    matchedDebug.push({
+      river: riverName,
+      stationId: hit.stationId,
+      waterlevel: hit.waterlevel,
+      warning: oldWarning,
+      time: hit.datetime
+    });
+  }
+
+  console.table(matchedDebug);
+  return result;
+}
+
+/* ===== 最終修正：更新代表測站，不重複宣告 const ===== */
+
+Object.assign(RIVER_STATION_ID_MAP, {
+  "淡水河": ["1010H006", "1010H007"],
+  "大漢溪": ["1140H083", "1140H156", "1140H163"],
+  "新店溪": ["1140H036", "1140H029"],
+  "景美溪": ["1140H039", "1140H041"],
+  "基隆河": ["1140H066", "1140H083", "1140H111", "1140H115", "1140H116", "1140H163", "1140H174"]
 });
