@@ -16,8 +16,9 @@ let riverLayers = {},
 
 let currentRoute = [],
   walkIndex = 0,
-  isPaused = false;
-  
+  isPaused = false,
+  routeStops = [],
+  currentStopIndex = 0;
 
 const INTRO_SECONDS = 30;
 const THRESHOLD = 900;
@@ -165,9 +166,28 @@ document.addEventListener("DOMContentLoaded", () => {
   id("layerBtn").onclick = () => id("layerPanel").classList.toggle("hidden");
   id("simulateDangerBtn").onclick = () => simulateDanger(true);
   id("refreshWaterBtn").onclick = refreshWater;
-  id("pauseWalkBtn").onclick = () => (isPaused = true);
-  id("resumeWalkBtn").onclick = () => (isPaused = false);
-  id("streetModeBtn").onclick = () => openStreetHeritagePanel();
+  id("pauseWalkBtn").onclick = () => {
+    isPaused = true;
+
+    const poi = getNearestPoiOnRoute();
+
+    if (poi) {
+      openPoi(poi);
+      openStreetHeritagePanel(poi);
+
+      id("walkNarration").textContent = `📍 已停靠 ${poi.name}，你可以查看景點故事與街景導覽。`;
+    }
+  };
+
+  id("resumeWalkBtn").onclick = () => {
+    isPaused = false;
+    closeModal("poiModal");
+    id("streetViewPanel").classList.add("hidden");
+
+    id("walkNarration").textContent = `🚢 繼續航行，前往下一個河岸景點。`;
+  };
+
+  id("streetModeBtn").onclick = backToMainMap;
   id("closeStreetBtn").onclick = () => id("streetViewPanel").classList.add("hidden");
   id("exportBtn").onclick = exportRecord;
   id("clearBadgesBtn").onclick = clearRecord;
@@ -694,13 +714,12 @@ function enterWalk(n) {
   }
 
   walkMarker = L.marker(currentRoute[0], {
-    icon: L.divIcon({
-      className: "",
-      html: `<div class="walk-marker"></div>`,
-      iconSize: [28, 28],
-      iconAnchor: [14, 14]
-    })
-  }).addTo(map);
+  icon: L.icon({
+    iconUrl: "icon/boat.png",
+    iconSize: [48, 48],
+    iconAnchor: [24, 24]
+  })
+}).addTo(map);
 
   isPaused = false;
 
@@ -730,8 +749,13 @@ function enterWalk(n) {
     id("walkNarration").textContent = `沿著 ${n} 前進中。靠近景點時會震動提醒並可取得徽章。`;
 
     checkPoiWalk(pos);
+    updateBoatStationInfo();
   }, 620);
 }
+
+
+
+
 
 function getAllTourPois() {
   const all = [];
@@ -761,7 +785,7 @@ function drawAllPois() {
   Object.values(poiLayers).forEach((l) => {
     try {
       map.removeLayer(l);
-    } catch (e) {}
+    } catch (e) { }
   });
 
   poiLayers = {};
@@ -770,7 +794,10 @@ function drawAllPois() {
   const allPois = getAllTourPois();
 
   allPois.forEach((p) => {
-    const shouldShow = p.level === "major" || zoom >= 13;
+    const shouldShow =
+      selectedRiver === p.river ||
+      p.level === "major" ||
+      zoom >= 13;
 
     if (!shouldShow) return;
 
@@ -879,6 +906,43 @@ function openPoiFromSearch(poiId) {
   }, 350);
 
   id("poiSearchResults")?.classList.add("hidden");
+}
+
+function getNearbyBoatPoi() {
+  const f = riversData.features.find(
+    x => x.properties.name === selectedRiver
+  );
+
+  if (!f || !walkMarker) return null;
+
+  const pos = walkMarker.getLatLng();
+
+  const nearestPoi = f.properties.pois
+    .map((p) => ({
+      ...p,
+      distance: distanceMeters(pos.lat, pos.lng, p.lat, p.lng)
+    }))
+    .sort((a, b) => a.distance - b.distance)[0];
+
+  if (!nearestPoi) return null;
+
+  const triggerDistance =
+    nearestPoi.boatRadius || nearestPoi.radius + 1200;
+
+  return nearestPoi.distance <= triggerDistance
+    ? nearestPoi
+    : null;
+}
+
+function getNearestPoiOnRoute() {
+  return getNearbyBoatPoi();
+}
+
+function updateBoatStationInfo() {
+  const poi = getNearbyBoatPoi();
+
+  id("currentStationText").textContent =
+    poi ? poi.name : "航行中";
 }
 
 function checkPoiWalk(pos) {
