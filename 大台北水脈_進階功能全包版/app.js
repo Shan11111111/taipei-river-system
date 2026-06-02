@@ -20,8 +20,20 @@ let currentRoute = [],
   routeStops = [],
   currentStopIndex = 0;
 
+let currentNearbyRiver = null;
+let currentNearbyDistance = Infinity;
+let activePoiCategory = "全部";
+let activePoiKeyword = "";
+let shouldCenterUserOnce = false;
+let lastUserLatLng = null;
+let waterNotifyEnabled = true;
+let waterNotifyTimer = null;
+let waterToastTimer = null;
+
 const INTRO_SECONDS = 30;
 const THRESHOLD = 900;
+const BADGE_RADIUS = 500;
+let currentOpenPoi = null;
 
 const introScenes = [
   ["淡水河：城市入海口", "淡水河串起台北盆地與海洋，是貿易、移民與城市發展的重要通道。"],
@@ -166,6 +178,13 @@ document.addEventListener("DOMContentLoaded", () => {
   id("layerBtn").onclick = () => id("layerPanel").classList.toggle("hidden");
   id("simulateDangerBtn").onclick = () => simulateDanger(true);
   id("refreshWaterBtn").onclick = refreshWater;
+  id("waterNotifyToggle").onchange = (e) => {
+    waterNotifyEnabled = e.target.checked;
+  };
+
+  id("closeWaterToast").onclick = () => {
+    id("waterToast").classList.add("hidden");
+  };
   id("pauseWalkBtn").onclick = () => {
     isPaused = true;
 
@@ -178,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id("walkNarration").textContent = `📍 已停靠 ${poi.name}，你可以查看景點故事與街景導覽。`;
     }
   };
+
 
   id("resumeWalkBtn").onclick = () => {
     isPaused = false;
@@ -267,6 +287,7 @@ async function initMap() {
   drawOldRiverLayer();
   map.on("zoomend", drawAllPois);
   setupPoiSearch();
+  setupPoiFilter();
   startMonitor();
 }
 
@@ -534,6 +555,11 @@ function applyLayerToggles() {
 }
 
 function enableGPS() {
+  shouldCenterUserOnce = true;
+
+  if (lastUserLatLng) {
+    map.setView(lastUserLatLng, 14, { animate: true });
+  }
   if (!navigator.geolocation) {
     setLoc("瀏覽器不支援定位，請使用示範位置。");
     return;
@@ -555,6 +581,7 @@ function enableGPS() {
 }
 
 function useDemoLocation() {
+  shouldCenterUserOnce = true;
   updateUserLocation(25.0569, 121.5082, "示範位置");
 }
 
@@ -577,13 +604,20 @@ function updateUserLocation(lat, lng, src) {
   highlightRiver(near.riverName);
   setLoc(`${src}：目前接近「${near.riverName}」，距離約 ${Math.round(near.distance)} 公尺。`);
 
-  map.setView([lat, lng], 14, { animate: true });
+  lastUserLatLng = [lat, lng];
+
+  if (shouldCenterUserOnce) {
+    map.setView([lat, lng], 14, { animate: true });
+    shouldCenterUserOnce = false;
+  }
 
   if (near.distance < THRESHOLD) {
     checkPoiReal(lat, lng, near.riverName);
   }
 
-  checkLocationDanger(near.riverName);
+  currentNearbyRiver = near.riverName;
+  currentNearbyDistance = near.distance;
+  checkNearbyWaterDangerToast();
 }
 
 function setLoc(t) {
@@ -623,19 +657,10 @@ function highlightRiver(n) {
   renderRiverButtons(n);
 
   Object.entries(riverLayers).forEach(([rn, l]) => {
-    if (rn === n) {
-      l.setStyle({
-        weight: 10,
-        opacity: 1
-      });
-
-      l.bringToFront();
-    } else {
-      l.setStyle({
-        weight: 4,
-        opacity: 0.25
-      });
-    }
+    l.setStyle({
+      weight: rn === n ? 10 : 9,
+      opacity: 0.96
+    });
   });
 
   id("currentMode").textContent = `目前接近：${n}`;
@@ -714,12 +739,12 @@ function enterWalk(n) {
   }
 
   walkMarker = L.marker(currentRoute[0], {
-  icon: L.icon({
-    iconUrl: "icon/boat.png",
-    iconSize: [48, 48],
-    iconAnchor: [24, 24]
-  })
-}).addTo(map);
+    icon: L.icon({
+      iconUrl: "icon/boat.png",
+      iconSize: [48, 48],
+      iconAnchor: [24, 24]
+    })
+  }).addTo(map);
 
   isPaused = false;
 
@@ -794,12 +819,18 @@ function drawAllPois() {
   const allPois = getAllTourPois();
 
   allPois.forEach((p) => {
+    const hasActiveFilter =
+      activePoiCategory !== "全部" ||
+      activePoiKeyword.trim() !== "";
+
     const shouldShow =
+      hasActiveFilter ||
       selectedRiver === p.river ||
       p.level === "major" ||
       zoom >= 13;
 
     if (!shouldShow) return;
+    if (!shouldShowPoiByFilter(p)) return;
 
     const style = getPoiStyle(p);
 
@@ -847,6 +878,40 @@ function drawPoi(pois) {
   drawAllPois();
 }
 
+function shouldShowPoiByFilter(p) {
+  const categoryOk =
+    activePoiCategory === "全部" ||
+    p.type === activePoiCategory;
+
+  const keyword = activePoiKeyword.trim().toLowerCase();
+
+  const keywordOk =
+    !keyword ||
+    p.name?.toLowerCase().includes(keyword) ||
+    p.river?.toLowerCase().includes(keyword) ||
+    p.type?.toLowerCase().includes(keyword) ||
+    p.riverStory?.toLowerCase().includes(keyword) ||
+    p.heritageTitle?.toLowerCase().includes(keyword);
+
+  return categoryOk && keywordOk;
+}
+
+function setupPoiFilter() {
+  document.querySelectorAll(".poi-filter-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activePoiCategory = btn.dataset.category;
+
+      document.querySelectorAll(".poi-filter-chip").forEach((b) =>
+        b.classList.remove("active")
+      );
+
+      btn.classList.add("active");
+
+      drawAllPois();
+    });
+  });
+}
+
 function setupPoiSearch() {
   const input = id("poiSearchInput");
   const results = id("poiSearchResults");
@@ -855,8 +920,13 @@ function setupPoiSearch() {
 
   input.addEventListener("input", () => {
     const keyword = input.value.trim().toLowerCase();
+    activePoiKeyword = keyword;
+    drawAllPois();
 
     if (!keyword) {
+      activePoiKeyword = "";
+      drawAllPois();
+
       results.classList.add("hidden");
       results.innerHTML = "";
       return;
@@ -977,25 +1047,51 @@ function updatePoiState(p, d) {
       navigator.vibrate(120);
     }
 
-    let r = tryBadge(p);
-
-    if (r.acquired) {
-      id("walkNarration").textContent = `抵達 ${p.name} 附近，取得景點徽章！`;
+    if (id("walkNarration")) {
+      id("walkNarration").textContent = `已接近 ${p.name}，答對文化小問答即可取得徽章。`;
     }
   } else if (el) {
     el.classList.remove("nearby");
   }
 }
 
+function getPoiDistanceFromUser(p) {
+  if (lastUserLatLng) {
+    return distanceMeters(lastUserLatLng[0], lastUserLatLng[1], p.lat, p.lng);
+  }
+
+  if (walkMarker) {
+    const pos = walkMarker.getLatLng();
+    return distanceMeters(pos.lat, pos.lng, p.lat, p.lng);
+  }
+
+  return Infinity;
+}
+
+function canAcquirePoiBadge(p) {
+  return getPoiDistanceFromUser(p) <= BADGE_RADIUS;
+}
+
 function openPoi(p) {
+  currentOpenPoi = p;
+
   id("poiModalTitle").textContent = p.name;
   id("poiModalStory").textContent = p.riverStory;
 
-  let r = tryBadge(p);
+  const d = getPoiDistanceFromUser(p);
+  const near = d <= BADGE_RADIUS;
+  const alreadyGot = !!state.badges[p.id];
 
-  id("poiBadgeResult").innerHTML = r.acquired
-    ? `🎉 取得景點徽章：<b style="color:${p.badgeColor}">${p.name}</b>`
-    : `🏅 此景點徽章已取得。規則：同一景點 24 小時內只能取得一次。`;
+  if (alreadyGot) {
+    id("poiBadgeResult").innerHTML =
+      `🏅 此景點徽章已取得。`;
+  } else if (near) {
+    id("poiBadgeResult").innerHTML =
+      `📍 你在景點 ${BADGE_RADIUS} 公尺內，答對問題即可取得徽章。`;
+  } else {
+    id("poiBadgeResult").innerHTML =
+      `🔒 距離景點約 ${Number.isFinite(d) ? Math.round(d) : "未知"} 公尺。請靠近 ${BADGE_RADIUS} 公尺內，再答題取得徽章。`;
+  }
 
   renderQuiz(p);
   openModal("poiModal");
@@ -1009,22 +1105,41 @@ function renderQuiz(p) {
     ${p.quiz.options
       .map(
         (o, i) =>
-          `<button class="quiz-option" onclick="answerQuiz(${i},${p.quiz.answer})">${o}</button>`
+          `<button class="quiz-option" onclick="answerQuiz(${i},${p.quiz.answer},'${p.id}')">${o}</button>`
       )
       .join("")}
     <div id="quizResult"></div>
   `;
 }
 
-function answerQuiz(i, a) {
-  if (i === a) {
-    state.stats.quizScore += 10;
-    id("quizResult").textContent = "答對了！+10 分";
-    saveStats();
-    renderMissions();
-  } else {
+function answerQuiz(i, a, poiId) {
+  const p = getAllTourPois().find(x => x.id === poiId);
+
+  if (!p) return;
+
+  if (i !== a) {
     id("quizResult").textContent = "答錯了，可以再看看景點故事。";
+    return;
   }
+
+  state.stats.quizScore += 10;
+  saveStats();
+  renderMissions();
+
+  if (!canAcquirePoiBadge(p)) {
+    const d = getPoiDistanceFromUser(p);
+
+    id("quizResult").textContent =
+      `答對了！+10 分。但距離景點約 ${Number.isFinite(d) ? Math.round(d) : "未知"} 公尺，需在 ${BADGE_RADIUS} 公尺內才能取得徽章。`;
+
+    return;
+  }
+
+  const r = tryBadge(p);
+
+  id("quizResult").innerHTML = r.acquired
+    ? `答對了！+10 分，並取得徽章：<b style="color:${p.badgeColor}">${p.name}</b>`
+    : `答對了！+10 分。此景點徽章已取得。`;
 }
 
 function tryBadge(p) {
@@ -1105,12 +1220,58 @@ function showDanger(n, w) {
   }
 }
 
-function startMonitor() {
-  if (dangerTimer) {
-    clearInterval(dangerTimer);
-  }
+function showWaterToast(title, text) {
+  id("waterToastTitle").textContent = title;
+  id("waterToastText").textContent = text;
 
-  dangerTimer = setInterval(() => simulateDanger(false), 20000);
+  id("waterToast").classList.remove("hidden");
+
+  if (waterToastTimer) clearTimeout(waterToastTimer);
+
+  waterToastTimer = setTimeout(() => {
+    id("waterToast").classList.add("hidden");
+  }, 7000);
+}
+
+function showGlobalDangerSummary() {
+  const dangerList = Object.entries(state.water)
+    .filter(([riverName, w]) => Number(w.current) >= Number(w.warning));
+
+  if (!dangerList.length) return;
+
+  const names = dangerList
+    .map(([riverName, w]) => `${riverName} ${Number(w.current).toFixed(2)}m`)
+    .join("、");
+
+  showWaterToast(
+    "⚠️ 目前水位警戒",
+    `目前警戒河流：${names}。請避免靠近相關河岸與低窪步道。`
+  );
+}
+
+function checkNearbyWaterDangerToast() {
+  if (!waterNotifyEnabled) return;
+  if (!currentNearbyRiver) return;
+  if (currentNearbyDistance > 1000) return;
+
+  const w = state.water[currentNearbyRiver];
+  if (!w) return;
+
+  const current = Number(w.current);
+  const warning = Number(w.warning);
+
+  if (!Number.isFinite(current) || !Number.isFinite(warning)) return;
+
+  if (current >= warning) {
+    showWaterToast(
+      `⚠️ ${currentNearbyRiver} 水位提醒`,
+      `你目前距離 ${currentNearbyRiver} 約 ${Math.round(currentNearbyDistance)} 公尺，水位 ${current.toFixed(2)}m 已達警戒 ${warning.toFixed(2)}m，請盡快遠離河岸。`
+    );
+  }
+}
+
+function startMonitor() {
+  // 正式版不使用隨機警示
 }
 
 function backToMainMap() {
@@ -1514,11 +1675,7 @@ async function startRealWaterAutoUpdate() {
   setInterval(refreshWater, 1 * 60 * 1000);
 }
 
-setTimeout(() => {
-  if (typeof state !== "undefined" && typeof refreshWater === "function") {
-    startRealWaterAutoUpdate();
-  }
-}, 1500);
+
 
 
 
@@ -2005,7 +2162,17 @@ async function startRealWaterAutoUpdate() {
   }
 
   await refreshWater();
-  setInterval(refreshWater, 1 * 60 * 1000);
+
+  // 一進系統先提示全部警戒河流
+  showGlobalDangerSummary();
+
+  if (waterNotifyTimer) clearInterval(waterNotifyTimer);
+
+  // 之後每分鐘刷新水位，只在使用者 1 公里內才通知
+  waterNotifyTimer = setInterval(async () => {
+    await refreshWater();
+    checkNearbyWaterDangerToast();
+  }, 60 * 1000);
 }
 
 function startRealWaterAutoUpdateWhenReady(retry = 0) {

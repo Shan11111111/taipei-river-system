@@ -68,6 +68,17 @@
       </section>
       <div class="search-card">
         <input id="poiSearchInput" class="poi-search-input" type="text" placeholder="搜尋景點、河流、碼頭、古蹟..." />
+
+        <div id="poiFilterBar" class="poi-filter-bar">
+          <button class="poi-filter-chip active" data-category="全部">全部</button>
+          <button class="poi-filter-chip" data-category="親水休憩">親水休憩</button>
+          <button class="poi-filter-chip" data-category="歷史文化">歷史文化</button>
+          <button class="poi-filter-chip" data-category="河岸景觀">河岸景觀</button>
+          <button class="poi-filter-chip" data-category="生態自然">生態自然</button>
+          <button class="poi-filter-chip" data-category="運動遊憩">運動遊憩</button>
+          <button class="poi-filter-chip" data-category="美食商圈">美食商圈</button>
+        </div>
+
         <div id="poiSearchResults" class="poi-search-results hidden"></div>
       </div>
 
@@ -81,16 +92,33 @@
       </section>
 
       <section class="card">
-        <h3>五大水系</h3>
+        <h3>五大水系導覽</h3>
         <div id="riverList" class="river-list"></div>
       </section>
 
       <section class="card">
-        <h3>水位安全</h3>
+        <div class="water-card-title">
+
+          <h3>水位安全</h3>
+
+          <label class="water-switch-wrap">
+            <span class="water-switch-text">通知</span>
+
+            <span class="water-switch">
+              <input type="checkbox" id="waterNotifyToggle" checked>
+              <span class="water-switch-track"></span>
+            </span>
+          </label>
+
+        </div>
+
+
+        </div>
         <div id="waterStatusList" class="water-list"></div>
         <div class="btn-row">
           <button id="simulateDangerBtn" class="secondary-btn">模擬警戒</button>
           <button id="refreshWaterBtn" class="secondary-btn">刷新水位</button>
+
         </div>
       </section>
 
@@ -113,7 +141,7 @@
         <div class="top-actions">
 
           <button id="backToMapBtn" class="top-icon-btn hidden" title="回到地圖">
-            <img src="icon/map.png" alt="">
+            <img src="icon/close.png" alt="">
           </button>
 
           <button id="layerBtn" class="top-icon-btn" title="圖層控制">
@@ -125,6 +153,11 @@
           </button>
 
         </div>
+      </div>
+      <div id="waterToast" class="water-toast hidden">
+        <button id="closeWaterToast" class="water-toast-close">×</button>
+        <strong id="waterToastTitle">水位提醒</strong>
+        <p id="waterToastText"></p>
       </div>
 
       <div id="layerPanel" class="floating-panel hidden">
