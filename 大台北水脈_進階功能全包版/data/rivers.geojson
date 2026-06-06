@@ -87,6 +87,131 @@
             "streetLng": 121.4329,
             "heading": 140,
             "pitch": 0
+          },
+          {
+            "id": "tamsui-old-street",
+            "name": "淡水老街",
+            "type": "美食商圈",
+            "lat": 25.1698,
+            "lng": 121.4391,
+            "radius": 500,
+            "badgeColor": "#fb923c",
+            "riverStory": "淡水老街依著淡水河發展，早期商船、河運與港口活動讓這裡成為北台灣重要商業據點。從河流視角觀看，可以理解港口、街道與聚落如何共同形成淡水的繁榮。",
+            "quiz": {
+              "q": "淡水老街早期繁榮最主要與哪項因素有關？",
+              "options": [
+                "河運與港口貿易",
+                "高山林業",
+                "礦坑開採"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "淡水老街與河港商業",
+            "heritageStory": "淡水老街因淡水河港口發展而興盛，街道保存河港聚落與商業文化，是理解淡水河歷史的重要地點。",
+            "streetLat": 25.1698,
+            "streetLng": 121.4391,
+            "heading": 120,
+            "pitch": 0
+          },
+          {
+            "id": "tamsui-fisherman-wharf",
+            "name": "漁人碼頭",
+            "type": "親水休憩",
+            "lat": 25.1836,
+            "lng": 121.4143,
+            "radius": 520,
+            "badgeColor": "#38bdf8",
+            "riverStory": "漁人碼頭位於淡水河出海口附近，從河岸可以看見河流與海洋交會的景觀，也呈現淡水由漁港逐漸轉型為觀光水岸空間。",
+            "quiz": {
+              "q": "漁人碼頭最能代表哪種河岸轉型？",
+              "options": [
+                "漁港轉型觀光水岸",
+                "山區農業聚落",
+                "工業煉鋼區"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "漁人碼頭與淡水河口",
+            "heritageStory": "漁人碼頭結合河口景觀、觀光與親水活動，是淡水河現代水岸發展的重要代表。",
+            "streetLat": 25.1836,
+            "streetLng": 121.4143,
+            "heading": 210,
+            "pitch": 0
+          },
+          {
+            "id": "tamsui-bali-left-bank",
+            "name": "八里左岸公園",
+            "type": "親水休憩",
+            "lat": 25.1582,
+            "lng": 121.4064,
+            "radius": 500,
+            "badgeColor": "#38bdf8",
+            "riverStory": "八里左岸展現淡水河沿岸的自行車道、河濱步道與親水空間，讓人能近距離感受河口景觀與河岸生活。",
+            "quiz": {
+              "q": "八里左岸最主要的河岸特色是什麼？",
+              "options": [
+                "親水休閒與河濱景觀",
+                "礦業聚落",
+                "高山梯田"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "八里左岸與河濱空間",
+            "heritageStory": "八里左岸是淡水河沿岸重要親水空間，結合步道、自行車與河岸景觀，展現現代河濱休閒文化。",
+            "streetLat": 25.1582,
+            "streetLng": 121.4064,
+            "heading": 80,
+            "pitch": 0
+          },
+          {
+            "id": "tamsui-mangrove",
+            "name": "紅樹林生態步道",
+            "type": "生態自然",
+            "lat": 25.1546,
+            "lng": 121.4589,
+            "radius": 500,
+            "badgeColor": "#4ade80",
+            "riverStory": "紅樹林濕地位於淡水河口，是北台灣重要生態區域。從河流視角觀看，可以理解河口濕地如何孕育候鳥與潮間帶生態。",
+            "quiz": {
+              "q": "紅樹林濕地最具代表性的特色是什麼？",
+              "options": [
+                "河口濕地生態",
+                "高山雪景",
+                "火山地形"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "紅樹林濕地與河口生態",
+            "heritageStory": "紅樹林濕地保存淡水河口珍貴生態環境，是認識河口生態與候鳥棲地的重要地點。",
+            "streetLat": 25.1546,
+            "streetLng": 121.4589,
+            "heading": 170,
+            "pitch": 0
+          },
+          {
+            "id": "tamsui-guandu-temple",
+            "name": "關渡宮",
+            "type": "歷史文化",
+            "lat": 25.1172,
+            "lng": 121.4622,
+            "radius": 500,
+            "badgeColor": "#a78bfa",
+            "riverStory": "關渡宮位於淡水河與基隆河附近，長期與河運、聚落與信仰發展有密切關係，是北台灣重要媽祖信仰中心。",
+            "quiz": {
+              "q": "關渡宮與淡水河最主要的連結是什麼？",
+              "options": [
+                "河運聚落與信仰文化",
+                "雪山登山文化",
+                "工業港區"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "關渡宮與河岸信仰",
+            "heritageStory": "關渡宮長期守護淡水河沿岸聚落，結合水岸、聚落與宗教文化，是重要河岸信仰景點。",
+            "streetLat": 25.1172,
+            "streetLng": 121.4622,
+            "heading": 230,
+            "pitch": 0
           }
         ]
       },
@@ -278,6 +403,82 @@
             "streetLat": 24.9345,
             "streetLng": 121.3696,
             "heading": 80,
+            "pitch": 0
+          },
+          {
+            "id": "dahan-yingge-old-street",
+            "name": "鶯歌老街",
+            "type": "美食商圈",
+            "lat": 24.9548,
+            "lng": 121.3558,
+            "radius": 550,
+            "badgeColor": "#fb923c",
+            "riverStory": "鶯歌因大漢溪流域交通與陶瓷產業發展而繁榮。從河流角度觀看，可以理解水路如何影響地方產業與聚落形成。",
+            "quiz": {
+              "q": "鶯歌老街最具代表性的地方特色是什麼？",
+              "options": [
+                "陶瓷文化",
+                "遠洋漁業",
+                "高山農場"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "鶯歌老街與陶瓷文化",
+            "heritageStory": "鶯歌因陶瓷產業聞名，大漢溪流域交通也帶動聚落與商業發展，是北台灣重要文化街區。",
+            "streetLat": 24.9548,
+            "streetLng": 121.3558,
+            "heading": 100,
+            "pitch": 0
+          },
+          {
+            "id": "dahan-xinzhuang-temple-street",
+            "name": "新莊廟街",
+            "type": "美食商圈",
+            "lat": 25.0355,
+            "lng": 121.4508,
+            "radius": 500,
+            "badgeColor": "#fb923c",
+            "riverStory": "新莊廟街早期依靠大漢溪水運與聚落發展而形成，是新莊地區重要商業與信仰中心。",
+            "quiz": {
+              "q": "新莊廟街早期繁榮與哪項因素最相關？",
+              "options": [
+                "水運與聚落發展",
+                "雪山探險",
+                "海底採礦"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "新莊廟街與大漢溪聚落",
+            "heritageStory": "新莊廟街結合老街、美食與廟宇文化，能呈現大漢溪沿岸聚落發展歷史。",
+            "streetLat": 25.0355,
+            "streetLng": 121.4508,
+            "heading": 260,
+            "pitch": 0
+          },
+          {
+            "id": "dahan-shimen-reservoir",
+            "name": "石門水庫",
+            "type": "生態自然",
+            "lat": 24.8177,
+            "lng": 121.2453,
+            "radius": 800,
+            "boatRadius": 5000,
+            "badgeColor": "#4ade80",
+            "riverStory": "石門水庫位於大漢溪上游，是北台灣重要水資源設施。從流域角度觀看，可以理解河川如何支撐城市供水與防洪。",
+            "quiz": {
+              "q": "石門水庫最主要的功能是什麼？",
+              "options": [
+                "供水與防洪",
+                "港口貿易",
+                "火山觀測"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "石門水庫與水資源",
+            "heritageStory": "石門水庫提供北台灣重要供水來源，也兼具防洪與灌溉功能，是大漢溪流域的重要節點。",
+            "streetLat": 24.8177,
+            "streetLng": 121.2453,
+            "heading": 150,
             "pitch": 0
           }
         ]
@@ -625,6 +826,31 @@
             "streetLat": 25.0132,
             "streetLng": 121.5302,
             "heading": 180,
+            "pitch": 0
+          },
+          {
+            "id": "xindian-youth-park",
+            "name": "青年公園",
+            "type": "運動遊憩",
+            "lat": 25.0264,
+            "lng": 121.5063,
+            "radius": 500,
+            "badgeColor": "#22d3ee",
+            "riverStory": "青年公園鄰近新店溪生活圈，是居民休閒與運動的重要綠地，也展現都市河岸周邊的公共空間功能。",
+            "quiz": {
+              "q": "青年公園最能代表哪種都市功能？",
+              "options": [
+                "休閒運動與綠地",
+                "礦業生產",
+                "港口裝卸"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "青年公園與都市綠地",
+            "heritageStory": "青年公園是台北重要大型公園之一，可補充新店溪周邊居民生活與運動空間。",
+            "streetLat": 25.0264,
+            "streetLng": 121.5063,
+            "heading": 40,
             "pitch": 0
           }
         ]
@@ -1112,6 +1338,56 @@
             "streetLat": 24.9988,
             "streetLng": 121.581,
             "heading": 150,
+            "pitch": 0
+          },
+          {
+            "id": "jingmei-night-market",
+            "name": "景美夜市",
+            "type": "美食商圈",
+            "lat": 24.9939,
+            "lng": 121.5406,
+            "radius": 450,
+            "badgeColor": "#fb923c",
+            "riverStory": "景美夜市位於景美溪生活圈附近，展現河岸周邊居民日常飲食與夜間商業活動。",
+            "quiz": {
+              "q": "景美夜市最能代表哪種城市特色？",
+              "options": [
+                "居民日常與夜市文化",
+                "高山放牧",
+                "河口漁港"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "景美夜市與生活圈",
+            "heritageStory": "景美夜市是文山區重要夜市，能呈現景美溪周邊居民生活與地方商圈文化。",
+            "streetLat": 24.9939,
+            "streetLng": 121.5406,
+            "heading": 180,
+            "pitch": 0
+          },
+          {
+            "id": "jingmei-shenkeng",
+            "name": "深坑老街",
+            "type": "美食商圈",
+            "lat": 25.0027,
+            "lng": 121.6153,
+            "radius": 600,
+            "badgeColor": "#fb923c",
+            "riverStory": "深坑老街位於景美溪上游生活圈附近，以豆腐料理與山城聚落聞名，呈現山區聚落與溪流環境的連結。",
+            "quiz": {
+              "q": "深坑老街最有名的地方特色是什麼？",
+              "options": [
+                "豆腐料理",
+                "遠洋漁業",
+                "高山茶園"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "深坑老街與山城聚落",
+            "heritageStory": "深坑老街保存山城聚落與傳統街道景觀，是景美溪上游地區的重要文化景點。",
+            "streetLat": 25.0027,
+            "streetLng": 121.6153,
+            "heading": 100,
             "pitch": 0
           }
         ]
@@ -2111,6 +2387,81 @@
             "streetLat": 25.0742,
             "streetLng": 121.5556,
             "heading": 90,
+            "pitch": 0
+          },
+          {
+            "id": "keelung-dajia-riverside",
+            "name": "大佳河濱公園",
+            "type": "運動遊憩",
+            "lat": 25.0718,
+            "lng": 121.5366,
+            "radius": 550,
+            "badgeColor": "#22d3ee",
+            "riverStory": "大佳河濱公園位於基隆河沿岸，是結合自行車道、草地與大型活動的重要河濱空間。",
+            "quiz": {
+              "q": "大佳河濱公園最具代表性的特色是什麼？",
+              "options": [
+                "大型河濱休閒空間",
+                "高山林場",
+                "港口碼頭"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "大佳河濱公園與基隆河",
+            "heritageStory": "大佳河濱公園展現基隆河整治後的休閒功能，是台北重要河濱活動空間。",
+            "streetLat": 25.0718,
+            "streetLng": 121.5366,
+            "heading": 250,
+            "pitch": 0
+          },
+          {
+            "id": "keelung-flora-expo",
+            "name": "圓山花博園區",
+            "type": "其他景點",
+            "lat": 25.0715,
+            "lng": 121.5221,
+            "radius": 500,
+            "badgeColor": "#cbd5e1",
+            "riverStory": "圓山花博園區鄰近基隆河，結合展覽、綠地與城市活動，是都市開放空間的重要代表。",
+            "quiz": {
+              "q": "圓山花博園區最主要的空間特色是什麼？",
+              "options": [
+                "展覽與大型活動空間",
+                "礦場聚落",
+                "遠洋港區"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "圓山花博與都市綠地",
+            "heritageStory": "圓山花博園區結合展覽、休閒與城市綠地，是基隆河周邊的重要公共活動空間。",
+            "streetLat": 25.0715,
+            "streetLng": 121.5221,
+            "heading": 90,
+            "pitch": 0
+          },
+          {
+            "id": "keelung-dahu-park",
+            "name": "大湖公園",
+            "type": "生態自然",
+            "lat": 25.0834,
+            "lng": 121.6035,
+            "radius": 550,
+            "badgeColor": "#4ade80",
+            "riverStory": "大湖公園結合湖泊、生態與都市景觀，呈現基隆河流域周邊的自然休閒空間。",
+            "quiz": {
+              "q": "大湖公園最適合代表哪種空間特色？",
+              "options": [
+                "都市生態與湖泊景觀",
+                "港口貨運",
+                "高山冰川"
+              ],
+              "answer": 0
+            },
+            "heritageTitle": "大湖公園與都市生態",
+            "heritageStory": "大湖公園是內湖重要生態景點，能補充基隆河流域的自然與休閒面向。",
+            "streetLat": 25.0834,
+            "streetLng": 121.6035,
+            "heading": 200,
             "pitch": 0
           }
         ]

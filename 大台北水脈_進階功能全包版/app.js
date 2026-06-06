@@ -2117,7 +2117,6 @@ async function refreshWater() {
 
 function drawRiskLayers() {
   if (!map || !riversData || !Array.isArray(riversData.features)) {
-    console.warn("[drawRiskLayers] riversData 尚未載入，略過風險圖層繪製");
     return;
   }
 
@@ -2130,23 +2129,39 @@ function drawRiskLayers() {
   riskLayers = [];
 
   riversData.features.forEach(f => {
-    const w = state.water[f.properties.name];
+    const riverName = f.properties.name;
+    const w = state.water[riverName];
 
     if (!w) return;
 
     const danger = Number(w.current) >= Number(w.warning);
     const coords = f.geometry.coordinates.map(c => [c[1], c[0]]);
+    const center = coords[Math.floor(coords.length / 2)];
 
-    const circle = L.circle(coords[Math.floor(coords.length / 2)], {
-      radius: danger ? 900 : 420,
-      color: danger ? "#ef4444" : "#22c55e",
-      fillColor: danger ? "#ef4444" : "#22c55e",
-      fillOpacity: danger ? 0.14 : 0.06,
-      weight: 1
+    const marker = L.marker(center, {
+      icon: L.divIcon({
+        className: "",
+        html: `
+          <div class="water-map-dot ${danger ? "danger" : "safe"}">
+            <img src="${danger ? "icon/water-full.png" : "icon/water-half.png"}" alt="水位站">
+          </div>
+        `,
+        iconSize: [22, 22],
+        iconAnchor: [11, -4]
+      })
     }).addTo(map);
 
-    riskLayers.push(circle);
+    marker.bindTooltip(
+      `<b>${riverName} 水位監測站</b><br>
+      目前水位：${Number(w.current).toFixed(2)}m<br>
+      警戒水位：${Number(w.warning).toFixed(2)}m`,
+      { sticky: true }
+    );
+    marker.setZIndexOffset(-300);
+    riskLayers.push(marker);
   });
+
+  console.log("水位站數量：", riskLayers.length);
 }
 
 async function startRealWaterAutoUpdate() {

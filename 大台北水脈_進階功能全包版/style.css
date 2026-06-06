@@ -2376,3 +2376,47 @@ body {
 .water-switch input:checked + .water-switch-track::before {
   transform: translateX(16px);
 }
+
+/* 地圖水位監測站 icon */
+.water-map-dot {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(10, 18, 28, .48);
+  border: 1px solid rgba(255,255,255,.18);
+
+  box-shadow: 0 2px 5px rgba(0,0,0,.22);
+}
+
+.water-map-dot img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* 安全：藍色 */
+.water-map-dot.safe img {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(65%)
+    sepia(88%)
+    saturate(1895%)
+    hue-rotate(170deg);
+}
+
+/* 警戒：紅色 */
+.water-map-dot.danger img {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(36%)
+    sepia(96%)
+    saturate(2380%)
+    hue-rotate(337deg);
+}
