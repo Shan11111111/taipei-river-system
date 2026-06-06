@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
   id("exportBtn").onclick = exportRecord;
   id("clearBadgesBtn").onclick = clearRecord;
 
-  ["toggleRivers", "togglePoi", "toggleRisk", "toggleOldRiver"].forEach((x) => {
+  ["toggleRivers", "togglePoi", "toggleRisk"].forEach((x) => {
     id(x).onchange = applyLayerToggles;
   });
 
@@ -547,7 +547,7 @@ function applyLayerToggles() {
 
   if (oldRiverLayer) {
     oldRiverLayer.setStyle({
-      opacity: id("toggleOldRiver").checked ? 0.65 : 0
+      opacity: 0
     });
   }
 
