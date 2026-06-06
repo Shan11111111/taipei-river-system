@@ -827,7 +827,7 @@ function drawAllPois() {
       hasActiveFilter ||
       selectedRiver === p.river ||
       p.level === "major" ||
-      zoom >= 13;
+      zoom >= 12;
 
     if (!shouldShow) return;
     if (!shouldShowPoiByFilter(p)) return;
