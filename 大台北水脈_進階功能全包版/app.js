@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
   id("exportBtn").onclick = exportRecord;
   id("clearBadgesBtn").onclick = clearRecord;
 
-  ["toggleRivers", "togglePoi", "toggleRisk"].forEach((x) => {
+  ["toggleRivers", "togglePoi", "toggleRiskBuffer", "toggleWaterStation"].forEach((x) => {
     id(x).onchange = applyLayerToggles;
   });
 
@@ -543,9 +543,15 @@ function applyLayerToggles() {
     id("togglePoi").checked ? l.addTo(map) : map.removeLayer(l)
   );
 
-  riskLayers.forEach((l) =>
-    id("toggleRisk").checked ? l.addTo(map) : map.removeLayer(l)
-  );
+  riskLayers.forEach((l) => {
+    const isCircle = l instanceof L.Circle;
+    const show =
+      isCircle
+        ? id("toggleRiskBuffer").checked
+        : id("toggleWaterStation").checked;
+
+    show ? l.addTo(map) : map.removeLayer(l);
+  });
 
   if (oldRiverLayer) {
     oldRiverLayer.setStyle({
@@ -2138,7 +2144,6 @@ async function refreshWater() {
 }
 
 /* ===== 修正：等 riversData 載入後才更新水位，避免 features undefined ===== */
-
 function drawRiskLayers() {
   if (!map || !riversData || !Array.isArray(riversData.features)) {
     return;
@@ -2162,7 +2167,25 @@ function drawRiskLayers() {
     const coords = f.geometry.coordinates.map(c => [c[1], c[0]]);
     const center = coords[Math.floor(coords.length / 2)];
 
-    const marker = L.marker(center, {
+    // 1. 水位風險熱區圈
+    const bufferCircle = L.circle(center, {
+      radius: danger ? 900 : 420,
+      color: danger ? "#ef4444" : "#22c55e",
+      fillColor: danger ? "#ef4444" : "#22c55e",
+      fillOpacity: danger ? 0.12 : 0.06,
+      weight: 1,
+      opacity: 0.75
+    }).addTo(map);
+
+    bufferCircle.bindTooltip(
+      `<b>${riverName} 水位風險熱區</b><br>
+      目前水位：${Number(w.current).toFixed(2)}m<br>
+      警戒水位：${Number(w.warning).toFixed(2)}m`,
+      { sticky: true }
+    );
+
+    // 2. 水位監測站圖示
+    const stationMarker = L.marker(center, {
       icon: L.divIcon({
         className: "",
         html: `
@@ -2175,43 +2198,18 @@ function drawRiskLayers() {
       })
     }).addTo(map);
 
-    marker.bindTooltip(
+    stationMarker.bindTooltip(
       `<b>${riverName} 水位監測站</b><br>
       目前水位：${Number(w.current).toFixed(2)}m<br>
       警戒水位：${Number(w.warning).toFixed(2)}m`,
       { sticky: true }
     );
-    marker.setZIndexOffset(-300);
-    riskLayers.push(marker);
+
+    stationMarker.setZIndexOffset(300);
+
+    riskLayers.push(bufferCircle);
+    riskLayers.push(stationMarker);
   });
-
-  console.log("水位站數量：", riskLayers.length);
-}
-
-async function startRealWaterAutoUpdate() {
-  if (
-    !map ||
-    !riversData ||
-    !Array.isArray(riversData.features) ||
-    !state.water ||
-    Object.keys(state.water).length === 0
-  ) {
-    console.warn("[WRA] riversData/state.water 尚未完成，暫不更新水位。");
-    return;
-  }
-
-  await refreshWater();
-
-  // 一進系統先提示全部警戒河流
-  showGlobalDangerSummary();
-
-  if (waterNotifyTimer) clearInterval(waterNotifyTimer);
-
-  // 之後每分鐘刷新水位，只在使用者 1 公里內才通知
-  waterNotifyTimer = setInterval(async () => {
-    await refreshWater();
-    checkNearbyWaterDangerToast();
-  }, 60 * 1000);
 }
 
 function startRealWaterAutoUpdateWhenReady(retry = 0) {
