@@ -1,3 +1,5 @@
+let demoFollowBoat = false;
+
 let map,
   riversData,
   selectedRiver = null,
@@ -581,8 +583,15 @@ function enableGPS() {
 }
 
 function useDemoLocation() {
+  demoFollowBoat = true;
+
   shouldCenterUserOnce = true;
-  updateUserLocation(25.0569, 121.5082, "示範位置");
+
+  updateUserLocation(
+    25.0569,
+    121.5082,
+    "示範位置"
+  );
 }
 
 function updateUserLocation(lat, lng, src) {
@@ -766,10 +775,25 @@ function enterWalk(n) {
     let pos = currentRoute[walkIndex];
 
     walkMarker.setLatLng(pos);
+
+
+    // 示範模式同步移動使用者
+    if (demoFollowBoat && userMarker) {
+      updateUserLocation(
+        pos[0],
+        pos[1],
+        "河流導覽"
+      );
+    }
+
+
+
     map.panTo(pos, {
       animate: true,
       duration: 0.7
     });
+
+
 
     id("walkNarration").textContent = `沿著 ${n} 前進中。靠近景點時會震動提醒並可取得徽章。`;
 
