@@ -184,6 +184,30 @@ document.addEventListener("DOMContentLoaded", () => {
     waterNotifyEnabled = e.target.checked;
   };
 
+  const sidebar = id("sidebar");
+  const sidebarToggle = id("sidebarToggle");
+
+  if (sidebar && sidebarToggle) {
+    if (window.matchMedia("(max-width: 880px)").matches) {
+      sidebar.classList.add("collapsed");
+    }
+
+    sidebarToggle.onclick = () => {
+      sidebar.classList.toggle("collapsed");
+
+      let count = 0;
+      const resizeTimer = setInterval(() => {
+        if (map) map.invalidateSize(false);
+
+        count++;
+        if (count >= 12) {
+          clearInterval(resizeTimer);
+          if (map) map.invalidateSize(false);
+        }
+      }, 30);
+    };
+  }
+
   id("closeWaterToast").onclick = () => {
     id("waterToast").classList.add("hidden");
   };
@@ -3013,30 +3037,6 @@ async function refreshWater() {
 
     return 0;
   }
-}
-
-const sidebar = document.getElementById("sidebar");
-const sidebarToggle = document.getElementById("sidebarToggle");
-
-if (sidebar && sidebarToggle) {
-  if (window.matchMedia("(max-width: 880px)").matches) {
-    sidebar.classList.add("collapsed");
-  }
-
-  sidebarToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("collapsed");
-
-    let count = 0;
-    const resizeTimer = setInterval(() => {
-      if (map) map.invalidateSize(false);
-
-      count++;
-      if (count >= 12) {
-        clearInterval(resizeTimer);
-        if (map) map.invalidateSize(false);
-      }
-    }, 30);
-  });
 }
 
 
