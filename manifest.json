@@ -1,0 +1,9 @@
+{
+  "name": "大台北水脈",
+  "short_name": "水脈",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": []
+}
