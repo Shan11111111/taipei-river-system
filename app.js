@@ -184,30 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
     waterNotifyEnabled = e.target.checked;
   };
 
-  const sidebar = id("sidebar");
-  const sidebarToggle = id("sidebarToggle");
-
-  if (sidebar && sidebarToggle) {
-    if (window.matchMedia("(max-width: 880px)").matches) {
-      sidebar.classList.add("collapsed");
-    }
-
-    sidebarToggle.onclick = () => {
-      sidebar.classList.toggle("collapsed");
-
-      let count = 0;
-      const resizeTimer = setInterval(() => {
-        if (map) map.invalidateSize(false);
-
-        count++;
-        if (count >= 12) {
-          clearInterval(resizeTimer);
-          if (map) map.invalidateSize(false);
-        }
-      }, 30);
-    };
-  }
-
   id("closeWaterToast").onclick = () => {
     id("waterToast").classList.add("hidden");
   };
@@ -3038,6 +3014,48 @@ async function refreshWater() {
     return 0;
   }
 }
+
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebarToggle");
+
+sidebarToggle.addEventListener("click", () => {
+
+  if (window.innerWidth <= 768) {
+
+    // 手機版
+    sidebar.classList.toggle("mobile-open");
+
+  } else {
+
+    // 桌機版
+    sidebar.classList.toggle("collapsed");
+
+  }
+
+  // Leaflet 重算尺寸
+  let count = 0;
+
+  const resizeTimer = setInterval(() => {
+
+    if (map) {
+      map.invalidateSize(false);
+    }
+
+    count++;
+
+    if (count >= 12) {
+
+      clearInterval(resizeTimer);
+
+      if (map) {
+        map.invalidateSize(false);
+      }
+
+    }
+
+  }, 30);
+
+});
 
 
 /* ===== 修正：過濾不合理水位，避免 684m / 831m 這種錯誤值 ===== */
