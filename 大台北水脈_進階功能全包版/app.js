@@ -3019,21 +3019,43 @@ const sidebar = document.getElementById("sidebar");
 const sidebarToggle = document.getElementById("sidebarToggle");
 
 sidebarToggle.addEventListener("click", () => {
-  sidebar.classList.toggle("collapsed");
 
-  // 收合動畫期間連續刷新 Leaflet 尺寸，避免黑色空白閃一下
+  if (window.innerWidth <= 768) {
+
+    // 手機版
+    sidebar.classList.toggle("mobile-open");
+
+  } else {
+
+    // 桌機版
+    sidebar.classList.toggle("collapsed");
+
+  }
+
+  // Leaflet 重算尺寸
   let count = 0;
+
   const resizeTimer = setInterval(() => {
-    if (map) map.invalidateSize(false);
+
+    if (map) {
+      map.invalidateSize(false);
+    }
 
     count++;
-    if (count >= 12) {
-      clearInterval(resizeTimer);
-      if (map) map.invalidateSize(false);
-    }
-  }, 30);
-});
 
+    if (count >= 12) {
+
+      clearInterval(resizeTimer);
+
+      if (map) {
+        map.invalidateSize(false);
+      }
+
+    }
+
+  }, 30);
+
+});
 
 
 /* ===== 修正：過濾不合理水位，避免 684m / 831m 這種錯誤值 ===== */
