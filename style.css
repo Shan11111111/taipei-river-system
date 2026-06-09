@@ -2421,6 +2421,394 @@ body {
     hue-rotate(337deg);
 }
 
+/* =========================
+   Mobile RWD 重寫版
+   貼在 style.css 最底部
+========================= */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .app {
+    position: relative !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  .map-area {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    z-index: 1 !important;
+  }
+
+  #map {
+    width: 100vw !important;
+    height: 100dvh !important;
+  }
+
+  /* 手機版 sidebar：預設收起在左下角 */
+  .sidebar {
+    position: fixed !important;
+    left: 12px !important;
+    bottom: 12px !important;
+    top: auto !important;
+    right: auto !important;
+
+    width: 64px !important;
+    height: 64px !important;
+    flex: none !important;
+    flex-basis: auto !important;
+
+    padding: 0 !important;
+    overflow: hidden !important;
+
+    z-index: 950 !important;
+    border-radius: 22px !important;
+    border-right: none !important;
+
+    background: rgba(15, 23, 42, .92) !important;
+    box-shadow: 0 12px 34px rgba(0,0,0,.45) !important;
+  }
+
+  /* 手機版展開後 */
+  .sidebar.mobile-open {
+    width: calc(100vw - 24px) !important;
+    height: 54dvh !important;
+    max-height: 520px !important;
+
+    padding: 16px !important;
+    overflow-y: auto !important;
+
+    border-radius: 28px !important;
+  }
+
+  /* 收起時只顯示按鈕 */
+  .sidebar:not(.mobile-open) .brand > div,
+  .sidebar:not(.mobile-open) .search-card,
+  .sidebar:not(.mobile-open) .card {
+    display: none !important;
+  }
+
+  .brand {
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .sidebar.mobile-open .brand {
+    height: auto !important;
+    justify-content: space-between !important;
+    margin-bottom: 12px !important;
+  }
+
+  .brand h2 {
+    font-size: 26px !important;
+  }
+
+  .brand p {
+    display: none !important;
+  }
+
+  .sidebar-toggle {
+    display: grid !important;
+    place-items: center !important;
+
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 16px !important;
+
+    font-size: 0 !important;
+  }
+
+  .sidebar-toggle::before {
+    content: "☰";
+    font-size: 24px;
+    color: #17324d;
+  }
+
+  .sidebar.mobile-open .sidebar-toggle::before {
+    content: "×";
+    font-size: 28px;
+  }
+
+  .search-card,
+  .card {
+    margin-top: 12px !important;
+    padding: 13px !important;
+    border-radius: 20px !important;
+  }
+
+  .card h3 {
+    font-size: 18px !important;
+  }
+
+  .poi-search-input {
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+  }
+
+  .poi-filter-bar {
+    overflow-x: auto !important;
+  }
+
+  .poi-filter-chip {
+    flex-shrink: 0 !important;
+    font-size: 12px !important;
+    padding: 7px 11px !important;
+  }
+
+  /* 上方工具列 */
+  .map-topbar {
+    top: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    z-index: 700 !important;
+  }
+
+  .map-topbar span {
+    max-width: 52vw !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .top-actions {
+    top: 0 !important;
+    right: 0 !important;
+    gap: 8px !important;
+  }
+
+  .top-icon-btn {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+  }
+
+  /* 圖層面板 */
+  .floating-panel {
+    top: 64px !important;
+    right: 12px !important;
+    width: 200px !important;
+    z-index: 850 !important;
+  }
+
+  /* 航行面板 */
+  .walk-panel {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 88px !important;
+    width: auto !important;
+    z-index: 850 !important;
+  }
+
+  /* 街景面板 */
+  .streetview-panel {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    width: auto !important;
+    max-height: 78dvh !important;
+    z-index: 980 !important;
+  }
+
+  .streetview-frame {
+    height: 220px !important;
+  }
+
+  /* Leaflet zoom 不要被 sidebar 蓋到 */
+  .leaflet-top.leaflet-left {
+    right: 12px !important;
+    bottom: 88px !important;
+  }
+
+  .leaflet-control-zoom a {
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+
+  .modal-card,
+  .danger-card {
+    width: 94vw !important;
+    max-height: 82dvh !important;
+    padding: 22px !important;
+  }
+}
+
+/* =========================
+   Mobile UI 美化版
+   貼在目前 RWD 後面
+========================= */
+@media (max-width: 768px) {
+
+  .sidebar.mobile-open {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    width: calc(100vw - 28px) !important;
+    height: 46dvh !important;
+    padding: 18px !important;
+    border-radius: 30px !important;
+    background: rgba(13, 25, 42, .88) !important;
+    border: 1px solid rgba(125, 211, 252, .12) !important;
+    backdrop-filter: blur(18px) !important;
+  }
+
+  .sidebar.mobile-open .brand {
+    align-items: center !important;
+    margin-bottom: 14px !important;
+  }
+
+  .sidebar.mobile-open .brand h2 {
+    font-size: 30px !important;
+    letter-spacing: -1px !important;
+  }
+
+  .sidebar.mobile-open .sidebar-toggle {
+    width: 54px !important;
+    height: 54px !important;
+    border-radius: 18px !important;
+    background: rgba(255,255,255,.95) !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,.22) !important;
+  }
+
+  .search-card {
+    padding: 12px !important;
+    border-radius: 22px !important;
+    background: rgba(10, 22, 38, .58) !important;
+  }
+
+  .poi-search-input {
+    height: 52px !important;
+    font-size: 15px !important;
+    padding: 0 22px !important;
+  }
+
+  .poi-filter-chip {
+    height: 38px !important;
+    padding: 0 16px !important;
+    font-size: 13px !important;
+    border-radius: 999px !important;
+  }
+
+  .card {
+    padding: 18px !important;
+    border-radius: 24px !important;
+    background: rgba(10, 22, 38, .64) !important;
+  }
+
+  .card h3 {
+    font-size: 22px !important;
+  }
+
+  .btn-row {
+    gap: 12px !important;
+  }
+
+  .secondary-btn,
+  .ghost-btn,
+  .small-btn {
+    height: 46px !important;
+    padding: 0 18px !important;
+    font-size: 15px !important;
+  }
+
+  .walk-panel {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: 88px !important;
+    padding: 20px !important;
+    border-radius: 28px !important;
+    background: rgba(16, 28, 47, .9) !important;
+  }
+
+  .walk-panel h3 {
+    font-size: 24px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .walk-panel p,
+  .boat-station-info {
+    font-size: 18px !important;
+    line-height: 1.65 !important;
+  }
+
+  .walk-controls {
+    margin-top: 18px !important;
+    gap: 12px !important;
+  }
+
+  .streetview-panel {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    border-radius: 28px !important;
+    background: rgba(15, 27, 45, .94) !important;
+  }
+
+  .streetview-header {
+    padding: 20px 22px 16px !important;
+    align-items: flex-start !important;
+  }
+
+  .streetview-header h3 {
+    font-size: 25px !important;
+    line-height: 1.25 !important;
+  }
+
+  .streetview-label {
+    font-size: 12px !important;
+    letter-spacing: 3px !important;
+  }
+
+  .streetview-frame {
+    height: 260px !important;
+  }
+
+  .streetview-body {
+    padding: 18px 22px 22px !important;
+    max-height: 240px !important;
+  }
+
+  .river-view-info {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    padding: 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .close-mini {
+    right: 16px !important;
+    top: 16px !important;
+    width: 42px !important;
+    height: 42px !important;
+    background: rgba(2, 6, 23, .72) !important;
+  }
+
+  .top-icon-btn {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 17px !important;
+  }
+
+  .map-topbar span {
+    max-width: 56vw !important;
+    font-size: 14px !important;
+    padding: 9px 15px !important;
+  }
+}
 
 /* =========================
    RWD Fix：Tablet + Mobile
@@ -2706,4 +3094,8 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+.leaflet-container {
+  width: 100%;
+  height: 100%;
 }
