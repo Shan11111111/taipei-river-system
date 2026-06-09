@@ -2420,3 +2420,290 @@ body {
     saturate(2380%)
     hue-rotate(337deg);
 }
+
+
+/* =========================
+   RWD Fix：Tablet + Mobile
+   貼在 style.css 最底部
+========================= */
+
+/* 平板與手機：880px 以下 */
+@media (max-width: 880px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .screen {
+    width: 100vw;
+    min-height: 100dvh;
+    height: auto;
+  }
+
+  .cover-title-mark {
+    display: none;
+  }
+
+  .cover-panel {
+    width: calc(100% - 32px);
+    margin-left: 0;
+    padding: 30px 24px;
+    border-radius: 26px;
+  }
+
+  .cover-panel h1 {
+    font-size: clamp(42px, 12vw, 68px);
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .intro-card {
+    width: calc(100% - 28px);
+    height: 88dvh;
+    grid-template-columns: 1fr;
+  }
+
+  .intro-video {
+    min-height: 220px;
+  }
+
+  .intro-content {
+    padding: 28px 24px;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 42dvh;
+    padding: 18px;
+    overflow-y: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+  }
+
+  .sidebar.collapsed {
+    width: 100%;
+    flex-basis: auto;
+    height: 72px;
+    padding: 14px 18px;
+  }
+
+  .sidebar.collapsed .brand {
+    justify-content: space-between;
+  }
+
+  .map-area {
+    flex: 1 1 auto;
+    height: 58dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-topbar {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .map-topbar span {
+    max-width: calc(100vw - 140px);
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .top-actions {
+    top: 0;
+    right: 0;
+    gap: 8px;
+  }
+
+  .top-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+
+  .floating-panel {
+    top: 62px;
+    right: 12px;
+    width: 220px;
+    max-width: calc(100vw - 24px);
+    padding: 14px;
+  }
+
+  .walk-panel {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    padding: 14px;
+  }
+
+  .streetview-panel {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    max-height: 72dvh;
+    border-radius: 22px;
+  }
+
+  .streetview-header {
+    padding: 14px;
+    gap: 8px;
+  }
+
+  .streetview-header h3 {
+    font-size: 18px;
+  }
+
+  .streetview-frame {
+    height: 240px;
+  }
+
+  .streetview-body {
+    max-height: 220px;
+    padding: 14px;
+  }
+
+  .modal,
+  .danger-modal {
+    padding: 14px;
+  }
+
+  .modal-card,
+  .danger-card {
+    width: calc(100vw - 28px);
+    max-height: 86dvh;
+    padding: 22px;
+  }
+
+  .danger-card p {
+    font-size: 17px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leaflet-top.leaflet-left {
+    right: 16px !important;
+    bottom: 20px !important;
+  }
+
+  .leaflet-control-zoom a {
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+}
+
+/* 小手機：480px 以下 */
+@media (max-width: 480px) {
+  .sidebar {
+    height: 46dvh;
+    padding: 14px;
+  }
+
+  .map-area {
+    height: 54dvh;
+  }
+
+  .brand h2 {
+    font-size: 26px;
+  }
+
+  .brand p {
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .water-item {
+    grid-template-columns: 26px minmax(0, 1fr) 76px;
+    gap: 8px;
+  }
+
+  .water-level {
+    font-size: 20px;
+  }
+
+  .water-name {
+    font-size: 16px;
+  }
+
+  .btn-row {
+    gap: 7px;
+  }
+
+  .secondary-btn,
+  .ghost-btn,
+  .small-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .poi-filter-chip {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .map-topbar span {
+    max-width: calc(100vw - 124px);
+    font-size: 12px;
+  }
+
+  .top-icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .floating-panel {
+    width: 200px;
+    font-size: 13px;
+  }
+
+  .streetview-frame {
+    height: 210px;
+  }
+
+  .streetview-body {
+    max-height: 190px;
+  }
+
+  .cover-panel {
+    padding: 26px 20px;
+  }
+
+  .cover-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
