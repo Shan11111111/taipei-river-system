@@ -3018,22 +3018,26 @@ async function refreshWater() {
 const sidebar = document.getElementById("sidebar");
 const sidebarToggle = document.getElementById("sidebarToggle");
 
-sidebarToggle.addEventListener("click", () => {
-  sidebar.classList.toggle("collapsed");
+if (sidebar && sidebarToggle) {
+  if (window.matchMedia("(max-width: 880px)").matches) {
+    sidebar.classList.add("collapsed");
+  }
 
-  // 收合動畫期間連續刷新 Leaflet 尺寸，避免黑色空白閃一下
-  let count = 0;
-  const resizeTimer = setInterval(() => {
-    if (map) map.invalidateSize(false);
+  sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
 
-    count++;
-    if (count >= 12) {
-      clearInterval(resizeTimer);
+    let count = 0;
+    const resizeTimer = setInterval(() => {
       if (map) map.invalidateSize(false);
-    }
-  }, 30);
-});
 
+      count++;
+      if (count >= 12) {
+        clearInterval(resizeTimer);
+        if (map) map.invalidateSize(false);
+      }
+    }, 30);
+  });
+}
 
 
 /* ===== 修正：過濾不合理水位，避免 684m / 831m 這種錯誤值 ===== */
