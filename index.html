@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taipei River Pulse 大台北水脈</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <section id="coverPage" class="screen cover-screen">
+    <div class="cover-bg">
+      <div class="cover-title-mark">RIVER<br />CITY<br />TAIPEI</div>
+      <div class="cover-line l1"></div>
+      <div class="cover-line l2"></div>
+      <div class="cover-line l3"></div>
+      <div class="cover-line l4"></div>
+      <div class="cover-line l5"></div>
+    </div>
+    <div class="cover-panel">
+      <p class="eyebrow">Web GIS · LBS · Cultural Tourism · Flood Warning</p>
+      <h1>大台北水脈</h1>
+      <p class="subtitle">以五大水系為主軸，整合歷史導覽、即時水位警示、定位感知、徽章收集、河岸任務與互動式觀光體驗。</p>
+      <div class="cover-actions">
+        <button id="startBtn" class="primary-btn">開始遊玩</button>
+        <button id="directMapBtn" class="ghost-btn">直接進入地圖</button>
+      </div>
+      <p class="hint"></p>
+    </div>
+  </section>
+
+  <section id="introPage" class="screen intro-screen hidden">
+    <div class="intro-card">
+      <div class="intro-video">
+        <div class="video-river"></div>
+        <div class="video-caption">五條河流，從山到海，串起台北的歷史、生活與防災記憶。</div>
+      </div>
+      <div class="intro-content">
+        <p class="eyebrow">河流文字介紹導覽影片</p>
+        <h2 id="introTitle"></h2>
+        <p id="introText"></p>
+        <div class="progress-wrap">
+          <div id="introProgress" class="progress-bar"></div>
+        </div>
+        <div class="intro-actions">
+          <button id="skipIntroBtn" class="ghost-btn">略過導覽</button>
+          <button id="voiceIntroBtn" class="ghost-btn">播放語音導覽</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="appPage" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <section class="brand">
+        <div>
+          <h2>大台北水脈</h2>
+          <p>流域視角的城市探索系統</p>
+        </div>
+
+        <button class="sidebar-toggle" id="sidebarToggle">
+          ❮
+        </button>
+      </section>
+      <div class="search-card">
+        <input id="poiSearchInput" class="poi-search-input" type="text" placeholder="搜尋景點、河流、碼頭、古蹟..." />
+
+        <div id="poiFilterBar" class="poi-filter-bar">
+          <button class="poi-filter-chip active" data-category="全部">全部</button>
+          <button class="poi-filter-chip" data-category="親水休憩">親水休憩</button>
+          <button class="poi-filter-chip" data-category="歷史文化">歷史文化</button>
+          <button class="poi-filter-chip" data-category="河岸景觀">河岸景觀</button>
+          <button class="poi-filter-chip" data-category="生態自然">生態自然</button>
+          <button class="poi-filter-chip" data-category="運動遊憩">運動遊憩</button>
+          <button class="poi-filter-chip" data-category="美食商圈">美食商圈</button>
+        </div>
+
+        <div id="poiSearchResults" class="poi-search-results hidden"></div>
+      </div>
+
+      <section class="card">
+        <h3>當下位置</h3>
+        <p id="locationText">尚未定位。可使用 GPS 或示範位置。</p>
+        <div class="btn-row">
+          <button id="gpsBtn" class="secondary-btn">GPS 定位</button>
+          <button id="demoLocationBtn" class="secondary-btn">示範位置</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>五大水系導覽</h3>
+        <div id="riverList" class="river-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="water-card-title">
+
+          <h3>水位安全</h3>
+
+          <label class="water-switch-wrap">
+            <span class="water-switch-text">通知</span>
+
+            <span class="water-switch">
+              <input type="checkbox" id="waterNotifyToggle" checked>
+              <span class="water-switch-track"></span>
+            </span>
+          </label>
+
+        </div>
+
+
+        </div>
+        <div id="waterStatusList" class="water-list"></div>
+        <div class="btn-row">
+          <button id="simulateDangerBtn" class="secondary-btn">模擬警戒</button>
+          <button id="refreshWaterBtn" class="secondary-btn">刷新水位</button>
+
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>我的徽章</h3>
+        <div id="badgeBoard" class="badge-board"></div>
+      </section>
+
+      <section class="card">
+        <h3>任務進度</h3>
+        <div id="missionList"></div>
+      </section>
+    </aside>
+
+    <section class="map-area">
+      <div id="map"></div>
+
+      <div class="map-topbar">
+        <span id="currentMode">主地圖模式</span>
+        <div class="top-actions">
+
+          <button id="backToMapBtn" class="top-icon-btn hidden" title="回到地圖">
+            <img src="icon/close.png" alt="">
+          </button>
+
+          <button id="layerBtn" class="top-icon-btn" title="圖層控制">
+            <img src="icon/layers.png" alt="">
+          </button>
+
+          <button id="profileBtn" class="top-icon-btn" title="個人介面">
+            <img src="icon/user.png" alt="">
+          </button>
+
+        </div>
+      </div>
+      <div id="waterToast" class="water-toast hidden">
+        <button id="closeWaterToast" class="water-toast-close">×</button>
+        <strong id="waterToastTitle">水位提醒</strong>
+        <p id="waterToastText"></p>
+      </div>
+
+      <div id="layerPanel" class="floating-panel hidden">
+        <h3>圖層控制</h3>
+        <label><input type="checkbox" id="toggleRivers" checked> 河流圖層</label>
+        <label><input type="checkbox" id="togglePoi" checked> 景點圖層</label>
+        <label><input type="checkbox" id="toggleRiskBuffer" checked> 水位風險熱區</label>
+        <label><input type="checkbox" id="toggleWaterStation" checked> 水位監測站</label>
+      </div>
+
+      <div id="walkPanel" class="walk-panel hidden">
+        <h3 id="walkRiverName"></h3>
+        <p id="walkNarration"></p>
+        <div id="boatStationInfo" class="boat-station-info">
+          <div>
+            鄰近站點：<b id="currentStationText">航行中</b>
+          </div>
+        </div>
+        <div class="walk-controls">
+          <button id="pauseWalkBtn" class="small-btn">探索此站</button>
+          <button id="resumeWalkBtn" class="small-btn">繼續航行</button>
+          <button id="streetModeBtn" class="small-btn">離開航線</button>
+        </div>
+      </div>
+
+      <div id="streetViewPanel" class="streetview-panel hidden">
+        <button id="closeStreetBtn" class="close-mini">×</button>
+        <div class="streetview-header">
+          <div>
+            <p class="streetview-label">Google Street View / Heritage Guide</p>
+            <h3 id="streetViewTitle">河岸街景古蹟導覽</h3>
+          </div>
+          <button id="openGoogleMapBtn" class="small-btn">開啟 Google Maps</button>
+        </div>
+        <iframe id="streetViewFrame" class="streetview-frame" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade" src="about:blank">
+        </iframe>
+        <div class="streetview-body">
+          <div class="river-view-tags">
+            <span>街景導覽</span>
+            <span>河流視角</span>
+            <span>古蹟文化</span>
+          </div>
+          <p id="streetCaption">點擊河流或景點後，這裡會顯示附近街景與古蹟故事。</p>
+          <div id="riverViewInfo" class="river-view-info"></div>
+          <div id="heritageHotspotList" class="heritage-hotspots"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="riverModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close-btn" data-close="riverModal">×</button>
+      <h2 id="riverModalTitle"></h2>
+      <p id="riverModalDesc"></p>
+      <div id="riverSafetyBox" class="safety-box"></div>
+      <div id="riverCultureBox" class="info-box"></div>
+      <div class="btn-row">
+        <button id="enterRiverBtn" class="primary-btn">進入河流導覽</button>
+        <button id="speakRiverBtn" class="ghost-btn">語音介紹</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="poiModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close-btn" data-close="poiModal">×</button>
+      <h2 id="poiModalTitle"></h2>
+      <p id="poiModalStory"></p>
+      <div id="poiBadgeResult" class="badge-result"></div>
+      <div id="quizBox" class="quiz-box"></div>
+    </div>
+  </div>
+
+  <div id="dangerModal" class="danger-modal hidden">
+    <div class="danger-card">
+      <h2>⚠️ 水位警戒提醒</h2>
+      <p id="dangerText"></p>
+      <button class="primary-btn danger-btn" data-close="dangerModal">我知道了</button>
+    </div>
+  </div>
+
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-card wide">
+      <button class="close-btn" data-close="profileModal">×</button>
+      <h2>個人探索介面</h2>
+      <div class="profile-grid">
+        <div>
+          <h3>徽章收藏</h3>
+          <div id="profileBadgeBoard" class="profile-badge-board"></div>
+        </div>
+        <div>
+          <h3>探索紀錄</h3>
+          <div id="profileStats"></div>
+          <div class="btn-row">
+            <button id="exportBtn" class="ghost-btn">匯出紀錄 JSON</button>
+            <button id="clearBadgesBtn" class="ghost-btn">清除紀錄</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a id="downloadAnchor" class="hidden"></a>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
