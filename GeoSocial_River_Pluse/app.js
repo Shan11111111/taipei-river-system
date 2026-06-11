@@ -1228,6 +1228,11 @@ function tryBadge(p) {
 
     window.saveUserData?.();
 
+    showWaterToast(
+      "🏅 獲得新徽章！",
+      `${p.name} 已加入你的徽章收藏。`
+    );
+
     return {
       acquired: true
     };
@@ -1523,6 +1528,12 @@ async function renderLeaderboard(mode = currentLeaderboardMode) {
                 ? `${u.riverCount}/5`
                 : `${u.quizScore}`;
 
+        const rank =
+          index === 0 ? "🥇" :
+            index === 1 ? "🥈" :
+              index === 2 ? "🥉" :
+                `#${index + 1}`;
+
         const label =
           mode === "total"
             ? "綜合"
@@ -1534,7 +1545,7 @@ async function renderLeaderboard(mode = currentLeaderboardMode) {
 
         return `
           <div class="leaderboard-item">
-            <div class="leaderboard-rank">${index + 1}</div>
+            <div class="leaderboard-rank">${rank}</div>
 
             <img 
               src="${u.photoURL || "icon/user.png"}" 
